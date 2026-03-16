@@ -31,7 +31,7 @@ public class TeaVMBuilder {
         teaBuildConfiguration.webappPath = new File("build/dist").getCanonicalPath();
 
         // Register any extra classpath assets here:
-        // teaBuildConfiguration.additionalAssetsClasspathFiles.add("сcom/github/br/libgdx/jam36/asset.extension");
+        // teaBuildConfiguration.additionalAssetsClasspathFiles.add("com/github/br/libgdx/jam36/asset.extension");
 
         // If you need to match specific classes based on the package and class name,
         // you can use the reflectionListener to do fine-grained matching on the String fullClassName.
