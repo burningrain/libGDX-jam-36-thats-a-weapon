@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="left-down" width="108" height="192" tilewidth="10" tileheight="10" infinite="0" nextlayerid="11" nextobjectid="7">
+ <imagelayer id="9" name="right_hand_down" offsetx="992.8" offsety="1282.55">
+  <image source="../pictures/daily_version/tablet/right_hand_down.png" width="168" height="691"/>
+ </imagelayer>
+ <imagelayer id="7" name="left_hand_down" offsetx="-70" offsety="1259.85">
+  <image source="../pictures/daily_version/tablet/left_hand_down.png" width="168" height="761"/>
+ </imagelayer>
+ <imagelayer id="2" name="tablet" offsetx="91.75" offsety="380.05" parallaxx="0" parallaxy="0">
+  <image source="../pictures/daily_version/tablet/tablet.png" width="905" height="1392"/>
+ </imagelayer>
+ <imagelayer id="4" name="button" offsetx="238" offsety="1351.6" parallaxx="0" parallaxy="0">
+  <image source="../pictures/daily_version/tablet/sign_button0001.png" width="609" height="310"/>
+ </imagelayer>
+ <imagelayer id="8" name="left_hand_up" offsetx="10" offsety="1143.6">
+  <image source="../pictures/daily_version/tablet/left_hand_up.png" width="297" height="880"/>
+ </imagelayer>
+ <imagelayer id="10" name="right_hand_up" offsetx="775.3" offsety="1138.4">
+  <image source="../pictures/daily_version/tablet/right_hand_up.png" width="297" height="880"/>
+ </imagelayer>
+</map>
