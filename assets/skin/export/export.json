@@ -1,0 +1,122 @@
+{
+"com.badlogic.gdx.graphics.g2d.BitmapFont": {
+	"AdventPro-Regular_50": {
+		"file": "AdventPro-Regular(2).fnt",
+		"scaledSize": -1,
+		"markupEnabled": false,
+		"flip": false
+	},
+	"AmaticSC-Bold_90": {
+		"file": "AmaticSC-Bold(5).fnt",
+		"scaledSize": -1,
+		"markupEnabled": false,
+		"flip": false
+	},
+	"AmaticSC-Bold_75": {
+		"file": "AmaticSC-Bold(4).fnt",
+		"scaledSize": -1,
+		"markupEnabled": false,
+		"flip": false
+	}
+},
+"com.badlogic.gdx.graphics.Color": {
+	"tablet_sign_button_text": {
+		"r": 1,
+		"g": 1,
+		"b": 1,
+		"a": 1
+	},
+	"tablet_text_color": {
+		"r": 0.2,
+		"g": 0.2,
+		"b": 0.2,
+		"a": 1
+	}
+},
+"com.ray3k.tenpatch.TenPatchDrawable": {
+	"scroll_pane_background_10": {
+		"region": "scroll_pane_background",
+		"horizontalStretchAreas": [ 0, 93 ],
+		"verticalStretchAreas": [ 0, 95 ],
+		"tiling": false,
+		"minWidth": 94,
+		"minHeight": 96,
+		"rightWidth": 0,
+		"leftWidth": 0,
+		"bottomHeight": 0,
+		"topHeight": 0,
+		"offsetX": 0,
+		"offsetY": 0,
+		"offsetXspeed": 0,
+		"offsetYspeed": 0,
+		"frameDuration": 0.03,
+		"regions": [],
+		"playMode": 2,
+		"crushMode": 0
+	},
+	"talking_window_10": {
+		"region": "talking_window",
+		"horizontalStretchAreas": [ 51, 940 ],
+		"verticalStretchAreas": [ 36, 335 ],
+		"tiling": false,
+		"minWidth": 992,
+		"minHeight": 372,
+		"rightWidth": 0,
+		"leftWidth": 0,
+		"bottomHeight": 0,
+		"topHeight": 0,
+		"offsetX": 0,
+		"offsetY": 0,
+		"offsetXspeed": 0,
+		"offsetYspeed": 0,
+		"frameDuration": 0.03,
+		"regions": [],
+		"playMode": 2,
+		"crushMode": 0
+	}
+},
+"com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle": {
+	"default": {
+		"up": "tablet_button_left_1",
+		"down": "tablet_button_left_3",
+		"over": "tablet_button_left_2"
+	}
+},
+"com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton$ImageTextButtonStyle": {
+	"default": {
+		"font": "AmaticSC-Bold_90",
+		"up": "sign_button_1",
+		"down": "sign_button_3",
+		"over": "sign_button_2"
+	}
+},
+"com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
+	"default": {
+		"font": "AmaticSC-Bold_75",
+		"background": "talking_window_10"
+	},
+	"talking": {
+		"font": "AmaticSC-Bold_75",
+		"background": "talking_window_10"
+	},
+	"document_text": {
+		"font": "AdventPro-Regular_50",
+		"background": "scroll_pane_background_10"
+	},
+	"sign_button_text": {
+		"font": "AmaticSC-Bold_90"
+	}
+},
+"com.badlogic.gdx.scenes.scene2d.ui.ScrollPane$ScrollPaneStyle": {
+	"default": {
+		"background": "scroll_pane_background",
+		"hScrollKnob": "v_scroll_knob",
+		"vScrollKnob": "v_scroll_knob"
+	}
+},
+"com.badlogic.gdx.scenes.scene2d.ui.TextTooltip$TextTooltipStyle": {
+	"default": {
+		"label": "default"
+	}
+}
+}

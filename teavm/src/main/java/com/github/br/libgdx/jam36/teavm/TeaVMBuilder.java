@@ -3,6 +3,7 @@ package com.github.br.libgdx.jam36.teavm;
 import com.github.xpenatan.gdx.backends.teavm.config.AssetFileHandle;
 import com.github.xpenatan.gdx.backends.teavm.config.TeaBuildConfiguration;
 import com.github.xpenatan.gdx.backends.teavm.config.TeaBuilder;
+import com.github.xpenatan.gdx.backends.teavm.config.plugins.TeaReflectionSupplier;
 import org.teavm.backend.wasm.WasmDebugInfoLevel;
 import org.teavm.tooling.TeaVMSourceFilePolicy;
 import org.teavm.tooling.TeaVMTargetType;
@@ -13,7 +14,9 @@ import org.teavm.vm.TeaVMOptimizationLevel;
 import java.io.File;
 import java.io.IOException;
 
-/** Builds the TeaVM/HTML application. */
+/**
+ * Builds the TeaVM/HTML application.
+ */
 public class TeaVMBuilder {
     /**
      * A single point to configure most debug vs. release settings.
@@ -40,9 +43,34 @@ public class TeaVMBuilder {
 //                return true;
 //            return false;
 //        };
+        teaBuildConfiguration.reflectionListener = fullClassName -> {
+            // Разрешаем рефлексию для TenPatch и всех связанных классов
+            if (fullClassName.startsWith("com.ray3k.tenpatch")) {
+                return true;
+            }
+            // Если есть другие классы, требующие рефлексии (например, Stripe)
+            if (fullClassName.startsWith("com.ray3k.stripe")) {
+                return true;
+            }
+            return false;
+        };
 
         // You can also register any classes or packages that require reflection here:
-        // TeaReflectionSupplier.addReflectionClass("com.github.br.libgdx.jam36.reflect");
+        // TenPatch классы
+        TeaReflectionSupplier.addReflectionClass("com.ray3k.tenpatch.TenPatchDrawable");
+        TeaReflectionSupplier.addReflectionClass("com.ray3k.tenpatch.TenPatch");
+
+        // Stripe классы (если используете)
+        TeaReflectionSupplier.addReflectionClass("com.ray3k.stripe.ScrollPane");
+        TeaReflectionSupplier.addReflectionClass("com.ray3k.stripe.PopupTable");
+        TeaReflectionSupplier.addReflectionClass("com.ray3k.stripe.DraggableList");
+
+        // Все пакеты целиком (если хотите включить всё)
+        TeaReflectionSupplier.addReflectionClass("com.ray3k.tenpatch");
+        TeaReflectionSupplier.addReflectionClass("com.ray3k.stripe");
+
+        TeaReflectionSupplier.addReflectionClass("com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle");
+        TeaReflectionSupplier.addReflectionClass("com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle");
 
         // JavaScript is the default target type for TeaVM, and it works better during debugging.
         teaBuildConfiguration.targetType = TeaVMTargetType.JAVASCRIPT;
@@ -70,7 +98,7 @@ public class TeaVMBuilder {
         // If DEBUG is set to true, these lines allow step-debugging JVM languages from the browser,
         // setting breakpoints in Java code and stopping in the appropriate place in generated browser code.
         // This may work reasonably well when targeting WEBASSEMBLY_GC, but it usually works better with JAVASCRIPT .
-        if(DEBUG) {
+        if (DEBUG) {
             tool.setDebugInformationGenerated(true);
             tool.setSourceMapsFileGenerated(true);
             tool.setWasmDebugInfoLevel(WasmDebugInfoLevel.FULL);

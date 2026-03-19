@@ -1,0 +1,97 @@
+
+export.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+AdventPro-Regular(2)
+  rotate: false
+  xy: 612, 1365
+  size: 506, 286
+  orig: 506, 286
+  offset: 0, 0
+  index: -1
+AmaticSC-Bold(4)
+  rotate: false
+  xy: 612, 900
+  size: 506, 463
+  orig: 506, 463
+  offset: 0, 0
+  index: -1
+AmaticSC-Bold(5)_0
+  rotate: false
+  xy: 1, 515
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+AmaticSC-Bold(5)_1
+  rotate: false
+  xy: 1, 1
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: -1
+scroll_pane_background
+  rotate: false
+  xy: 1606, 1929
+  size: 94, 96
+  orig: 94, 96
+  offset: 0, 0
+  index: -1
+sign_button_1
+  rotate: false
+  xy: 1, 1341
+  size: 609, 310
+  orig: 609, 310
+  offset: 0, 0
+  index: -1
+sign_button_2
+  rotate: false
+  xy: 995, 1715
+  size: 609, 310
+  orig: 609, 310
+  offset: 0, 0
+  index: -1
+sign_button_3
+  rotate: false
+  xy: 1, 1029
+  size: 609, 310
+  orig: 609, 310
+  offset: 0, 0
+  index: -1
+tablet_button_left_1
+  rotate: false
+  xy: 515, 597
+  size: 71, 430
+  orig: 71, 430
+  offset: 0, 0
+  index: -1
+tablet_button_left_2
+  rotate: false
+  xy: 515, 165
+  size: 71, 430
+  orig: 71, 430
+  offset: 0, 0
+  index: -1
+tablet_button_left_3
+  rotate: false
+  xy: 588, 468
+  size: 71, 430
+  orig: 71, 430
+  offset: 0, 0
+  index: -1
+v_scroll_knob
+  rotate: false
+  xy: 995, 1653
+  size: 62, 60
+  orig: 62, 60
+  offset: 0, 0
+  index: -1
+talking_window
+  rotate: false
+  xy: 1, 1653
+  size: 992, 372
+  orig: 992, 372
+  offset: 0, 0
+  index: -1
