@@ -58,6 +58,8 @@ public class MapPacker {
                 String inputDir = "D:/projects/libGDX-jam-36-thats-a-weapon/assets/tiled";
                 String outputDir = "D:/projects/libGDX-jam-36-thats-a-weapon/assets/tiled-packed";
 
+                deleteDirectoryContents(outputDir);
+
                 TiledMapPacker packer = new TiledMapPacker();
                 TiledMapPacker.inputDir = new File(inputDir);
                 TiledMapPacker.outputDir = new File(outputDir);
@@ -75,4 +77,27 @@ public class MapPacker {
         // Запускаем приложение с задачей упаковки
         new LwjglApplication(new DummyApp(packTask), config);
     }
+
+    public static void deleteDirectoryContents(String outputDir) {
+        File directory = new File(outputDir);
+
+        if (directory.exists()) {
+            deleteRecursively(directory);
+            System.out.println("Directory contents deleted: " + outputDir);
+        }
+    }
+
+    private static void deleteRecursively(File file) {
+        if (file.isDirectory()) {
+            File[] files = file.listFiles();
+            if (files != null) {
+                for (File child : files) {
+                    deleteRecursively(child);
+                }
+            }
+        }
+        file.delete();
+    }
+
+
 }

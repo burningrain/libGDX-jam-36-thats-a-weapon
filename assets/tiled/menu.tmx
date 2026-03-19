@@ -23,11 +23,15 @@
   </imagelayer>
   <objectgroup id="17" name="object_layer">
    <object id="11" name="tablet_left_button" x="99.6" y="861.75" width="73.3333" height="428"/>
-   <object id="12" name="tablet_left_button" x="915.667" y="862.333" width="73.3333" height="428"/>
+   <object id="12" name="tablet_left_button" x="915.667" y="862.333" width="73.3333" height="428">
+    <properties>
+     <property name="flip" type="bool" value="true"/>
+    </properties>
+   </object>
    <object id="14" name="tablet_text" x="198.4" y="461.8" width="688" height="852"/>
-   <object id="15" name="sign_button" x="238" y="1351.6" width="593.939" height="233.333"/>
+   <object id="15" name="sign_button" x="238" y="1431.6" width="593.939" height="233.333"/>
   </objectgroup>
-  <imagelayer id="4" name="sign_button" offsetx="238" offsety="1351.6" parallaxx="0" parallaxy="0">
+  <imagelayer id="4" name="sign_button" visible="0" offsetx="238" offsety="1351.6" parallaxx="0" parallaxy="0">
    <image source="../pictures/daily_version/tablet/sign_button_1.png" width="609" height="310"/>
   </imagelayer>
   <imagelayer id="8" name="left_hand_up" offsetx="10" offsety="1143.6">

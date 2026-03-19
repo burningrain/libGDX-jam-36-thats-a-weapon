@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><map height="192" infinite="0" nextlayerid="18" nextobjectid="17" orientation="orthogonal" renderorder="left-down" tiledversion="1.11.2" tileheight="10" tilewidth="10" version="1.10" width="108"><properties><property name="atlas" value="tileset/menu.atlas"/></properties>
+ <group id="12" name="environment">
+  <imagelayer id="13" name="glass" offsetx="-310" offsety="-20">
+   <image height="1962" source="atlas_imagelayer_glass_367283412848800x" width="1712"/>
+  </imagelayer>
+ </group>
+ <group id="11" name="tablet">
+  <imagelayer id="9" name="right_hand_down" offsetx="992.8" offsety="1282.55">
+   <image height="691" source="atlas_imagelayer_right_hand_down_367283412848801x" width="168"/>
+  </imagelayer>
+  <imagelayer id="7" name="left_hand_down" offsetx="-70" offsety="1259.85">
+   <image height="761" source="atlas_imagelayer_left_hand_down_367283412848802x" width="168"/>
+  </imagelayer>
+  <imagelayer id="2" name="tablet" offsetx="91.75" offsety="380.05" parallaxx="0" parallaxy="0">
+   <image height="1392" source="atlas_imagelayer_tablet_367283412848803x" width="905"/>
+  </imagelayer>
+  <imagelayer id="15" name="right_button" offsetx="916.45" offsety="861.75">
+   <image height="430" source="atlas_imagelayer_tablet_button_1_367283412848804x" width="71"/>
+  </imagelayer>
+  <imagelayer id="14" name="left_button" offsetx="99.6" offsety="861.75">
+   <image height="430" source="atlas_imagelayer_tablet_button_left_1_367283412848805x" width="71"/>
+  </imagelayer>
+  <objectgroup id="17" name="object_layer">
+   <object height="428" id="11" name="tablet_left_button" width="73.3333" x="99.6" y="861.75"/>
+   <object height="428" id="12" name="tablet_left_button" width="73.3333" x="915.667" y="862.333">
+    <properties>
+     <property name="flip" type="bool" value="true"/>
+    </properties>
+   </object>
+   <object height="852" id="14" name="tablet_text" width="688" x="198.4" y="461.8"/>
+   <object height="233.333" id="15" name="sign_button" width="593.939" x="238" y="1431.6"/>
+  </objectgroup>
+  <imagelayer id="4" name="sign_button" offsetx="238" offsety="1351.6" parallaxx="0" parallaxy="0" visible="0">
+   <image height="310" source="atlas_imagelayer_sign_button_1_367283412848806x" width="609"/>
+  </imagelayer>
+  <imagelayer id="8" name="left_hand_up" offsetx="10" offsety="1143.6">
+   <image height="880" source="atlas_imagelayer_left_hand_up_367283412848807x" width="297"/>
+  </imagelayer>
+  <imagelayer id="10" name="right_hand_up" offsetx="775.3" offsety="1138.4">
+   <image height="880" source="atlas_imagelayer_right_hand_up_367283412848808x" width="297"/>
+  </imagelayer>
+ </group>
+</map>

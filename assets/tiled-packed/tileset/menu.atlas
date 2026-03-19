@@ -1,0 +1,75 @@
+
+menu.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+atlas_imagelayer_glass_367283412848800x
+  rotate: false
+  xy: 1, 1
+  size: 1712, 1962
+  orig: 1712, 1962
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_left_hand_up_367283412848807x
+  rotate: false
+  xy: 1715, 201
+  size: 297, 880
+  orig: 297, 880
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_right_hand_up_367283412848808x
+  rotate: false
+  xy: 1715, 1083
+  size: 297, 880
+  orig: 297, 880
+  offset: 0, 0
+  index: -1
+
+menu2.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+atlas_imagelayer_left_hand_down_367283412848802x
+  rotate: false
+  xy: 908, 944
+  size: 168, 761
+  orig: 168, 761
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_right_hand_down_367283412848801x
+  rotate: false
+  xy: 1078, 1014
+  size: 168, 691
+  orig: 168, 691
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_sign_button_1_367283412848806x
+  rotate: false
+  xy: 1, 1
+  size: 609, 310
+  orig: 609, 310
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_tablet_367283412848803x
+  rotate: false
+  xy: 1, 313
+  size: 905, 1392
+  orig: 905, 1392
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_tablet_button_1_367283412848804x
+  rotate: false
+  xy: 1248, 1275
+  size: 71, 430
+  orig: 71, 430
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_tablet_button_left_1_367283412848805x
+  rotate: false
+  xy: 908, 512
+  size: 71, 430
+  orig: 71, 430
+  offset: 0, 0
+  index: -1

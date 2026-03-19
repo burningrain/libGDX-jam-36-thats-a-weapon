@@ -73,6 +73,26 @@
 		"regions": [],
 		"playMode": 2,
 		"crushMode": 0
+	},
+	"sign_button_1_10": {
+		"region": "sign_button_1",
+		"horizontalStretchAreas": [ 64, 544 ],
+		"verticalStretchAreas": [ 64, 245 ],
+		"tiling": false,
+		"minWidth": 609,
+		"minHeight": 310,
+		"rightWidth": 64,
+		"leftWidth": 64,
+		"bottomHeight": 64,
+		"topHeight": 64,
+		"offsetX": 0,
+		"offsetY": 0,
+		"offsetXspeed": 0,
+		"offsetYspeed": 0,
+		"frameDuration": 0.03,
+		"regions": [],
+		"playMode": 2,
+		"crushMode": 0
 	}
 },
 "com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle": {
