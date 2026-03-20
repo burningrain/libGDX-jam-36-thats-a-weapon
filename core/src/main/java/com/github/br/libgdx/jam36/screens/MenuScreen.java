@@ -1,6 +1,7 @@
 package com.github.br.libgdx.jam36.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -20,16 +21,21 @@ public class MenuScreen extends AbstractGameScreen {
     private OrthographicCamera camera;
     private Viewport viewport;
 
+    private ActorFactory actorFactory;
+
     @Override
     public void show() {
-        tiledMap = getGameManager().assetManager.get(Resources.MENU);
+        AssetManager assetManager = getGameManager().assetManager;
+        tiledMap = assetManager.get(Resources.MENU);
 
         camera = new OrthographicCamera();
         viewport = new FitViewport(Constants.WORLD_WIDTH, Constants.WORLD_HEIGHT, camera);
         centerCamera();
 
-        Skin gameSkin = getGameManager().assetManager.get(Resources.SKIN);
-        renderer = new CustomOrthogonalTiledMapRenderer(gameSkin, viewport, tiledMap, 1f);
+        Skin gameSkin = assetManager.get(Resources.SKIN);
+        actorFactory = new ActorFactory(gameSkin, assetManager);
+
+        renderer = new CustomOrthogonalTiledMapRenderer(actorFactory, viewport, tiledMap, 1f);
 
         Gdx.input.setInputProcessor(renderer.getInputProcessor());
     }

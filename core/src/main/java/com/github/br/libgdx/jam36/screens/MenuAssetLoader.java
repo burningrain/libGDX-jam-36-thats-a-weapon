@@ -24,6 +24,9 @@ public class MenuAssetLoader implements AssetsLoader {
         // skin
         assetManager.load(Resources.SKIN_ATLAS, TextureAtlas.class);
         assetManager.load(Resources.SKIN, Skin.class, new SkinLoader.SkinParameter(Resources.SKIN_ATLAS));
+
+        // animation
+        assetManager.load(Resources.ANIMATION_ATLAS, TextureAtlas.class);
     }
 
     @Override

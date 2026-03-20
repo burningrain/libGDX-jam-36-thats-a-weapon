@@ -20,14 +20,16 @@ import java.util.Iterator;
 public class CustomOrthogonalTiledMapRenderer extends OrthogonalTiledMapRenderer {
 
     private final ObjectMap<String, Stage> stages = new ObjectMap<>();
-    private Viewport viewport;
-    private ActorFactory actorFactory;
-    private InputMultiplexer inputMultiplexer;
+    private final Viewport viewport;
+    private final ActorFactory actorFactory;
+    private final InputMultiplexer inputMultiplexer;
 
-    public CustomOrthogonalTiledMapRenderer(Skin gameSkin, Viewport viewport, TiledMap map, float unitScale) {
+    public CustomOrthogonalTiledMapRenderer(
+        ActorFactory actorFactory, Viewport viewport, TiledMap map, float unitScale
+    ) {
         super(map, unitScale);
         this.viewport = viewport;
-        this.actorFactory = new ActorFactory(gameSkin);
+        this.actorFactory = actorFactory;
 
         clampToEdgeTextures(map);
 
