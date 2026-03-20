@@ -24,7 +24,7 @@
   </objectgroup>
  </group>
  <group id="58" name="hell_environment" locked="1">
-  <imagelayer id="59" name="hell_glass" offsetx="-310" offsety="-60">
+  <imagelayer id="59" name="hell_glass" locked="1" offsetx="-310" offsety="-60">
    <image source="../pictures/hell_version/environment/hell_glass.png" width="1712" height="2002"/>
   </imagelayer>
   <imagelayer id="61" name="hell_flowerpot1" locked="1" offsetx="141.2" offsety="1025.45">
@@ -45,7 +45,7 @@
   <imagelayer id="70" name="hell_door_white" offsetx="45" offsety="34">
    <image source="../pictures/hell_version/environment/hell_blue_door.png" width="1010" height="1384"/>
   </imagelayer>
-  <imagelayer id="67" name="clock" locked="1" offsetx="452.2" offsety="119.65">
+  <imagelayer id="67" name="hell_clock" offsetx="435" offsety="102">
    <image source="../pictures/hell_version/environment/watch.png" width="234" height="234"/>
   </imagelayer>
  </group>
@@ -269,7 +269,7 @@
    <image source="../pictures/daily_version/think/collar.png" width="684" height="231"/>
   </imagelayer>
  </group>
- <objectgroup id="57" name="text_window">
+ <objectgroup id="57" name="text_window" locked="1">
   <object id="18" name="text_window" x="43.3" y="50.05" width="990" height="369.6"/>
  </objectgroup>
 </map>

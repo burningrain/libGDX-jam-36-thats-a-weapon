@@ -42,7 +42,7 @@ public class ActorFactory {
     }
 
     private Actor createTextWindow(MapObject object) {
-        Label label = new Label("СВИНОЙ РАЗГОВОР", skin, "talking");
+        Label label = new Label("У тебя больше нет права на ошибку!\nВсего один неверный ответ и ты нас покидаешь!", skin, "talking");
         label.setAlignment(Align.topLeft);
 
         MapProperties properties = object.getProperties();
