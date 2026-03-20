@@ -25,9 +25,42 @@ public class ActorFactory {
                 return createTabletText(object);
             case "sign_button":
                 return createSignButton(object);
+
+            case "clock":
+                return createClock(object);
+            case "fire":
+                return createFire(object);
+            case "text_window":
+                return createTextWindow(object);
             default:
                 throw new IllegalArgumentException("unknown stage2d actor: " + name);
         }
+    }
+
+    private Actor createFire(MapObject object) {
+        return new Label("", skin, "talking");
+    }
+
+    private Actor createTextWindow(MapObject object) {
+        Label label = new Label("СВИНОЙ РАЗГОВОР", skin, "talking");
+        label.setAlignment(Align.topLeft);
+
+        MapProperties properties = object.getProperties();
+        Float width = properties.get("width", float.class);
+        Float height = properties.get("height", float.class);
+
+        label.setWidth(width);
+        label.setHeight(height);
+
+        label.setWrap(true);
+
+        return label;
+    }
+
+    private Actor createClock(MapObject object) {
+        //TODO переделать
+        Label label = new Label("текст", skin, "document_text");
+        return label;
     }
 
     private Actor createSignButton(MapObject object) {
@@ -38,7 +71,7 @@ public class ActorFactory {
     private Actor createTabletText(MapObject object) {
         MapProperties properties = object.getProperties();
 
-        Label label = new Label("ТАКОЙ ВОТ ТЕКСТ, Е-МОЕ!!!", skin, "document_text");
+        Label label = new Label("текст", skin, "document_text");
         label.setAlignment(Align.topLeft);
 
         Float width = properties.get("width", float.class);

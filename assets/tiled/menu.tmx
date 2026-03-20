@@ -1,27 +1,244 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="left-down" width="108" height="192" tilewidth="10" tileheight="10" infinite="0" nextlayerid="18" nextobjectid="17">
- <group id="12" name="environment">
-  <imagelayer id="13" name="glass" offsetx="-310" offsety="-20">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="left-down" width="108" height="192" tilewidth="10" tileheight="10" infinite="0" nextlayerid="99" nextobjectid="24">
+ <group id="12" name="environment" locked="1">
+  <imagelayer id="13" name="glass" locked="1" offsetx="-310" offsety="-20">
    <image source="../pictures/daily_version/environment/glass.png" width="1712" height="1962"/>
   </imagelayer>
+  <imagelayer id="18" name="flowerpot1" locked="1" offsetx="141.2" offsety="1025.45">
+   <image source="../pictures/daily_version/environment/flowerpot1.png" width="161" height="182"/>
+  </imagelayer>
+  <imagelayer id="19" name="palm_tree" locked="1" offsetx="60.75" offsety="615.45">
+   <image source="../pictures/daily_version/environment/palm_tree_1.png" width="282" height="436"/>
+  </imagelayer>
+  <imagelayer id="20" name="flowerpot2" locked="1" offsetx="778.4" offsety="1018.8">
+   <image source="../pictures/daily_version/environment/flowerpot2.png" width="161" height="182"/>
+  </imagelayer>
+  <imagelayer id="21" name="tree" locked="1" offsetx="776.4" offsety="668">
+   <image source="../pictures/daily_version/environment/tree.png" width="268" height="380"/>
+  </imagelayer>
+  <imagelayer id="22" name="door" locked="1" offsetx="350.5" offsety="340">
+   <image source="../pictures/daily_version/environment/door.png" width="392" height="766"/>
+  </imagelayer>
+  <objectgroup id="24" name="clock" locked="1">
+   <object id="17" name="clock" x="452.2" y="119.65" width="193.95" height="193.95"/>
+  </objectgroup>
  </group>
- <group id="11" name="tablet">
-  <imagelayer id="9" name="right_hand_down" offsetx="992.8" offsety="1282.55">
+ <group id="58" name="hell_environment" locked="1">
+  <imagelayer id="59" name="hell_glass" offsetx="-310" offsety="-60">
+   <image source="../pictures/hell_version/environment/hell_glass.png" width="1712" height="2002"/>
+  </imagelayer>
+  <imagelayer id="61" name="hell_flowerpot1" locked="1" offsetx="141.2" offsety="1025.45">
+   <image source="../pictures/hell_version/environment/hell_flowerpot_1.png" width="161" height="182"/>
+  </imagelayer>
+  <imagelayer id="62" name="hell_palm_tree" locked="1" offsetx="60.75" offsety="615.45">
+   <image source="../pictures/hell_version/environment/hell_palm_tree.png" width="282" height="436"/>
+  </imagelayer>
+  <imagelayer id="63" name="hell_flowerpot2" locked="1" offsetx="778.4" offsety="1018.8">
+   <image source="../pictures/hell_version/environment/hell_flowerpot2.png" width="161" height="182"/>
+  </imagelayer>
+  <imagelayer id="64" name="hell_tree" locked="1" offsetx="776.4" offsety="668">
+   <image source="../pictures/hell_version/environment/hell_tree.png" width="268" height="380"/>
+  </imagelayer>
+  <imagelayer id="66" name="hell_door_red" locked="1" offsetx="45" offsety="34">
+   <image source="../pictures/hell_version/environment/hell_door.png" width="1010" height="1384"/>
+  </imagelayer>
+  <imagelayer id="70" name="hell_door_white" offsetx="45" offsety="34">
+   <image source="../pictures/hell_version/environment/hell_blue_door.png" width="1010" height="1384"/>
+  </imagelayer>
+  <imagelayer id="67" name="clock" locked="1" offsetx="452.2" offsety="119.65">
+   <image source="../pictures/hell_version/environment/watch.png" width="234" height="234"/>
+  </imagelayer>
+ </group>
+ <imagelayer id="25" name="hero_left_foot" locked="1" offsetx="442.55" offsety="1724.25">
+  <image source="../pictures/daily_version/hero/left_foot.png" width="60" height="124"/>
+ </imagelayer>
+ <imagelayer id="26" name="hero_right_foot" locked="1" offsetx="589.3" offsety="1727.15">
+  <image source="../pictures/daily_version/hero/right_foot.png" width="63" height="187"/>
+ </imagelayer>
+ <group id="68" name="hell_version" locked="1">
+  <imagelayer id="69" name="hell_hr_foot_left" locked="1" offsetx="428" offsety="1644.95">
+   <image source="../pictures/hell_version/hr/hell_hr_stiletto_left.png" width="110" height="155"/>
+  </imagelayer>
+  <imagelayer id="71" name="helll_hr_foot_right" locked="1" offsetx="554" offsety="1645">
+   <image source="../pictures/hell_version/hr/hr_stiletto_right.png" width="108" height="155"/>
+  </imagelayer>
+  <imagelayer id="72" name="hrll_hr_tail" locked="1" offsetx="634.9" offsety="868">
+   <image source="../pictures/hell_version/hr/hell_hr_tail.png" width="131" height="286"/>
+  </imagelayer>
+  <imagelayer id="73" name="hell_chair" locked="1" offsetx="350.5" offsety="740">
+   <image source="../pictures/hell_version/environment/hell_chair.png" width="385" height="488"/>
+  </imagelayer>
+  <group id="74" name="hell_hr" locked="1">
+   <imagelayer id="75" name="hell_hr_shirt" offsetx="394" offsety="870">
+    <image source="../pictures/hell_version/hr/hr_hell_shirt.png" width="281" height="351"/>
+   </imagelayer>
+   <imagelayer id="76" name="hell_hr_neck" offsetx="497.95" offsety="800">
+    <image source="../pictures/hell_version/hr/hr_hell_neck.png" width="82" height="78"/>
+   </imagelayer>
+   <imagelayer id="77" name="hell_hr_head" offsetx="418.4" offsety="514.3">
+    <image source="../pictures/hell_version/hr/hell_hr_head.png" width="271" height="338"/>
+   </imagelayer>
+   <imagelayer id="78" name="hell_hr_hair" offsetx="391" offsety="469.95">
+    <image source="../pictures/hell_version/hr/hell_hr_hair.png" width="318" height="288"/>
+   </imagelayer>
+   <imagelayer id="79" name="hell_hr_left_horn" offsetx="346.45" offsety="450">
+    <image source="../pictures/hell_version/hr/hell_hr_horn_left.png" width="71" height="132"/>
+   </imagelayer>
+   <imagelayer id="80" name="hell_hr_right_horn" offsetx="677.65" offsety="450">
+    <image source="../pictures/hell_version/hr/hell_hr_horn_right.png" width="71" height="132"/>
+   </imagelayer>
+  </group>
+  <group id="81" name="hell_table" locked="1">
+   <imagelayer id="82" name="hell_table_legs" locked="1" offsetx="-65.9" offsety="1396.15">
+    <image source="../pictures/hell_version/table/hell_table_legs.png" width="1181" height="459"/>
+   </imagelayer>
+   <imagelayer id="83" name="hell_table" locked="1" offsetx="12.8" offsety="1146">
+    <image source="../pictures/hell_version/table/hell_table.png" width="1034" height="517"/>
+   </imagelayer>
+   <imagelayer id="84" name="hell_pentagrem" locked="1" offsetx="268.1" offsety="1231.15">
+    <image source="../pictures/hell_version/table/pentagram.png" width="524" height="268"/>
+   </imagelayer>
+   <imagelayer id="85" name="hell_candle9" locked="1" offsetx="259.45" offsety="1211.2">
+    <image source="../pictures/hell_version/table/candle.png" width="31" height="126"/>
+   </imagelayer>
+   <imagelayer id="86" name="hell_candle12" locked="1" offsetx="521.9" offsety="1112.75">
+    <image source="../pictures/hell_version/table/candle.png" width="31" height="126"/>
+   </imagelayer>
+   <imagelayer id="87" name="hell_candle3" locked="1" offsetx="770.25" offsety="1208">
+    <image source="../pictures/hell_version/table/candle.png" width="31" height="126"/>
+   </imagelayer>
+   <imagelayer id="88" name="hell_candle5" locked="1" offsetx="672.9" offsety="1368.95">
+    <image source="../pictures/hell_version/table/candle.png" width="31" height="126"/>
+   </imagelayer>
+   <imagelayer id="89" name="hell_candle7" locked="1" offsetx="353.7" offsety="1370.9">
+    <image source="../pictures/hell_version/table/candle.png" width="31" height="126"/>
+   </imagelayer>
+   <objectgroup id="90" name="fires" locked="1">
+    <object id="19" name="fire" x="274.667" y="1206.67"/>
+    <object id="20" name="fire" x="369.333" y="1369.33"/>
+    <object id="21" name="fire" x="537.333" y="1110.67"/>
+    <object id="22" name="fire" x="689.333" y="1365.33"/>
+    <object id="23" name="fire" x="786.667" y="1205.33"/>
+   </objectgroup>
+  </group>
+  <group id="91" name="hell_hr_body" locked="1">
+   <imagelayer id="92" name="hell_hr_hand_left" locked="1" offsetx="319.1" offsety="1171.6">
+    <image source="../pictures/hell_version/hr/hell_hr_hand_left.png" width="103" height="120"/>
+   </imagelayer>
+   <imagelayer id="93" name="hell_hr_hand_laeft_nails" locked="1" offsetx="350" offsety="1217">
+    <image source="../pictures/hell_version/hr/hell_hr_hand_left_nails.png" width="80" height="88"/>
+   </imagelayer>
+   <imagelayer id="94" name="hell_hr_arm_left" offsetx="291" offsety="889">
+    <image source="../pictures/hell_version/hr/hell_hr_arm_left.png" width="130" height="320"/>
+   </imagelayer>
+   <imagelayer id="95" name="hell_hr_hand_right" locked="1" offsetx="644.3" offsety="1184.05">
+    <image source="../pictures/hell_version/hr/hell_hr_hand_right.png" width="101" height="116"/>
+   </imagelayer>
+   <imagelayer id="96" name="hell_hr_phone" locked="1" offsetx="824.8" offsety="1232.2">
+    <image source="../pictures/daily_version/table/hr_phone/HR_phone0001.png" width="132" height="125"/>
+   </imagelayer>
+   <imagelayer id="97" name="hell_hr_hand_right_nails" locked="1" offsetx="637.65" offsety="1226.65">
+    <image source="../pictures/hell_version/hr/hell_hr_hand_right_nails.png" width="101" height="85"/>
+   </imagelayer>
+   <imagelayer id="98" name="hell_hr_arm_right" locked="1" offsetx="650" offsety="890">
+    <image source="../pictures/hell_version/hr/hell_hr_arm_right.png" width="120" height="330"/>
+   </imagelayer>
+  </group>
+ </group>
+ <group id="60" name="daily" visible="0">
+  <imagelayer id="27" name="hr_left_foot" locked="1" offsetx="428" offsety="1644.95">
+   <image source="../pictures/daily_version/hr/stiletto_left.png" width="117" height="155"/>
+  </imagelayer>
+  <imagelayer id="28" name="hr_right_foot" locked="1" offsetx="552.45" offsety="1644.95">
+   <image source="../pictures/daily_version/hr/stiletto_right.png" width="117" height="155"/>
+  </imagelayer>
+  <imagelayer id="31" name="hr_chair" locked="1" offsetx="350.5" offsety="740">
+   <image source="../pictures/daily_version/environment/chair.png" width="385" height="488"/>
+  </imagelayer>
+  <group id="32" name="hr" locked="1">
+   <imagelayer id="33" name="hr_shirt" locked="1" offsetx="394" offsety="870">
+    <image source="../pictures/daily_version/hr/hr_shirt.png" width="281" height="351"/>
+   </imagelayer>
+   <imagelayer id="34" name="hr_neck" locked="1" offsetx="497.95" offsety="800">
+    <image source="../pictures/daily_version/hr/neck.png" width="82" height="78"/>
+   </imagelayer>
+   <imagelayer id="35" name="hr_head" locked="1" offsetx="418.4" offsety="514.3">
+    <image source="../pictures/daily_version/hr/hr_head.png" width="271" height="338"/>
+   </imagelayer>
+   <imagelayer id="36" name="hr_hear" locked="1" offsetx="391" offsety="469.95">
+    <image source="../pictures/daily_version/hr/hr_hair.png" width="318" height="288"/>
+   </imagelayer>
+  </group>
+  <imagelayer id="37" name="table" locked="1" offsetx="10" offsety="1145">
+   <image source="../pictures/daily_version/table/table.png" width="1062" height="794"/>
+  </imagelayer>
+  <group id="38" name="hr_body" locked="1">
+   <imagelayer id="39" name="hr_hand_left" locked="1" offsetx="319.1" offsety="1171.6">
+    <image source="../pictures/daily_version/hr/hr_hand_left.png" width="103" height="120"/>
+   </imagelayer>
+   <imagelayer id="41" name="hr_hand_left_nails" locked="1" offsetx="350" offsety="1217">
+    <image source="../pictures/daily_version/hr/hr_hand_left_nails.png" width="76" height="82"/>
+   </imagelayer>
+   <imagelayer id="42" name="hr_arm_left" locked="1" offsetx="300" offsety="890">
+    <image source="../pictures/daily_version/hr/hr_arm_left.png" width="110" height="320"/>
+   </imagelayer>
+   <imagelayer id="40" name="hr_hand_right" locked="1" offsetx="644.3" offsety="1184.05">
+    <image source="../pictures/daily_version/hr/hr_hand_right.png" width="101" height="116"/>
+   </imagelayer>
+   <imagelayer id="43" name="hr_phone" locked="1" offsetx="743.65" offsety="1158.75">
+    <image source="../pictures/daily_version/table/hr_phone/HR_phone0001.png" width="132" height="125"/>
+   </imagelayer>
+   <imagelayer id="44" name="hr_hand_right_nails" locked="1" offsetx="642.55" offsety="1226.65">
+    <image source="../pictures/daily_version/hr/hr_hand_right_nails.png" width="96" height="78"/>
+   </imagelayer>
+   <imagelayer id="45" name="hr_arm_right" locked="1" offsetx="659" offsety="890">
+    <image source="../pictures/daily_version/hr/hr_arm_right.png" width="111" height="330"/>
+   </imagelayer>
+  </group>
+ </group>
+ <imagelayer id="29" name="hero_left_leg" locked="1" offsetx="220" offsety="1696.05">
+  <image source="../pictures/daily_version/hero/left_leg.png" width="236" height="239"/>
+ </imagelayer>
+ <imagelayer id="30" name="hero_right_leg" locked="1" offsetx="630" offsety="1705.25">
+  <image source="../pictures/daily_version/hero/right_leg.png" width="240" height="232"/>
+ </imagelayer>
+ <imagelayer id="46" name="hr_stress_level" visible="0" locked="1" offsetx="800.05" offsety="1243.6">
+  <image source="../pictures/daily_version/table/hr_stress/hr_stress_1.png" width="271" height="404"/>
+ </imagelayer>
+ <imagelayer id="47" name="hero_phone" locked="1" offsetx="155.2" offsety="1426">
+  <image source="../pictures/daily_version/table/my_phone/my_ phone0001.png" width="172" height="162"/>
+ </imagelayer>
+ <imagelayer id="48" name="hero_stress" visible="0" locked="1" offsetx="40.15" offsety="1138.35">
+  <image source="../pictures/daily_version/table/my_stress/my_stress_1.png" width="283" height="481"/>
+ </imagelayer>
+ <group id="49" name="tea" visible="0" locked="1">
+  <imagelayer id="50" name="plate" locked="1" offsetx="451.7" offsety="1432.4">
+   <image source="../pictures/daily_version/table/tea/plate.png" width="198" height="122"/>
+  </imagelayer>
+  <imagelayer id="51" name="cup_of_tea" locked="1" offsetx="501.6" offsety="1432.25">
+   <image source="../pictures/daily_version/table/tea/cup_of_tea.png" width="110" height="81"/>
+  </imagelayer>
+  <imagelayer id="52" name="teapot" locked="1" offsetx="437.3" offsety="1058.8">
+   <image source="../pictures/daily_version/table/tea/french_press.png" width="209" height="246"/>
+  </imagelayer>
+ </group>
+ <group id="11" name="tablet" visible="0" locked="1">
+  <imagelayer id="9" name="right_hand_down" locked="1" offsetx="992.8" offsety="1282.55">
    <image source="../pictures/daily_version/tablet/right_hand_down.png" width="168" height="691"/>
   </imagelayer>
-  <imagelayer id="7" name="left_hand_down" offsetx="-70" offsety="1259.85">
+  <imagelayer id="7" name="left_hand_down" locked="1" offsetx="-70" offsety="1259.85">
    <image source="../pictures/daily_version/tablet/left_hand_down.png" width="168" height="761"/>
   </imagelayer>
-  <imagelayer id="2" name="tablet" offsetx="91.75" offsety="380.05" parallaxx="0" parallaxy="0">
+  <imagelayer id="2" name="tablet" locked="1" offsetx="91.75" offsety="380.05" parallaxx="0" parallaxy="0">
    <image source="../pictures/daily_version/tablet/tablet.png" width="905" height="1392"/>
   </imagelayer>
-  <imagelayer id="15" name="right_button" offsetx="916.45" offsety="861.75">
+  <imagelayer id="15" name="right_button" locked="1" offsetx="916.45" offsety="861.75">
    <image source="../pictures/daily_version/tablet/tablet_button_1.png" width="71" height="430"/>
   </imagelayer>
-  <imagelayer id="14" name="left_button" offsetx="99.6" offsety="861.75">
+  <imagelayer id="14" name="left_button" locked="1" offsetx="99.6" offsety="861.75">
    <image source="../pictures/daily_version/tablet/tablet_button_left_1.png" width="71" height="430"/>
   </imagelayer>
-  <objectgroup id="17" name="object_layer">
+  <objectgroup id="17" name="object_layer" locked="1">
    <object id="11" name="tablet_left_button" x="99.6" y="861.75" width="73.3333" height="428"/>
    <object id="12" name="tablet_left_button" x="915.667" y="862.333" width="73.3333" height="428">
     <properties>
@@ -31,14 +248,28 @@
    <object id="14" name="tablet_text" x="198.4" y="461.8" width="688" height="852"/>
    <object id="15" name="sign_button" x="238" y="1431.6" width="593.939" height="233.333"/>
   </objectgroup>
-  <imagelayer id="4" name="sign_button" visible="0" offsetx="238" offsety="1351.6" parallaxx="0" parallaxy="0">
+  <imagelayer id="4" name="sign_button" visible="0" locked="1" offsetx="238" offsety="1351.6" parallaxx="0" parallaxy="0">
    <image source="../pictures/daily_version/tablet/sign_button_1.png" width="609" height="310"/>
   </imagelayer>
-  <imagelayer id="8" name="left_hand_up" offsetx="10" offsety="1143.6">
+  <imagelayer id="8" name="left_hand_up" locked="1" offsetx="10" offsety="1143.6">
    <image source="../pictures/daily_version/tablet/left_hand_up.png" width="297" height="880"/>
   </imagelayer>
-  <imagelayer id="10" name="right_hand_up" offsetx="775.3" offsety="1138.4">
+  <imagelayer id="10" name="right_hand_up" locked="1" offsetx="775.3" offsety="1138.4">
    <image source="../pictures/daily_version/tablet/right_hand_up.png" width="297" height="880"/>
   </imagelayer>
  </group>
+ <group id="53" name="thoughts" visible="0">
+  <imagelayer id="54" name="hero_head" locked="1" offsetx="27.85" offsety="1116.8">
+   <image source="../pictures/daily_version/think/hero_head.png" width="989" height="824"/>
+  </imagelayer>
+  <imagelayer id="55" name="hero_hair" locked="1" offsetx="0" offsety="-34.55">
+   <image source="../pictures/daily_version/think/hair.png" width="1087" height="1486"/>
+  </imagelayer>
+  <imagelayer id="56" name="collar" offsetx="199.6" offsety="1710">
+   <image source="../pictures/daily_version/think/collar.png" width="684" height="231"/>
+  </imagelayer>
+ </group>
+ <objectgroup id="57" name="text_window">
+  <object id="18" name="text_window" x="43.3" y="50.05" width="990" height="369.6"/>
+ </objectgroup>
 </map>
