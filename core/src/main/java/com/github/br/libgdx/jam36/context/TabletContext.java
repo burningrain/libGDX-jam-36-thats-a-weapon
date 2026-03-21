@@ -4,6 +4,7 @@ public class TabletContext {
 
     private int currentPage = 0;
     private String[] pages;
+    private String signButtonText;
 
     public void setPages(String... pages) {
         this.setPages(0, pages);
@@ -34,6 +35,14 @@ public class TabletContext {
             currentPage++;
             notifyListener();
         }
+    }
+
+    public void setSignButtonText(String signButtonText) {
+        this.signButtonText = signButtonText;
+    }
+
+    public String getSignButtonText() {
+        return signButtonText;
     }
 
 

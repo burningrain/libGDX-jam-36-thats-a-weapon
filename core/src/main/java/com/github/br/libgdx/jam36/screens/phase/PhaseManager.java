@@ -6,34 +6,39 @@ import com.github.br.libgdx.jam36.context.GameContext;
 
 public class PhaseManager {
 
-    private final GameContext gameContext;
     private final CustomOrthogonalTiledMapRenderer renderer;
 
-    private final Array<Phase> phases = new Array<>();
-    private int currentPhase = 0;
-
-    public PhaseManager(GameContext gameContext, CustomOrthogonalTiledMapRenderer renderer) {
-        this.gameContext = gameContext;
+    public PhaseManager(CustomOrthogonalTiledMapRenderer renderer) {
         this.renderer = renderer;
     }
 
-    public void act(float deltaTime) {
-        Phase phase = phases.get(currentPhase);
+    public void act(GameContext gameContext, float deltaTime) {
+        int currentPhase = gameContext.getCurrentPhase();
+        Array<Phase> currentPhases = gameContext.getCurrentPhases();
+        Phase phase = currentPhases.get(currentPhase);
 
         phase.draw(deltaTime);
         if (phase.isFinished()) {
-            currentPhase++;
-            Phase nextPhase = phases.get(currentPhase);
-            nextPhase.initUI(gameContext, renderer);
+            if (gameContext.isGameOverAndNeedChangePhases()) {
+                gameContext.setGameOverAndNeedChangePhases(false);
+                gameContext.setCurrentPhases(gameContext.getGameOverPhases());
+                gameContext.setCurrentPhase(0);
+
+                Phase nextPhase = gameContext.getCurrentPhases().get(gameContext.getCurrentPhase());
+                nextPhase.initUI(gameContext, renderer);
+            } else {
+                currentPhase++;
+                gameContext.setCurrentPhase(currentPhase);
+                Phase nextPhase = gameContext.getCurrentPhases().get(currentPhase);
+                nextPhase.initUI(gameContext, renderer);
+            }
         }
     }
 
-    public void addPhase(Phase phase) {
-        phases.add(phase);
-    }
-
-    public void initFirstPhase() {
-        Phase phase = phases.get(0);
+    public void initFirstPhase(GameContext gameContext) {
+        gameContext.setCurrentPhases(gameContext.getPhases());
+        Array<Phase> currentPhases = gameContext.getCurrentPhases();
+        Phase phase = currentPhases.get(0);
         phase.initUI(gameContext, renderer);
     }
 

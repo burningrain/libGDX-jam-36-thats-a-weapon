@@ -6,12 +6,14 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.github.br.libgdx.jam36.Constants;
 import com.github.br.libgdx.jam36.CustomOrthogonalTiledMapRenderer;
 import com.github.br.libgdx.jam36.context.GameContext;
 import com.github.br.libgdx.jam36.Resources;
+import com.github.br.libgdx.jam36.context.TabletContext;
 import com.github.br.libgdx.jam36.screens.phase.*;
 import structure.screen.AbstractGameScreen;
 
@@ -41,30 +43,66 @@ public class MenuScreen extends AbstractGameScreen {
         actorFactory = new ActorFactory(gameSkin, assetManager);
         renderer = new CustomOrthogonalTiledMapRenderer(actorFactory, viewport, tiledMap, 1f);
 
-        gameContext = new GameContext();
-        phaseManager = new PhaseManager(gameContext, renderer);
-        initPhases(phaseManager);
+        gameContext = createGameContext();
+
+
+        phaseManager = new PhaseManager(renderer);
+        phaseManager.initFirstPhase(gameContext);
 
         Gdx.input.setInputProcessor(renderer.getInputProcessor()); //TODO должна переехать в фазы конкретные
     }
 
-    private void initPhases(PhaseManager phaseManager) {
-        phaseManager.addPhase(new ChangeContextPhase(gameContext -> {
-            gameContext.getTabletContext().setPages(
+    private GameContext createGameContext() {
+        Array<Phase> phases = new Array<>();
+        phases.add(new ChangeContextPhase(context -> {
+            context.getTabletContext().setPages(
                 1,
                 "это первая страница",
                 "это вторая страница",
                 "это третья страница",
                 "это четвертая страница"
             );
+            context.getTabletContext().setSignButtonText("Ознакомиться\nи подписать");
         }));
 
-        phaseManager.addPhase(new TabletPhase()); // выбор языка, имени-фамилии и прочее
-        phaseManager.addPhase(new HrDialogPhase());
+        phases.add(new TabletPhase()); // выбор языка, имени-фамилии и прочее
+        phases.add(new ChangeContextPhase(context -> {
+            context.setHrText("Здравствуй, я очень рада с тобой познакомиться! Чаю?");
+        }));
+        phases.add(new HrDialogPhase());
+
+        phases.add(new ChangeContextPhase(context -> {
+            context.setGameOverAndNeedChangePhases(true);
+        }));
+
 //        phaseManager.addPhase(new HrMeetingPhase());
 //        phaseManager.addPhase(new ThoughtPhase());
 
-        phaseManager.initFirstPhase();
+
+        Array<Phase> gameOverPhases = new Array<>();
+        gameOverPhases.add(new ChangeContextPhase(context -> {
+            context.setHrText("Что ж, наконец-то ты уволен! Рада была с тобой поболтать, пока!");
+        }));
+        gameOverPhases.add(new HrDialogPhase());
+        gameOverPhases.add(new ChangeContextPhase(context -> {
+            TabletContext tabletContext = context.getTabletContext();
+            tabletContext.setPages(
+                0,
+                "Дата увольнения: {такой-то} день\nПричина увольнения: {такая-то}"
+            );
+            tabletContext.setSignButtonText("Начать заново?");
+        }));
+        gameOverPhases.add(new TabletPhase()); // рестарт игры
+        gameOverPhases.add(new ChangeContextPhase(context -> {
+            MenuScreen.this.gameContext = createGameContext();
+            phaseManager.initFirstPhase(gameContext);
+        }));
+
+        GameContext gameContext = new GameContext();
+        gameContext.setPhases(phases);
+        gameContext.setGameOverPhases(gameOverPhases);
+
+        return gameContext;
     }
 
     private void centerCamera() {
@@ -79,7 +117,7 @@ public class MenuScreen extends AbstractGameScreen {
         camera.update();
         renderer.setView(camera);
 
-        phaseManager.act(delta);
+        phaseManager.act(gameContext, delta);
         renderer.render();
     }
 

@@ -125,7 +125,7 @@ public class ActorFactory {
     }
 
     private Actor createTextWindow(MapObject object) {
-        Label label = new Label("Хватит испытывать наше терпение! У тебя больше нет права на ошибку! Один неверный ответ и ты нас покидаешь!", skin, "talking");
+        Label label = new Label("Вставь сюда текст", skin, "talking");
         label.setAlignment(Align.topLeft);
 
         MapProperties properties = object.getProperties();

@@ -55,6 +55,7 @@ public class TabletPhase implements Phase, TabletContext.Listener {
                 isNeedToMove = true;
             }
         };
+        signButton.setText(this.gameContext.getTabletContext().getSignButtonText());
         signButton.addListener(signButtonListener);
 
         buttonLeftListener = new ChangeListener() {
@@ -83,6 +84,13 @@ public class TabletPhase implements Phase, TabletContext.Listener {
         isNeedToMove = true;
     }
 
+    private void resetUI() {
+        // скрываем и возвращаем планшет назад на экран
+        MapGroupLayer layer = (MapGroupLayer) renderer.getLayer(TiledLayers.TABLET);
+        layer.setVisible(false);
+        renderer.updateOffsetsForGroupLayer(TiledLayers.TABLET, 0, -currentY);
+    }
+
     @Override
     public void update(TabletContext context) {
         tabletText.setText(context.getCurrentPage());
@@ -92,15 +100,23 @@ public class TabletPhase implements Phase, TabletContext.Listener {
     public void draw(float deltaTime) {
         if (isNeedToMove) {
             if (isMoveToUp) {
-                if (Math.abs(currentY - 0) < 12f) {
+                if (currentY >= 0) {
                     // приехали вверх
                     isMoveToUp = false;
                     isNeedToMove = false;
+                    if (currentY > 0) {
+                        renderer.updateOffsetsForGroupLayer(
+                            TiledLayers.TABLET,
+                            0,
+                            -currentY
+                        );
+                    }
                 } else {
                     moveTabletUp(DELTA_Y, deltaTime);
                 }
             } else {
-                if (Math.abs(currentY - INITIAL_OFFSET_Y) < 12f) {
+                if (currentY <= INITIAL_OFFSET_Y) {
+                    resetUI();
                     cleanListeners();
                     setFinished(true);
                 } else {
