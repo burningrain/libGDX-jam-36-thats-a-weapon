@@ -6,35 +6,14 @@ import com.github.br.libgdx.jam36.screens.phase.Phase;
 public class GameContext {
 
     private boolean gameOverAndNeedChangePhases;
-    private boolean needToRestart;
-
-    public boolean isGameOverAndNeedChangePhases() {
-        return gameOverAndNeedChangePhases;
-    }
-
-    public void setGameOverAndNeedChangePhases(boolean gameOverAndNeedChangePhases) {
-        this.gameOverAndNeedChangePhases = gameOverAndNeedChangePhases;
-    }
-
-    public boolean isNeedToRestart() {
-        return needToRestart;
-    }
-
-    public void setNeedToRestart(boolean needToRestart) {
-        this.needToRestart = needToRestart;
-    }
-
-    public interface Listener {
-        void update(GameContext context);
-    }
-
     private TabletContext tabletContext;
-
     private Array<Phase> currentPhases;
 
     private Array<Phase> phases;
     private Array<Phase> gameOverPhases;
     private int currentPhase = 0;
+
+    private EventsBlock eventsBlock = new EventsBlock();
 
     public GameContext() {
         tabletContext = new TabletContext();
@@ -76,7 +55,19 @@ public class GameContext {
         return tabletContext;
     }
 
+    public boolean isGameOverAndNeedChangePhases() {
+        return gameOverAndNeedChangePhases;
+    }
+
+    public void setGameOverAndNeedChangePhases(boolean gameOverAndNeedChangePhases) {
+        this.gameOverAndNeedChangePhases = gameOverAndNeedChangePhases;
+    }
+
     // listener
+    public interface Listener {
+        void update(GameContext context);
+    }
+
     private Array<Listener> listeners = new Array<>();
 
     public Array<Listener> getListeners() {
@@ -97,4 +88,11 @@ public class GameContext {
         }
     }
 
+    public EventsBlock getEventsBlock() {
+        return eventsBlock;
+    }
+
+    public void setEventsBlock(EventsBlock eventsBlock) {
+        this.eventsBlock = eventsBlock;
+    }
 }

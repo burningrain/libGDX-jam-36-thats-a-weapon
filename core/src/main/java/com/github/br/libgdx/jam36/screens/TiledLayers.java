@@ -24,4 +24,9 @@ public interface TiledLayers {
     String ENVIRONMENT = "environment";
     String HELL_ENVIRONMENT = "hell_environment";
 
+    String HELL_ENVIRONMENT__DOOR_BLUE_LAYER = "hell_door_blue";
+    String HELL_ENVIRONMENT__DOOR_RED_LAYER = "hell_door_red";
+
+    String HELL_TABLE_FIRES_LAYER = "fires";
+
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="left-down" width="108" height="192" tilewidth="10" tileheight="10" infinite="0" nextlayerid="107" nextobjectid="31">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="left-down" width="108" height="192" tilewidth="10" tileheight="10" infinite="0" nextlayerid="108" nextobjectid="32">
  <group id="12" name="environment">
   <imagelayer id="13" name="glass" locked="1" offsetx="-310" offsety="-20">
    <image source="../pictures/daily_version/environment/glass.png" width="1712" height="1962"/>
@@ -62,10 +62,10 @@
  <imagelayer id="25" name="hero_left_foot" locked="1" offsetx="442.55" offsety="1724.25">
   <image source="../pictures/daily_version/hero/left_foot.png" width="60" height="124"/>
  </imagelayer>
- <imagelayer id="26" name="hero_right_foot" locked="1" offsetx="589.3" offsety="1727.15">
+ <imagelayer id="26" name="hero_right_foot" visible="0" locked="1" offsetx="589.3" offsety="1727.15">
   <image source="../pictures/daily_version/hero/right_foot.png" width="63" height="187"/>
  </imagelayer>
- <group id="68" name="hell_version" visible="0">
+ <group id="68" name="hell_version" visible="0" locked="1">
   <imagelayer id="69" name="hell_hr_foot_left" locked="1" offsetx="428" offsety="1644.95">
    <image source="../pictures/hell_version/hr/hell_hr_stiletto_left.png" width="110" height="155"/>
   </imagelayer>
@@ -98,7 +98,7 @@
     <image source="../pictures/hell_version/hr/hell_hr_horn_right.png" width="71" height="132"/>
    </imagelayer>
   </group>
-  <group id="81" name="hell_table" locked="1">
+  <group id="81" name="hell_table">
    <imagelayer id="82" name="hell_table_legs" locked="1" offsetx="-65.9" offsety="1396.15">
     <image source="../pictures/hell_version/table/hell_table_legs.png" width="1181" height="459"/>
    </imagelayer>
@@ -123,12 +123,12 @@
    <imagelayer id="89" name="hell_candle7" locked="1" offsetx="353.7" offsety="1370.9">
     <image source="../pictures/hell_version/table/candle.png" width="31" height="126"/>
    </imagelayer>
-   <objectgroup id="90" name="fires" locked="1">
-    <object id="19" name="fire" x="266.667" y="1175.33" width="15.65" height="42"/>
-    <object id="20" name="fire" x="361.667" y="1335.67" width="15.65" height="42"/>
-    <object id="21" name="fire" x="530" y="1076.67" width="15.65" height="42"/>
-    <object id="22" name="fire" x="680.667" y="1332.33" width="15.65" height="42"/>
-    <object id="23" name="fire" x="777.667" y="1172" width="15.65" height="42"/>
+   <objectgroup id="90" name="fires">
+    <object id="19" name="fire5" x="266.667" y="1175.33" width="15.65" height="42"/>
+    <object id="20" name="fire4" x="361.667" y="1335.67" width="15.65" height="42"/>
+    <object id="21" name="fire1" x="530" y="1076.67" width="15.65" height="42"/>
+    <object id="22" name="fire3" x="680.667" y="1332.33" width="15.65" height="42"/>
+    <object id="23" name="fire2" x="777.667" y="1172" width="15.65" height="42"/>
    </objectgroup>
   </group>
   <group id="91" name="hell_hr_body" locked="1">
@@ -292,7 +292,7 @@
   <imagelayer id="56" name="collar" offsetx="199.6" offsety="1710">
    <image source="../pictures/daily_version/think/collar.png" width="684" height="231"/>
   </imagelayer>
-  <objectgroup id="106" name="thoughts_object_layer">
+  <objectgroup id="106" name="thoughts_object_layer" locked="1">
    <object id="29" name="thought" x="1148.48" y="566.667" width="364.182" height="357.394"/>
   </objectgroup>
  </group>

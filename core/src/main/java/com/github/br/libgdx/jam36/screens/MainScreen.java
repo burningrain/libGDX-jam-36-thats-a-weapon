@@ -15,9 +15,11 @@ import com.github.br.libgdx.jam36.context.GameContext;
 import com.github.br.libgdx.jam36.Resources;
 import com.github.br.libgdx.jam36.context.TabletContext;
 import com.github.br.libgdx.jam36.screens.phase.*;
+import com.github.br.libgdx.jam36.screens.phase.predicate.PhasePredicate;
+import com.github.br.libgdx.jam36.screens.phase.predicate.PredicatePhase;
 import structure.screen.AbstractGameScreen;
 
-public class MenuScreen extends AbstractGameScreen {
+public class MainScreen extends AbstractGameScreen {
 
     private TiledMap tiledMap;
     private CustomOrthogonalTiledMapRenderer renderer;
@@ -76,6 +78,7 @@ public class MenuScreen extends AbstractGameScreen {
                 new Choose(4, "Только после вас")
             )
         );
+        phases.add(new GoToTheHellPhase());
 
         phases.add(new ChangeContextPhase(context -> {
             context.setGameOverAndNeedChangePhases(true);
@@ -87,7 +90,7 @@ public class MenuScreen extends AbstractGameScreen {
 
         Array<Phase> gameOverPhases = new Array<>();
         gameOverPhases.add(new HrDialogPhase(
-            "Должна сказать, что теперь ты уволен! Не забудь подписать обходной лист. Пока!")
+            "Боюсь, что теперь ты уволен! И не забудь подписать обходной лист! Пока.")
         );
         gameOverPhases.add(new ChangeContextPhase(context -> {
             TabletContext tabletContext = context.getTabletContext();
@@ -98,8 +101,12 @@ public class MenuScreen extends AbstractGameScreen {
             tabletContext.setSignButtonText("Начать заново?");
         }));
         gameOverPhases.add(new TabletPhase()); // рестарт игры
+        gameOverPhases.add(new PredicatePhase(
+            gameContext -> gameContext.getEventsBlock().isInTheHell(),
+            new GoFromTheHellPhase())
+        );
         gameOverPhases.add(new ChangeContextPhase(context -> {
-            MenuScreen.this.gameContext = createGameContext();
+            MainScreen.this.gameContext = createGameContext();
             phaseManager.initFirstPhase(gameContext);
         }));
 

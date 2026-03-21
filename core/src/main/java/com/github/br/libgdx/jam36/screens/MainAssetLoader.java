@@ -10,7 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.github.br.libgdx.jam36.Resources;
 import structure.screen.loading.AssetsLoader;
 
-public class MenuAssetLoader implements AssetsLoader {
+public class MainAssetLoader implements AssetsLoader {
 
     @Override
     public void loadAssets(AssetManager assetManager) {

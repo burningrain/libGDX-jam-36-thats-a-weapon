@@ -63,7 +63,11 @@ public class ActorFactory {
                 return createThought(object);
 
             // hell
-            case "fire":
+            case StageActors.FIRE_1:
+            case StageActors.FIRE_2:
+            case StageActors.FIRE_3:
+            case StageActors.FIRE_4:
+            case StageActors.FIRE_5:
                 return createFire(object);
 
             default:

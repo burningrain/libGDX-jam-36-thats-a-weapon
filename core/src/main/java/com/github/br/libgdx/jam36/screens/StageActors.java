@@ -22,4 +22,11 @@ public interface StageActors {
 
     String THOUGHT = "thought";
 
+    // CANDLES/FIRES
+    String FIRE_1 = "fire1";
+    String FIRE_2 = "fire2";
+    String FIRE_3 = "fire3";
+    String FIRE_4 = "fire4";
+    String FIRE_5 = "fire5";
+
 }
