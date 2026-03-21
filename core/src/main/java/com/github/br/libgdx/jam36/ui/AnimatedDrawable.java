@@ -8,13 +8,15 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 
 public class AnimatedDrawable extends TextureRegionDrawable {
 
-    private final Animation animation;
+    private final Animation<TextureRegion> animation;
     private TextureRegion keyFrame;
-    private float stateTime = 0;
 
-    public AnimatedDrawable(Animation animation) {
+    private float stateTime = 0;
+    private boolean isPaused = false;
+
+    public AnimatedDrawable(Animation<TextureRegion> animation) {
         this.animation = animation;
-        TextureRegion key = (TextureRegion) animation.getKeyFrame(0);
+        TextureRegion key = animation.getKeyFrame(0);
 
         this.setLeftWidth(key.getRegionWidth() / 2);
         this.setRightWidth(key.getRegionWidth() / 2);
@@ -26,8 +28,11 @@ public class AnimatedDrawable extends TextureRegionDrawable {
 
     @Override
     public void draw(Batch batch, float x, float y, float width, float height) {
-        stateTime += Gdx.graphics.getDeltaTime();
-        keyFrame = (TextureRegion) animation.getKeyFrame(stateTime, true);
+        if (!isPaused) {
+            stateTime += Gdx.graphics.getDeltaTime();
+        }
+
+        keyFrame = animation.getKeyFrame(stateTime, true);
         setRegion(keyFrame);
 
         super.draw(batch, x, y, width, height);
@@ -38,8 +43,11 @@ public class AnimatedDrawable extends TextureRegionDrawable {
         Batch batch, float x, float y, float originX, float originY, float width, float height, float scaleX,
         float scaleY, float rotation
     ) {
-        stateTime += Gdx.graphics.getDeltaTime();
-        keyFrame = (TextureRegion) animation.getKeyFrame(stateTime, true);
+        if (!isPaused) {
+            stateTime += Gdx.graphics.getDeltaTime();
+        }
+
+        keyFrame = animation.getKeyFrame(stateTime, true);
         setRegion(keyFrame);
 
         super.draw(batch, x, y, originX, originY, width, height, scaleX, scaleY, rotation);
@@ -49,4 +57,24 @@ public class AnimatedDrawable extends TextureRegionDrawable {
         return animation.isAnimationFinished(stateTime);
     }
 
+    public void play() {
+        isPaused = false;
+    }
+
+    public void pause() {
+        isPaused = true;
+    }
+
+    public void resetAndPause() {
+        pause();
+        stateTime = 0;
+    }
+
+    public void setFrameAndPause(int frameIndex) {
+        TextureRegion keyFrame = animation.getKeyFrames()[frameIndex];
+        setRegion(keyFrame);
+
+        stateTime = frameIndex * animation.getFrameDuration();
+        pause();
+    }
 }

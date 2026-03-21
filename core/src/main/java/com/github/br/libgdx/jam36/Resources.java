@@ -18,6 +18,10 @@ public interface Resources {
         String HR_STRESS_LEVEL = "hr_stress";
         String HERO_STRESS_LEVEL = "my_stress";
 
+        String CALENDAR_DAY = "watch_work_day";
+
+        String WATCH_ARROW = "watch_arrow";
+
     }
 
 }

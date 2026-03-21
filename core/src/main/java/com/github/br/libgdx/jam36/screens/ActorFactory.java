@@ -29,35 +29,49 @@ public class ActorFactory {
 
         switch (name) {
             // daily
-            case "tablet_left_button":
+            case StageActors.TABLET_LEFT_BUTTON:
+            case StageActors.TABLET_RIGHT_BUTTON:
                 return createTabletButton(object);
-            case "tablet_text":
+            case StageActors.TABLET_TEXT:
                 return createTabletText(object);
-            case "sign_button":
+            case StageActors.SIGN_BUTTON:
                 return createSignButton(object);
 
-            case "clock":
-                return createClock(object);
-            case "text_window":
+            // watch
+            case StageActors.CALENDAR_DAY:
+                return createCalendarDay(object);
+            case StageActors.WATCH_ARROW:
+                return createWatchHourArrow(object);
+
+
+            case StageActors.TEXT_WINDOW:
                 return createTextWindow(object);
 
-            case "hero_dictophone":
+            // table
+            case StageActors.HERO_DICTOPHONE:
                 return createHeroDictophone(object);
-            case "hr_dictophone":
+            case StageActors.HR_DICTOPHONE:
                 return createHrDictophone(object);
 
-            case "hero_stress_level":
+            case StageActors.HERO_STRESS_LEVEL:
                 return createHeroStressLevel(object);
-            case "hr_stress_level":
+            case StageActors.HR_STRESS_LEVEL:
                 return createHrStressLevel(object);
 
-           // hell
+            // hell
             case "fire":
                 return createFire(object);
 
             default:
                 throw new IllegalArgumentException("unknown stage2d actor: " + name);
         }
+    }
+
+    private Actor createWatchHourArrow(MapObject object) {
+        TextureAtlas textureAtlas = assetManager.get(Resources.ANIMATION_ATLAS, TextureAtlas.class);
+        TextureAtlas.AtlasRegion region = textureAtlas.findRegion(Resources.Animation.WATCH_ARROW);
+
+        return new Image(region);
     }
 
     private Actor createHrStressLevel(MapObject object) {
@@ -126,15 +140,18 @@ public class ActorFactory {
         return label;
     }
 
-    private Actor createClock(MapObject object) {
-        //TODO переделать
-        Label label = new Label("текст", skin, "document_text");
-        return label;
+    private Actor createCalendarDay(MapObject object) {
+        TextureAtlas textureAtlas = assetManager.get(Resources.ANIMATION_ATLAS, TextureAtlas.class);
+        Array<TextureAtlas.AtlasRegion> regions = textureAtlas.findRegions(Resources.Animation.CALENDAR_DAY);
+        Animation<TextureRegion> animation = new Animation<>(
+            0.033f, regions, Animation.PlayMode.LOOP_PINGPONG
+        );
+
+        return new AnimatedImage(animation);
     }
 
     private Actor createSignButton(MapObject object) {
-        Button button = new ImageTextButton("Ознакомиться\nи подписать", skin);
-        return button;
+        return new ImageTextButton("Ознакомиться\nи подписать", skin);
     }
 
     private Actor createTabletText(MapObject object) {

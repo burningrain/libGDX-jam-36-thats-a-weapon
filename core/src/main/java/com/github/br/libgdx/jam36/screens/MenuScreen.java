@@ -10,7 +10,9 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.github.br.libgdx.jam36.Constants;
 import com.github.br.libgdx.jam36.CustomOrthogonalTiledMapRenderer;
+import com.github.br.libgdx.jam36.context.GameContext;
 import com.github.br.libgdx.jam36.Resources;
+import com.github.br.libgdx.jam36.screens.phase.*;
 import structure.screen.AbstractGameScreen;
 
 public class MenuScreen extends AbstractGameScreen {
@@ -23,6 +25,9 @@ public class MenuScreen extends AbstractGameScreen {
 
     private ActorFactory actorFactory;
 
+    private PhaseManager phaseManager;
+    private GameContext gameContext;
+
     @Override
     public void show() {
         AssetManager assetManager = getGameManager().assetManager;
@@ -34,10 +39,32 @@ public class MenuScreen extends AbstractGameScreen {
 
         Skin gameSkin = assetManager.get(Resources.SKIN);
         actorFactory = new ActorFactory(gameSkin, assetManager);
-
         renderer = new CustomOrthogonalTiledMapRenderer(actorFactory, viewport, tiledMap, 1f);
 
-        Gdx.input.setInputProcessor(renderer.getInputProcessor());
+        gameContext = new GameContext();
+        phaseManager = new PhaseManager(gameContext, renderer);
+        initPhases(phaseManager);
+
+        Gdx.input.setInputProcessor(renderer.getInputProcessor()); //TODO должна переехать в фазы конкретные
+    }
+
+    private void initPhases(PhaseManager phaseManager) {
+        phaseManager.addPhase(new ChangeContextPhase(gameContext -> {
+            gameContext.getTabletContext().setPages(
+                1,
+                "это первая страница",
+                "это вторая страница",
+                "это третья страница",
+                "это четвертая страница"
+            );
+        }));
+
+        phaseManager.addPhase(new TabletPhase()); // выбор языка, имени-фамилии и прочее
+        phaseManager.addPhase(new HrDialogPhase());
+//        phaseManager.addPhase(new HrMeetingPhase());
+//        phaseManager.addPhase(new ThoughtPhase());
+
+        phaseManager.initFirstPhase();
     }
 
     private void centerCamera() {
@@ -51,6 +78,8 @@ public class MenuScreen extends AbstractGameScreen {
 
         camera.update();
         renderer.setView(camera);
+
+        phaseManager.act(delta);
         renderer.render();
     }
 

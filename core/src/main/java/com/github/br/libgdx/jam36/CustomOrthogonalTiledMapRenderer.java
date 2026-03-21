@@ -10,12 +10,9 @@ import com.badlogic.gdx.maps.tiled.TiledMapImageLayer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.github.br.libgdx.jam36.screens.ActorFactory;
-
-import java.util.Iterator;
 
 public class CustomOrthogonalTiledMapRenderer extends OrthogonalTiledMapRenderer {
 
@@ -39,23 +36,52 @@ public class CustomOrthogonalTiledMapRenderer extends OrthogonalTiledMapRenderer
 
     @Override
     public void renderObjects(MapLayer layer) {
-        String name = layer.getName();
-        Stage stage = stages.get(name);
-        if (stage == null) {
-            throw new IllegalArgumentException("stage [" + name + "] is not found");
-        }
+        Stage stage = getStageByLayerName(layer.getName());
 
         // ЗАКРЫВАЕМ батч рендерера
         getBatch().flush();
-        endRender(); // закрывает batch рендерера
+        endRender();
 
         // Рендерим Stage
         stage.getViewport().apply();
         stage.act(Gdx.graphics.getDeltaTime());
         stage.draw();
 
-        // Снова открываем батч рендерера
+        // СНОВА ОТКРЫВАЕМ батч рендерера
         beginRender();
+    }
+
+    public void updateOffsetsForGroupLayer(String layerName, float offsetX, float offsetY) {
+        MapLayer mapLayer = getMap().getLayers().get(layerName);
+        mapLayer.setOffsetX(offsetX);
+        mapLayer.setOffsetY(offsetY);
+
+        if (!(mapLayer instanceof MapGroupLayer)) {
+            throw new IllegalArgumentException("Layer [" + layerName + "] is not MapGroupLayer");
+        }
+
+        MapGroupLayer groupLayer = (MapGroupLayer) mapLayer;
+
+        for (MapLayer layerLayer : groupLayer.getLayers()) {
+            // Двигаем слой через его позицию, а не offset
+            if (layerLayer instanceof TiledMapImageLayer) {
+                TiledMapImageLayer imageLayer = (TiledMapImageLayer) layerLayer;
+                imageLayer.setX(imageLayer.getX() + offsetX);
+                imageLayer.setY(imageLayer.getY() + offsetY);
+            } else {
+                layerLayer.setOffsetX(layerLayer.getOffsetX() + offsetX);
+                layerLayer.setOffsetY(layerLayer.getOffsetY() + offsetY);
+            }
+            layerLayer.invalidateRenderOffset();
+
+            Stage stage = stages.get(layerLayer.getName());
+            if (stage != null) {
+                for (Actor actor : stage.getActors()) {
+                    actor.setX(actor.getX() + offsetX);
+                    actor.setY(actor.getY() + offsetY);
+                }
+            }
+        }
     }
 
     public void resize(int width, int height) {
@@ -97,6 +123,7 @@ public class CustomOrthogonalTiledMapRenderer extends OrthogonalTiledMapRenderer
                 float height = properties.get("height", Float.class);
                 actor.setBounds(x, y, width, height);
 
+                actor.setName(object.getName());
                 stage.addActor(actor);
             }
 
@@ -107,6 +134,27 @@ public class CustomOrthogonalTiledMapRenderer extends OrthogonalTiledMapRenderer
 
     public InputProcessor getInputProcessor() {
         return inputMultiplexer;
+    }
+
+    public MapLayer getLayer(String layerName) {
+        return getMap().getLayers().get(layerName);
+    }
+
+    public <T extends Actor> T getActor(String layerName, String actorName, Class<T> clazz) {
+        Stage stage = stages.get(layerName);
+        if (stage == null) {
+            throw new IllegalArgumentException("unknown layer: " + layerName);
+        }
+
+        return clazz.cast(stage.getRoot().findActor(actorName));
+    }
+
+    private Stage getStageByLayerName(String layerName) {
+        Stage stage = stages.get(layerName);
+        if (stage == null) {
+            throw new IllegalArgumentException("stage [" + layerName + "] is not found");
+        }
+        return stage;
     }
 
 }
