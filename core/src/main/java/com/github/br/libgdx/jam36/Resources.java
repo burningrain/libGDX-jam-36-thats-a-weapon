@@ -22,6 +22,8 @@ public interface Resources {
 
         String WATCH_ARROW = "watch_arrow";
 
+        String THOUGHT = "thought";
+
     }
 
 }

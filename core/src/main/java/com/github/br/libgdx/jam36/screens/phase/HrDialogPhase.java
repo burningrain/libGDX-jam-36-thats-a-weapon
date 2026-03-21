@@ -15,13 +15,19 @@ public class HrDialogPhase implements Phase {
 
     private boolean isFinished;
 
+    private final String text;
+
+    public HrDialogPhase(String text) {
+        this.text = text;
+    }
+
     @Override
     public void initUI(GameContext gameContext, CustomOrthogonalTiledMapRenderer renderer) {
         this.gameContext = gameContext;
         this.renderer = renderer;
 
         Label hrTextWindow = renderer.getActor(TiledLayers.HR_TEXT_WINDOW, StageActors.TEXT_WINDOW, Label.class);
-        hrTextWindow.setText(gameContext.getHrText());
+        hrTextWindow.setText(text);
         hrTextWindow.setWrap(true);
 
         MapLayer layer = renderer.getLayer(TiledLayers.HR_TEXT_WINDOW);

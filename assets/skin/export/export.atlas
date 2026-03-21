@@ -32,6 +32,13 @@ AmaticSC-Bold(5)_1
   orig: 512, 512
   offset: 0, 0
   index: -1
+AmaticSC-Bold(6)
+  rotate: false
+  xy: 1120, 1342
+  size: 506, 371
+  orig: 506, 371
+  offset: 0, 0
+  index: -1
 scroll_pane_background
   rotate: false
   xy: 1606, 1929
@@ -62,21 +69,21 @@ sign_button_3
   index: -1
 tablet_button_left_1
   rotate: false
-  xy: 515, 597
+  xy: 1008, 468
   size: 71, 430
   orig: 71, 430
   offset: 0, 0
   index: -1
 tablet_button_left_2
   rotate: false
-  xy: 515, 165
+  xy: 1613, 910
   size: 71, 430
   orig: 71, 430
   offset: 0, 0
   index: -1
 tablet_button_left_3
   rotate: false
-  xy: 588, 468
+  xy: 1081, 417
   size: 71, 430
   orig: 71, 430
   offset: 0, 0
@@ -86,6 +93,20 @@ v_scroll_knob
   xy: 995, 1653
   size: 62, 60
   orig: 62, 60
+  offset: 0, 0
+  index: -1
+thought_btn_10001
+  rotate: false
+  xy: 1120, 849
+  size: 491, 491
+  orig: 491, 491
+  offset: 0, 0
+  index: -1
+thought_btn_10002
+  rotate: false
+  xy: 515, 407
+  size: 491, 491
+  orig: 491, 491
   offset: 0, 0
   index: -1
 talking_window

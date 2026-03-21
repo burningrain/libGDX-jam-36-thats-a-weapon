@@ -7,7 +7,6 @@ public class GameContext {
 
     private boolean gameOverAndNeedChangePhases;
     private boolean needToRestart;
-    private String hrText;
 
     public boolean isGameOverAndNeedChangePhases() {
         return gameOverAndNeedChangePhases;
@@ -23,14 +22,6 @@ public class GameContext {
 
     public void setNeedToRestart(boolean needToRestart) {
         this.needToRestart = needToRestart;
-    }
-
-    public String getHrText() {
-        return hrText;
-    }
-
-    public void setHrText(String hrText) {
-        this.hrText = hrText;
     }
 
     public interface Listener {

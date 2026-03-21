@@ -5,6 +5,7 @@ public interface TiledLayers {
     String HR_TEXT_WINDOW = "text_window";
 
     String THOUGHTS = "thoughts";
+    String ACTORS_LAYER_THOUGHTS = "thoughts_object_layer";
 
     // tablet
     String TABLET = "tablet";

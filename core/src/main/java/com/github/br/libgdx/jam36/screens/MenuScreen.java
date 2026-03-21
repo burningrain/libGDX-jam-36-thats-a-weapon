@@ -55,21 +55,27 @@ public class MenuScreen extends AbstractGameScreen {
     private GameContext createGameContext() {
         Array<Phase> phases = new Array<>();
         phases.add(new ChangeContextPhase(context -> {
-            context.getTabletContext().setPages(
+            TabletContext tabletContext = context.getTabletContext();
+            tabletContext.setPages(
                 1,
                 "это первая страница",
                 "это вторая страница",
                 "это третья страница",
                 "это четвертая страница"
             );
-            context.getTabletContext().setSignButtonText("Ознакомиться\nи подписать");
+            tabletContext.setSignButtonText("Ознакомиться\nи подписать");
         }));
 
         phases.add(new TabletPhase()); // выбор языка, имени-фамилии и прочее
-        phases.add(new ChangeContextPhase(context -> {
-            context.setHrText("Здравствуй, я очень рада с тобой познакомиться! Чаю?");
-        }));
-        phases.add(new HrDialogPhase());
+        phases.add(new HrDialogPhase("Здравствуй, я очень рада с тобой познакомиться! Хочеть выпить чаю?"));
+        phases.add(new MindChooserPhase(
+                actorFactory,
+                new Choose(1, "Буду,\nблагодарю!"),
+                new Choose(2, "Спасибо,\nне нужно"),
+                new Choose(3, "Я отказываюсь"),
+                new Choose(4, "Только после вас")
+            )
+        );
 
         phases.add(new ChangeContextPhase(context -> {
             context.setGameOverAndNeedChangePhases(true);
@@ -80,10 +86,9 @@ public class MenuScreen extends AbstractGameScreen {
 
 
         Array<Phase> gameOverPhases = new Array<>();
-        gameOverPhases.add(new ChangeContextPhase(context -> {
-            context.setHrText("Что ж, наконец-то ты уволен! Рада была с тобой поболтать, пока!");
-        }));
-        gameOverPhases.add(new HrDialogPhase());
+        gameOverPhases.add(new HrDialogPhase(
+            "Должна сказать, что теперь ты уволен! Не забудь подписать обходной лист. Пока!")
+        );
         gameOverPhases.add(new ChangeContextPhase(context -> {
             TabletContext tabletContext = context.getTabletContext();
             tabletContext.setPages(

@@ -18,10 +18,10 @@ public class AnimatedDrawable extends TextureRegionDrawable {
         this.animation = animation;
         TextureRegion key = animation.getKeyFrame(0);
 
-        this.setLeftWidth(key.getRegionWidth() / 2);
-        this.setRightWidth(key.getRegionWidth() / 2);
-        this.setTopHeight(key.getRegionHeight() / 2);
-        this.setBottomHeight(key.getRegionHeight() / 2);
+        this.setLeftWidth(key.getRegionWidth() / 2f);
+        this.setRightWidth(key.getRegionWidth() / 2f);
+        this.setTopHeight(key.getRegionHeight() / 2f);
+        this.setBottomHeight(key.getRegionHeight() / 2f);
         this.setMinWidth(key.getRegionWidth());
         this.setMinHeight(key.getRegionHeight());
     }
@@ -32,7 +32,7 @@ public class AnimatedDrawable extends TextureRegionDrawable {
             stateTime += Gdx.graphics.getDeltaTime();
         }
 
-        keyFrame = animation.getKeyFrame(stateTime, true);
+        keyFrame = animation.getKeyFrame(stateTime, false);
         setRegion(keyFrame);
 
         super.draw(batch, x, y, width, height);

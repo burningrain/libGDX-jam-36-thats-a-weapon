@@ -34,4 +34,8 @@ public class AnimatedImage extends Image {
         animatedDrawable.setFrameAndPause(frame);
     }
 
+    public boolean isAnimationEnd() {
+        return animatedDrawable.isAnimationEnd();
+    }
+
 }

@@ -149,7 +149,7 @@ public class CustomOrthogonalTiledMapRenderer extends OrthogonalTiledMapRenderer
         return clazz.cast(stage.getRoot().findActor(actorName));
     }
 
-    private Stage getStageByLayerName(String layerName) {
+    public Stage getStageByLayerName(String layerName) {
         Stage stage = stages.get(layerName);
         if (stage == null) {
             throw new IllegalArgumentException("stage [" + layerName + "] is not found");

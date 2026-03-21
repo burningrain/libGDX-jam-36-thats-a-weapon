@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.github.br.libgdx.jam36.Resources;
 import com.github.br.libgdx.jam36.ui.AnimatedImage;
+import com.github.br.libgdx.jam36.ui.FloatingButton;
 
 public class ActorFactory {
 
@@ -58,6 +59,9 @@ public class ActorFactory {
             case StageActors.HR_STRESS_LEVEL:
                 return createHrStressLevel(object);
 
+            case StageActors.THOUGHT:
+                return createThought(object);
+
             // hell
             case "fire":
                 return createFire(object);
@@ -65,6 +69,29 @@ public class ActorFactory {
             default:
                 throw new IllegalArgumentException("unknown stage2d actor: " + name);
         }
+    }
+
+    public AnimatedImage createAnimationThought() {
+        TextureAtlas textureAtlas = assetManager.get(Resources.ANIMATION_ATLAS, TextureAtlas.class);
+        Array<TextureAtlas.AtlasRegion> regions = textureAtlas.findRegions(Resources.Animation.THOUGHT);
+        Animation<TextureRegion> animation = new Animation<>(
+            0.033f, regions, Animation.PlayMode.NORMAL
+        );
+
+        return new AnimatedImage(animation);
+    }
+
+    public FloatingButton createFloatingThought(int id, String text, float floatAmplitude, float speed, float phase) {
+        FloatingButton floatingButton = new FloatingButton(
+            skin, "thought", text , floatAmplitude, speed, phase
+        );
+        floatingButton.setName("" + id);
+
+        return floatingButton;
+    }
+
+    private Actor createThought(MapObject object) {
+        return new ImageTextButton("Впиши текст", skin, "thought");
     }
 
     private Actor createWatchHourArrow(MapObject object) {

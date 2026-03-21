@@ -20,4 +20,6 @@ public interface StageActors {
     String HERO_STRESS_LEVEL = "hero_stress_level";
     String HR_STRESS_LEVEL = "hr_stress_level";
 
+    String THOUGHT = "thought";
+
 }

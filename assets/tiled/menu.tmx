@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="left-down" width="108" height="192" tilewidth="10" tileheight="10" infinite="0" nextlayerid="106" nextobjectid="29">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="left-down" width="108" height="192" tilewidth="10" tileheight="10" infinite="0" nextlayerid="107" nextobjectid="31">
  <group id="12" name="environment">
   <imagelayer id="13" name="glass" locked="1" offsetx="-310" offsety="-20">
    <image source="../pictures/daily_version/environment/glass.png" width="1712" height="1962"/>
@@ -28,7 +28,7 @@
   <imagelayer id="105" name="watch_hour_arrow" visible="0" offsetx="546" offsety="142">
    <image source="../pictures/daily_version/environment/watch/watch_arrow.png" width="9" height="79"/>
   </imagelayer>
-  <objectgroup id="24" name="watch">
+  <objectgroup id="24" name="watch" locked="1">
    <object id="17" name="calendar_day" x="525.7" y="245.65" width="45.95" height="41.95"/>
    <object id="28" name="watch_arrow" x="546" y="142" width="9.5" height="78.5"/>
   </objectgroup>
@@ -246,7 +246,7 @@
    <image source="../pictures/daily_version/table/tea/french_press.png" width="209" height="246"/>
   </imagelayer>
  </group>
- <group id="11" name="tablet">
+ <group id="11" name="tablet" visible="0">
   <imagelayer id="9" name="right_hand_down" locked="1" offsetx="992.8" offsety="1282.55">
    <image source="../pictures/daily_version/tablet/right_hand_down.png" width="168" height="691"/>
   </imagelayer>
@@ -282,7 +282,7 @@
    <image source="../pictures/daily_version/tablet/right_hand_up.png" width="297" height="880"/>
   </imagelayer>
  </group>
- <group id="53" name="thoughts" visible="0" locked="1">
+ <group id="53" name="thoughts" visible="0">
   <imagelayer id="54" name="hero_head" locked="1" offsetx="27.85" offsety="1116.8">
    <image source="../pictures/daily_version/think/hero_head.png" width="989" height="824"/>
   </imagelayer>
@@ -292,6 +292,9 @@
   <imagelayer id="56" name="collar" offsetx="199.6" offsety="1710">
    <image source="../pictures/daily_version/think/collar.png" width="684" height="231"/>
   </imagelayer>
+  <objectgroup id="106" name="thoughts_object_layer">
+   <object id="29" name="thought" x="1148.48" y="566.667" width="364.182" height="357.394"/>
+  </objectgroup>
  </group>
  <objectgroup id="57" name="text_window" visible="0" locked="1">
   <object id="18" name="text_window" x="43.3" y="50.05" width="990" height="369.6"/>
