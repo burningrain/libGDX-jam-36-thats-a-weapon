@@ -18,15 +18,18 @@ import com.github.br.libgdx.jam36.context.EventsBlock;
 import com.github.br.libgdx.jam36.context.GameContext;
 import com.github.br.libgdx.jam36.context.TabletContext;
 import com.github.br.libgdx.jam36.screens.phase.*;
-import com.github.br.libgdx.jam36.screens.phase.game.GamePhase;
 import com.github.br.libgdx.jam36.screens.phase.game.Watch;
+import com.github.br.libgdx.jam36.screens.phase.hell.CloseHellDoorPhase;
 import com.github.br.libgdx.jam36.screens.phase.hell.GoFromTheHellPhase;
 import com.github.br.libgdx.jam36.screens.phase.hell.GoToTheHellPhase;
+import com.github.br.libgdx.jam36.screens.phase.hell.OpenHellDoorPhase;
 import com.github.br.libgdx.jam36.screens.phase.hr.HideHrPhase;
 import com.github.br.libgdx.jam36.screens.phase.hr.ShowHrPhase;
 import com.github.br.libgdx.jam36.screens.phase.mind.MindChooserPhase;
 import com.github.br.libgdx.jam36.screens.phase.phone.*;
 import com.github.br.libgdx.jam36.screens.phase.predicate.PredicatePhase;
+import com.github.br.libgdx.jam36.screens.phase.stress.ShowStressLevelsPhase;
+import com.github.br.libgdx.jam36.screens.phase.tea.ShowTeaPhase;
 import com.github.br.libgdx.jam36.ui.AnimatedImage;
 import structure.screen.AbstractGameScreen;
 
@@ -142,12 +145,13 @@ public class MainScreen extends AbstractGameScreen {
         phases.add(new MindChooserPhase(
                 actorFactory,
                 (answer, gameContext) -> {
-                    EventsBlock eventsBlock = gameContext.getEventsBlock();
+                    // уровень сложности меняет время, отведенное на ответ
                     gameContext.setDifficultyLevel(answer);
+                    watch.setSecondsPerHour(watch.getSecondsPerHour() / gameContext.getDifficultyLevel());
                 },
                 new Choose(1, "Дружеская беседа"),
                 new Choose(2, "Спортивное состязание"),
-                new Choose(3, "Сдирание кожи\n заживо")
+                new Choose(4, "Сдирание кожи\n заживо")
             )
         );
 
@@ -196,7 +200,7 @@ public class MainScreen extends AbstractGameScreen {
         });
         phases.add(new TimerPhase(
             signDocuments,
-            1f,
+            15f,
             gameContext -> {
                 signDocuments.isNeedToMove = true;
                 signDocuments.isMoveToUp = false;
@@ -224,11 +228,61 @@ public class MainScreen extends AbstractGameScreen {
                 new Choose(3, "Сперва покажу\nэти бумаги\nсвоему коту!")
             ));
         phases.add(new HrDialogPhase("Тогда я вынуждена сообщить, что это отказ сотрудничать с твоей стороны!"));
-        phases.add(new HrDialogPhase("Ты сегодня во сколько пришел на работу?"));
+        phases.add(new HrDialogPhase("Ты сегодня во сколько пришел на работу? Впрочем неважно. Ознакомься со своим новым расписанием"));
+        phases.add(new ChangeContextPhase(context -> {
+            TabletContext tabletContext = context.getTabletContext();
+            tabletContext.setPages(
+                0,
+                "Понедельник: 9:00 - 18:00" +
+                    "\nВторник: 10:00 - 19:00" +
+                    "\nСреда: 11:00 - 20:00" +
+                    "\nЧетверг: 9:30 - 18:30" +
+                    "\nПятница: 10:30 - 19:30"
+            );
+            tabletContext.setSignButtonText("Ознакомиться\nи подписать");
+        }));
+        TabletPhase workCalendarTablet = new TabletPhase(gameContext -> {});
+        phases.add(workCalendarTablet);
 
-        phases.add(new GamePhase(watch));
+        //phases.add(new GamePhase(watch));
+        //phases.add(new ShowStressLevelsPhase());
+        phases.add(new HrDialogPhase("Давай начнем твое тестирование на знание внутренних трудовых распорядков! Ознакомься!!!"));
+        phases.add(new ChangeContextPhase(context -> {
+            TabletContext tabletContext = context.getTabletContext();
+            tabletContext.setPages(
+                0,
+                "РАСПОРЯЖЕНИЯ НАЧАЛЬСТВА\n" +
+                    "\n1. Все сотрудники обязаны пройти тест на знание миссии компании. Пересдача — за свой счет (удержание из зарплаты). " +
+                    "Третья пересдача — вопрос о соответствии занимаемой должности" +
+                    "\n2. Все созвоны начинаются с уважения к занятости генерального директора" +
+                    "\n2. Запрещается использовать слово 'проблема'" +
+                    "\n3. Все сотрудники обязаны приходить на работу за 15 минут до начала рабочего дня"
+                ,
+                "6. Для личных звонков выделена специальная комната №317, оборудованная стеклянными стенами и микрофоном" +
+                    "\n4. Запрещается обсуждать зарплаты" +
+                    "\n5. Каждый сотрудник обязан иметь на рабочем столе не менее трех и не более пяти предметов корпоративного мерча" +
+                    "\n6. День рождения сотрудника больше не является поводом для поздравлений в рабочее время" +
+                    "\n7. Каждый сотрудник обязан раз в квартал заполнить бензобак начальства за свой счет"
+                ,
+                "8. В опенспейсе запрещены разговоры громче 65 децибел" +
+                    "\n9. Каждый сотрудник раз в две недели заполняет форму наблюдения за тремя случайно назначенными коллегами" +
+                    "\n10. Каждый сотрудник раз в две недели заполняет форму наблюдения за тремя случайно назначенными коллегами" +
+                    "\n11. Кофе в кулере заменен на цикорий" +
+                    "\n12. Каждый сотрудник обязан указать, сколько раз он усомнился в решениях руководства (с точностью до раза)"
+            );
+            tabletContext.setSignButtonText("Ознакомиться\nи подписать");
+        }));
+        TabletPhase test1 = new TabletPhase(gameContext -> {
+            gameContext.getEventsBlock().setDocumentsSign(true);
+        });
+        phases.add(new TimerPhase(
+            test1,
+            15f,
+            gameContext -> {
+            }));
 
-
+        // 2 день
+        phases.add(new ShowTeaPhase());
         phases.add(new HrDialogPhase("Пойми, я прекрасно понимаю тебя! Это всегда очень тяжело...так тяжело! " +
             "Поэтому я и принесла нам чай. Будешь?"));
         phases.add(new MindChooserPhase(
@@ -296,16 +350,35 @@ public class MainScreen extends AbstractGameScreen {
                 )
             )
         );
-        phases.add(new GameOverPhase());
+        phases.add(new PredicatePhase(
+                gameContext -> gameContext.getEventsBlock().isAlcoholDrinker(),
+                new GameOverPhase()
+            )
+        );
 
         // если отказался пить чай
-
-
+        phases.add(new HrDialogPhase(
+            "Мне надоели эти игры... тогда подписывай расторжение по соглашению сторон!")
+        );
         phases.add(new GoToTheHellPhase());
-
-
-//        phaseManager.addPhase(new HrMeetingPhase());
-//        phaseManager.addPhase(new ThoughtPhase());
+        phases.add(new HrDialogPhase(
+            "Если хочешь остаться работать, подписывай!")
+        );
+        phases.add(new HrDialogPhase(
+            "Кому говорю, подписывай!")
+        );
+        phases.add(new OpenHellDoorPhase());
+        phases.add(new HrDialogPhase(
+            "Эй, красавица, пошли на обед!")
+        );
+        phases.add(new HrDialogPhase(
+            "Видишь, я ничего не успеваю доделать!!! Давай тогда будем считать, что ты уволен!")
+        );
+        phases.add(new CloseHellDoorPhase());
+        phases.add(new HrDialogPhase(
+            "Спасибо за игру!")
+        );
+        phases.add(new GameOverPhase());
 
 
         // GAME OVER, игра проиграна!

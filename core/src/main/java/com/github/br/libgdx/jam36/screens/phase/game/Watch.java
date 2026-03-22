@@ -6,8 +6,9 @@ import com.github.br.libgdx.jam36.ui.AnimatedImage;
 public class Watch {
 
     private final float DEGREES_PER_HOUR = 360f / 12f; // 30 градусов
-    private final float SECONDS_PER_HOUR = 10f;
-    private final float ROTATION_SPEED = DEGREES_PER_HOUR / SECONDS_PER_HOUR;
+
+    private float secondsPerHour = 20f;
+    private float rotationSpeed = DEGREES_PER_HOUR / secondsPerHour;
 
     private final Image arrow;
     private final AnimatedImage animationWeekDay;
@@ -22,6 +23,15 @@ public class Watch {
         setWeekDay(currentWeekDay);
     }
 
+    public void setSecondsPerHour(float secondsPerHour) {
+        this.secondsPerHour = secondsPerHour;
+        this.rotationSpeed = DEGREES_PER_HOUR / secondsPerHour;
+    }
+
+    public float getSecondsPerHour() {
+        return secondsPerHour;
+    }
+
     private void setWeekDay(WeekDay currentWeekDay) {
         animationWeekDay.setFrameAndPause(currentWeekDay.getDayNumber() - 1);
     }
@@ -32,7 +42,7 @@ public class Watch {
 
     public void update(float deltaTime) {
         // Вращение по часовой стрелке (уменьшаем угол)
-        arrow.rotateBy(-(ROTATION_SPEED * deltaTime));
+        arrow.rotateBy(-(rotationSpeed * deltaTime));
     }
 
     /**
@@ -61,7 +71,7 @@ public class Watch {
     }
 
     public float convertHoursToRealSeconds(float hours) {
-        return hours * SECONDS_PER_HOUR;
+        return hours * secondsPerHour;
     }
 
 

@@ -18,9 +18,28 @@ public class GameContext {
     private boolean needToShowRules;
     private int difficultyLevel;
 
+    private int heroStressLevel = 21;
+    private int hrStressLevel = 15;
+
     public GameContext() {
         phoneContext = new PhoneContext();
         tabletContext = new TabletContext();
+    }
+
+    public int getHrStressLevel() {
+        return hrStressLevel;
+    }
+
+    public void setHrStressLevel(int hrStressLevel) {
+        this.hrStressLevel = hrStressLevel;
+    }
+
+    public int getHeroStressLevel() {
+        return heroStressLevel;
+    }
+
+    public void setHeroStressLevel(int heroStressLevel) {
+        this.heroStressLevel = heroStressLevel;
     }
 
     public Array<Phase> getCurrentPhases() {
