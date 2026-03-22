@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Array;
@@ -12,9 +13,13 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.github.br.libgdx.jam36.Constants;
 import com.github.br.libgdx.jam36.CustomOrthogonalTiledMapRenderer;
 import com.github.br.libgdx.jam36.Resources;
+import com.github.br.libgdx.jam36.context.EventsBlock;
 import com.github.br.libgdx.jam36.context.GameContext;
 import com.github.br.libgdx.jam36.context.TabletContext;
 import com.github.br.libgdx.jam36.screens.phase.*;
+import com.github.br.libgdx.jam36.screens.phase.hell.GoFromTheHellPhase;
+import com.github.br.libgdx.jam36.screens.phase.hell.GoToTheHellPhase;
+import com.github.br.libgdx.jam36.screens.phase.mind.MindChooserPhase;
 import com.github.br.libgdx.jam36.screens.phase.predicate.PredicatePhase;
 import structure.screen.AbstractGameScreen;
 
@@ -62,19 +67,18 @@ public class MainScreen extends AbstractGameScreen {
             tabletContext.setPages(
                 0,
                 "Вы подписываете следующие документы:\n" +
-                    "\n- Политика информационной безопасности" +
+                    "\n- Уточнения в политике информационной безопасности" +
                     "\n- Согласие на участие в корпоративной лотерее" +
                     "\n- Дополнения в правилах внутреннего трудового распорядка" +
                     "\n- Изменения в кодексе деловой этики" +
                     "\n- Дополнения в политике конфликта интересов" +
                     "\n- Положение о цвете носков и галстуков"
                 ,
-                "- Согласие на слежку через корпоративную веб-камеру" +
+                "- Соглашение о неразглашении неразглашения о соглашении" +
                     "\n- Положение по надлежащему завершению рабочего дня" +
                     "\n- Запрет на установку обоев рабочего стола, не прошедших утверждение арт-директором" +
                     "\n- Акт о невозвратном потреблении печенек из корпоративной кладовки" +
-                    "\n- Соглашение о неразглашении рецепта кофе из кофемашины" +
-
+                    "\n- Согласие на слежку через корпоративную веб-камеру" +
                     "\n- Акт приема-передачи единственной удлиненной розетки (с правом наследования)"
                 ,
                 "- Должностная инструкция \"Специалист по синергии\"" +
@@ -93,38 +97,135 @@ public class MainScreen extends AbstractGameScreen {
             );
             tabletContext.setSignButtonText("Ознакомиться\nи подписать");
         }));
+        TabletPhase signDocuments = new TabletPhase(gameContext -> {
+            gameContext.getEventsBlock().setDocumentsSign(true);
+        });
+        phases.add(new TimerPhase(
+            signDocuments,
+            10f,
+            gameContext -> {
+                // показать столик с чаем
+                MapLayer layer = renderer.getLayer(TiledLayers.TEA);
+                layer.setVisible(true);
 
-        phases.add(new TabletPhase()); // выбор языка, имени-фамилии и прочее
-        phases.add(new HrDialogPhase("А знаешь что? Давай мы начнем заново. Будешь чай?"));
+                signDocuments.isNeedToMove = true;
+                signDocuments.isMoveToUp = false;
+            }));
+
+        // если подписал, то все кончено
+        phases.add(new PredicatePhase(
+            gameContext -> gameContext.getEventsBlock().isDocumentsSign(),
+            new HrDialogPhase("Подписал по собственному? Ну какой же ты молодец! Я думала, будет намного сложнее!"))
+        );
+        phases.add(new PredicatePhase(
+            gameContext -> gameContext.getEventsBlock().isDocumentsSign(),
+            new GameOverPhase()
+        ));
+
+        // если не подписал, то говорит, что не будет ничего подписывать
+        phases.add(new PredicatePhase(
+            gameContext -> !gameContext.getEventsBlock().isDocumentsSign(),
+            new MindChooserPhase(
+                actorFactory,
+                (answer, gameContext) -> {
+                },
+                new Choose(1, "Я не буду ничего\nподписывать"),
+                new Choose(2, "Мне нужно\nпосоветоваться\nс юристом"),
+                new Choose(3, "Сперва покажу\nэти бумаги\nсвоему коту!")
+            )
+        ));
+
+        phases.add(new HrDialogPhase("Пойми, я прекрасно понимаю тебя! Это всегда очень тяжело...так тяжело! " +
+            "Я все объясню. Будешь чай?"));
         phases.add(new MindChooserPhase(
                 actorFactory,
+                (answer, gameContext) -> {
+                    EventsBlock eventsBlock = gameContext.getEventsBlock();
+                    if (answer == 1 || answer == 4) {
+                        eventsBlock.setAlcoholDrinker(true);
+                    }
+                },
                 new Choose(1, "Буду,\nблагодарю!"),
-                new Choose(2, "Спасибо,\nне нужно"),
+                new Choose(2, "Спасибо,\nно нет"),
                 new Choose(3, "Я отказываюсь"),
-                new Choose(4, "Сразу после вас")
+                new Choose(4, "Давайте")
             )
         );
-        phases.add(new GoToTheHellPhase());
+
+        // если согласился пить чай
+        phases.add(new PredicatePhase(
+                gameContext -> gameContext.getEventsBlock().isAlcoholDrinker(),
+                new MindChooserPhase(
+                    actorFactory,
+                    (answer, gameContext) -> {
+                        EventsBlock eventsBlock = gameContext.getEventsBlock();
+                        if (answer == 1 || answer == 4) {
+                            eventsBlock.setAlcoholDrinker(true);
+                        }
+                    },
+                    new Choose(1, "Это что-то\nалкогольное?"),
+                    new Choose(2, "Этот чай с коньяком??")
+                )
+            )
+        );
+        phases.add(new PredicatePhase(
+                gameContext -> gameContext.getEventsBlock().isAlcoholDrinker(),
+                new HrDialogPhase("Конечно да! Разумеется! И очень успокаивает нервы, знаешь ли!")
+            )
+        );
+        phases.add(new PredicatePhase(
+                gameContext -> gameContext.getEventsBlock().isAlcoholDrinker(),
+                new HrDialogPhase(
+                    "Однако это серьезное нарушение! И я уже составила на тебя акт и приказ. Подпиши, пожалуйста!"
+                )
+            )
+        );
+        phases.add(new PredicatePhase(
+                gameContext -> gameContext.getEventsBlock().isAlcoholDrinker(),
+                new MindChooserPhase(
+                    actorFactory,
+                    (answer, gameContext) -> {
+                    },
+                    new Choose(1, "НО ВЕДЬ ВЫ ЖЕ САМИ ПЬЯНЫ!")
+                )
+            )
+        );
+        phases.add(new PredicatePhase(
+                gameContext -> gameContext.getEventsBlock().isAlcoholDrinker(),
+                new HrDialogPhase(
+                    "ДА, НО ВЕДЬ НЕ МЕНЯ ЖЕ ЗДЕСЬ УВОЛЬНЯЮТ! На, подписывай!"
+                )
+            )
+        );
         phases.add(new GameOverPhase());
+
+        // если отказался пить чай
+
+
+        phases.add(new GoToTheHellPhase());
 
 
 //        phaseManager.addPhase(new HrMeetingPhase());
 //        phaseManager.addPhase(new ThoughtPhase());
 
 
+        // GAME OVER, игра проиграна!
         Array<Phase> gameOverPhases = new Array<>();
         gameOverPhases.add(new HrDialogPhase(
-            "Боюсь, что теперь ты уволен! И не забудь подписать обходной лист! Пока.")
+            "Что ж, поздравляю тебя с увольнением! И не забудь про обходной лист! Желаю удачи и всего наилучшего!")
         );
-        gameOverPhases.add(new ChangeContextPhase(context -> {
-            TabletContext tabletContext = context.getTabletContext();
-            tabletContext.setPages(
-                0,
-                "Дата увольнения: {такой-то} день\nПричина увольнения: {такая-то}"
-            );
-            tabletContext.setSignButtonText("Начать заново?");
+        gameOverPhases.add(new GameOverStatisticsPhase()); // заполнение экрана статистики
+        gameOverPhases.add(new TabletPhase(gameContext -> { // рестарт игры
+            // do nothing
         }));
-        gameOverPhases.add(new TabletPhase()); // рестарт игры
+        gameOverPhases.add(new PredicatePhase(
+            gameContext -> gameContext.getEventsBlock().isAlcoholDrinker(),
+            new ChangeContextPhase(gameContext -> {
+                // скрыть столик с чаем
+                MapLayer layer = renderer.getLayer(TiledLayers.TEA);
+                layer.setVisible(false);
+            })
+        ));
         gameOverPhases.add(new PredicatePhase(
             gameContext -> gameContext.getEventsBlock().isInTheHell(),
             new GoFromTheHellPhase())

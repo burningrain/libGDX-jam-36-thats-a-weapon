@@ -1,4 +1,4 @@
-package com.github.br.libgdx.jam36.screens.phase;
+package com.github.br.libgdx.jam36.screens.phase.mind;
 
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.math.MathUtils;
@@ -13,6 +13,8 @@ import com.github.br.libgdx.jam36.CustomOrthogonalTiledMapRenderer;
 import com.github.br.libgdx.jam36.context.GameContext;
 import com.github.br.libgdx.jam36.screens.ActorFactory;
 import com.github.br.libgdx.jam36.screens.TiledLayers;
+import com.github.br.libgdx.jam36.screens.phase.Choose;
+import com.github.br.libgdx.jam36.screens.phase.Phase;
 import com.github.br.libgdx.jam36.ui.AnimatedImage;
 import com.github.br.libgdx.jam36.ui.FloatingButton;
 
@@ -44,9 +46,12 @@ public class MindChooserPhase implements Phase {
     private Array<AnimatedImage> animatedThoughts = new Array<>();
     private Stage stage;
 
+    private MindChooserHandler mindChooserHandler;
 
-    public MindChooserPhase(ActorFactory actorFactory, Choose... chooses) {
+
+    public MindChooserPhase(ActorFactory actorFactory, MindChooserHandler mindChooserHandler, Choose... chooses) {
         this.actorFactory = actorFactory;
+        this.mindChooserHandler = mindChooserHandler;
         this.chooses = chooses;
     }
 
@@ -152,6 +157,8 @@ public class MindChooserPhase implements Phase {
             thought.addListener(new ChangeListener() {
                 @Override
                 public void changed(ChangeEvent changeEvent, Actor actor) {
+                    int answerId = Integer.parseInt(actor.getName());
+                    mindChooserHandler.handle(answerId, gameContext);
                     isFadeOut = true;
                     // Можно добавить эффект при выборе
                     thought.resetPosition();

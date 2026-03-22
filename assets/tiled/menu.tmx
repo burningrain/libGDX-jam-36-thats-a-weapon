@@ -62,7 +62,7 @@
  <imagelayer id="25" name="hero_left_foot" locked="1" offsetx="442.55" offsety="1724.25">
   <image source="../pictures/daily_version/hero/left_foot.png" width="60" height="124"/>
  </imagelayer>
- <imagelayer id="26" name="hero_right_foot" visible="0" locked="1" offsetx="589.3" offsety="1727.15">
+ <imagelayer id="26" name="hero_right_foot" locked="1" offsetx="589.3" offsety="1727.15">
   <image source="../pictures/daily_version/hero/right_foot.png" width="63" height="187"/>
  </imagelayer>
  <group id="68" name="hell_version" visible="0" locked="1">

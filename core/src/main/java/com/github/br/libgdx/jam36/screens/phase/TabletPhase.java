@@ -14,11 +14,13 @@ import com.github.br.libgdx.jam36.screens.TiledLayers;
 
 public class TabletPhase implements Phase, TabletContext.Listener {
 
+    //TODO грязб, но времени уже просто нет
+    public boolean isMoveToUp;
+    public boolean isNeedToMove;
+
     public static final int INITIAL_OFFSET_Y = -1500;
     public static final float DELTA_Y = 1000f;
     private float currentY;
-    private boolean isMoveToUp;
-    private boolean isNeedToMove;
 
     private CustomOrthogonalTiledMapRenderer renderer;
     private GameContext gameContext;
@@ -34,6 +36,12 @@ public class TabletPhase implements Phase, TabletContext.Listener {
 
     private ChangeListener buttonLeftListener;
     private ChangeListener buttonRightListener;
+
+    private final ContextChanger changerAfterSign;
+
+    public TabletPhase(ContextChanger changerAfterSign) {
+        this.changerAfterSign = changerAfterSign;
+    }
 
     @Override
     public void initUI(GameContext gameContext, CustomOrthogonalTiledMapRenderer renderer) {
@@ -53,6 +61,7 @@ public class TabletPhase implements Phase, TabletContext.Listener {
             @Override
             public void changed(ChangeEvent changeEvent, Actor actor) {
                 isNeedToMove = true;
+                changerAfterSign.change(gameContext);
             }
         };
         signButton.setText(this.gameContext.getTabletContext().getSignButtonText());
