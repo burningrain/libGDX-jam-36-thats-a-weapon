@@ -61,6 +61,10 @@ public class MainScreen extends AbstractGameScreen {
     private GameContext createGameContext() {
         Array<Phase> phases = new Array<>();
 
+        // первоначальные настройки сцены
+
+        // первоначальные настройки сцены
+
         phases.add(new HrDialogPhase("Раз уж пересеклись, подпиши уже, пожалуйста, свои документы"));
         phases.add(new ChangeContextPhase(context -> {
             TabletContext tabletContext = context.getTabletContext();
@@ -123,8 +127,8 @@ public class MainScreen extends AbstractGameScreen {
         ));
 
         // если не подписал, то говорит, что не будет ничего подписывать
-        phases.add(new PredicatePhase(
-            gameContext -> !gameContext.getEventsBlock().isDocumentsSign(),
+        phases.add(new HrDialogPhase("Почему ты отложил документы? Тебя что-то смущает?"));
+        phases.add(
             new MindChooserPhase(
                 actorFactory,
                 (answer, gameContext) -> {
@@ -132,11 +136,10 @@ public class MainScreen extends AbstractGameScreen {
                 new Choose(1, "Я не буду ничего\nподписывать"),
                 new Choose(2, "Мне нужно\nпосоветоваться\nс юристом"),
                 new Choose(3, "Сперва покажу\nэти бумаги\nсвоему коту!")
-            )
-        ));
+            ));
 
         phases.add(new HrDialogPhase("Пойми, я прекрасно понимаю тебя! Это всегда очень тяжело...так тяжело! " +
-            "Я все объясню. Будешь чай?"));
+            "Поэтому я и принесла нам чай. Будешь?"));
         phases.add(new MindChooserPhase(
                 actorFactory,
                 (answer, gameContext) -> {
@@ -153,6 +156,11 @@ public class MainScreen extends AbstractGameScreen {
         );
 
         // если согласился пить чай
+        phases.add(new PredicatePhase(
+                gameContext -> gameContext.getEventsBlock().isAlcoholDrinker(),
+                new HrDialogPhase("Ну как, нравится?")
+            )
+        );
         phases.add(new PredicatePhase(
                 gameContext -> gameContext.getEventsBlock().isAlcoholDrinker(),
                 new MindChooserPhase(
@@ -218,14 +226,13 @@ public class MainScreen extends AbstractGameScreen {
         gameOverPhases.add(new TabletPhase(gameContext -> { // рестарт игры
             // do nothing
         }));
-        gameOverPhases.add(new PredicatePhase(
-            gameContext -> gameContext.getEventsBlock().isAlcoholDrinker(),
+        gameOverPhases.add(
             new ChangeContextPhase(gameContext -> {
                 // скрыть столик с чаем
                 MapLayer layer = renderer.getLayer(TiledLayers.TEA);
                 layer.setVisible(false);
             })
-        ));
+        );
         gameOverPhases.add(new PredicatePhase(
             gameContext -> gameContext.getEventsBlock().isInTheHell(),
             new GoFromTheHellPhase())

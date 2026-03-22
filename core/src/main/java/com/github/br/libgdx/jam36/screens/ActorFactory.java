@@ -13,6 +13,8 @@ import com.badlogic.gdx.utils.Array;
 import com.github.br.libgdx.jam36.Resources;
 import com.github.br.libgdx.jam36.ui.AnimatedImage;
 import com.github.br.libgdx.jam36.ui.FloatingButton;
+import com.github.tommyettinger.textra.TextraLabel;
+import com.github.tommyettinger.textra.TypingLabel;
 
 public class ActorFactory {
 
@@ -156,7 +158,7 @@ public class ActorFactory {
     }
 
     private Actor createTextWindow(MapObject object) {
-        Label label = new Label("Вставь сюда текст", skin, "talking");
+        TypingLabel label = new TypingLabel("Вставь сюда текст", skin, "talking");
         label.setAlignment(Align.topLeft);
 
         MapProperties properties = object.getProperties();

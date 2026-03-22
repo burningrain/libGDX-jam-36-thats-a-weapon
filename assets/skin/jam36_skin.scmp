@@ -2495,7 +2495,93 @@ jsonData: {
 			}
 		]
 	}
-	customClasses: []
+	customClasses: [
+		{
+			fullyQualifiedName: com.github.br.libgdx.jam36.ui.TypingImageButton$TypingImageTextButtonStyle
+			displayName: TypingImageTextButton
+			styles: [
+				{
+					name: default
+					properties: [
+						{
+							name: font
+							type: FONT
+							value: null
+						}
+						{
+							name: up
+							type: DRAWABLE
+							value: null
+						}
+						{
+							name: down
+							type: DRAWABLE
+							value: null
+						}
+						{
+							name: over
+							type: DRAWABLE
+							value: null
+						}
+					]
+					deletable: false
+				}
+				{
+					name: thought
+					properties: [
+						{
+							name: font
+							type: FONT
+							value: AmaticSC-Bold_65
+						}
+						{
+							name: up
+							type: DRAWABLE
+							value: thought_btn_10
+						}
+						{
+							name: down
+							type: DRAWABLE
+							value: thought_btn_2_10
+						}
+						{
+							name: over
+							type: DRAWABLE
+							value: thought_btn_2_10
+						}
+					]
+					deletable: true
+				}
+			]
+			templateStyle: {
+				name: template
+				properties: [
+					{
+						name: font
+						type: FONT
+						value: null
+					}
+					{
+						name: up
+						type: DRAWABLE
+						value: null
+					}
+					{
+						name: down
+						type: DRAWABLE
+						value: null
+					}
+					{
+						name: over
+						type: DRAWABLE
+						value: null
+					}
+				]
+				deletable: true
+			}
+			declareAfterUIclasses: false
+		}
+	]
 }
 preferences: {
 	id: {

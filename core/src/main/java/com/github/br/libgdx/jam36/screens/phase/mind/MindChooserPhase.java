@@ -146,7 +146,7 @@ public class MindChooserPhase implements Phase {
 
             FloatingButton thought = actorFactory.createFloatingThought(
                 choose.getId(),
-                choose.getText(),
+                "{WAVE=1.0;1.0;0.4}" + choose.getText() + "{ENDWAVE}",
                 FLOAT_AMPLITUDE,
                 speed,
                 phase

@@ -1,10 +1,9 @@
 // FloatingButton.java
 package com.github.br.libgdx.jam36.ui;
 
-import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
-public class FloatingButton extends ImageTextButton {
+public class FloatingButton extends TypingImageButton {
 
     private float originalX;
     private float originalY;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="left-down" width="108" height="192" tilewidth="10" tileheight="10" infinite="0" nextlayerid="108" nextobjectid="32">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="left-down" width="108" height="192" tilewidth="10" tileheight="10" infinite="0" nextlayerid="110" nextobjectid="32">
  <group id="12" name="environment">
   <imagelayer id="13" name="glass" locked="1" offsetx="-310" offsety="-20">
    <image source="../pictures/daily_version/environment/glass.png" width="1712" height="1962"/>
@@ -235,18 +235,24 @@
   <object id="24" name="hero_dictophone" x="208" y="1475" width="67.75" height="60.1"/>
   <object id="25" name="hr_dictophone" x="775.833" y="1189.17" width="60.3" height="45.65"/>
  </objectgroup>
- <group id="49" name="tea" visible="0" locked="1">
+ <group id="49" name="tea" visible="0">
   <imagelayer id="50" name="plate" locked="1" offsetx="451.7" offsety="1432.4">
    <image source="../pictures/daily_version/table/tea/plate.png" width="198" height="122"/>
   </imagelayer>
   <imagelayer id="51" name="cup_of_tea" locked="1" offsetx="501.6" offsety="1432.25">
    <image source="../pictures/daily_version/table/tea/cup_of_tea.png" width="110" height="81"/>
   </imagelayer>
-  <imagelayer id="52" name="teapot" locked="1" offsetx="437.3" offsety="1058.8">
+  <imagelayer id="52" name="teapot" offsetx="201.3" offsety="1168.13">
    <image source="../pictures/daily_version/table/tea/french_press.png" width="209" height="246"/>
   </imagelayer>
+  <imagelayer id="108" name="hr_plate" offsetx="433.333" offsety="1161.33">
+   <image source="../pictures/daily_version/table/tea/plate.png" width="198" height="122"/>
+  </imagelayer>
+  <imagelayer id="109" name="hr_cup_of_tea" offsetx="485.333" offsety="1161.33">
+   <image source="../pictures/daily_version/table/tea/cup_of_tea.png" width="110" height="81"/>
+  </imagelayer>
  </group>
- <group id="11" name="tablet" visible="0">
+ <group id="11" name="tablet" visible="0" locked="1">
   <imagelayer id="9" name="right_hand_down" locked="1" offsetx="992.8" offsety="1282.55">
    <image source="../pictures/daily_version/tablet/right_hand_down.png" width="168" height="691"/>
   </imagelayer>
@@ -262,7 +268,7 @@
   <imagelayer id="14" name="left_button" locked="1" offsetx="99.6" offsety="861.75">
    <image source="../pictures/daily_version/tablet/tablet_button_left_1.png" width="71" height="430"/>
   </imagelayer>
-  <objectgroup id="17" name="object_layer">
+  <objectgroup id="17" name="object_layer" locked="1">
    <object id="11" name="tablet_left_button" x="99.6" y="861.75" width="73.3333" height="428"/>
    <object id="12" name="tablet_right_button" x="915.667" y="862.333" width="73.3333" height="428">
     <properties>
@@ -275,14 +281,14 @@
   <imagelayer id="4" name="sign_button" visible="0" locked="1" offsetx="238" offsety="1351.6" parallaxx="0" parallaxy="0">
    <image source="../pictures/daily_version/tablet/sign_button_1.png" width="609" height="310"/>
   </imagelayer>
-  <imagelayer id="8" name="left_hand_up" locked="1" offsetx="10" offsety="1143.6">
+  <imagelayer id="8" name="left_hand_up" locked="1" offsetx="-10" offsety="1143.6">
    <image source="../pictures/daily_version/tablet/left_hand_up.png" width="297" height="880"/>
   </imagelayer>
-  <imagelayer id="10" name="right_hand_up" locked="1" offsetx="775.3" offsety="1138.4">
+  <imagelayer id="10" name="right_hand_up" offsetx="795.3" offsety="1138.4">
    <image source="../pictures/daily_version/tablet/right_hand_up.png" width="297" height="880"/>
   </imagelayer>
  </group>
- <group id="53" name="thoughts" visible="0">
+ <group id="53" name="thoughts" visible="0" locked="1">
   <imagelayer id="54" name="hero_head" locked="1" offsetx="27.85" offsety="1116.8">
    <image source="../pictures/daily_version/think/hero_head.png" width="989" height="824"/>
   </imagelayer>

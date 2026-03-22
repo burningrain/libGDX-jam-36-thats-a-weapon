@@ -13,8 +13,10 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader;
 import com.badlogic.gdx.maps.tiled.AtlasTmxMapLoader;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.github.br.libgdx.jam36.screens.GameScreens;
+import com.github.tommyettinger.textra.FWSkinLoader;
 import structure.AbstractSimpleGame;
 import structure.GameSettings;
 import structure.screen.statemachine.GameScreenState;
@@ -41,6 +43,9 @@ public class Main extends AbstractSimpleGame<UserFactoryImpl> {
         assetManager.setLoader(Texture.class, new TextureLoader(fileHandleResolver));
         assetManager.setLoader(TextureAtlas.class, new TextureAtlasLoader(fileHandleResolver));
         //assetManager.setLoader(Skin.class, new FreeTypeSkinLoader(fileHandleResolver));
+
+        // 1. Регистрируем лоадер для FWSkin
+        assetManager.setLoader(Skin.class, new FWSkinLoader(assetManager.getFileHandleResolver()));
 
         // эффекты частиц
         assetManager.setLoader(ParticleEffect.class, ".p", new ParticleEffectLoader(fileHandleResolver));

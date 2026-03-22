@@ -7,6 +7,7 @@ import com.github.br.libgdx.jam36.CustomOrthogonalTiledMapRenderer;
 import com.github.br.libgdx.jam36.context.GameContext;
 import com.github.br.libgdx.jam36.screens.StageActors;
 import com.github.br.libgdx.jam36.screens.TiledLayers;
+import com.github.tommyettinger.textra.TypingLabel;
 
 public class HrDialogPhase implements Phase {
 
@@ -26,8 +27,9 @@ public class HrDialogPhase implements Phase {
         this.gameContext = gameContext;
         this.renderer = renderer;
 
-        Label hrTextWindow = renderer.getActor(TiledLayers.HR_TEXT_WINDOW, StageActors.TEXT_WINDOW, Label.class);
+        TypingLabel hrTextWindow = renderer.getActor(TiledLayers.HR_TEXT_WINDOW, StageActors.TEXT_WINDOW, TypingLabel.class);
         hrTextWindow.setText(text);
+        hrTextWindow.restart(); // Сбрасываем анимацию печати в начало
         hrTextWindow.setWrap(true);
 
         MapLayer layer = renderer.getLayer(TiledLayers.HR_TEXT_WINDOW);

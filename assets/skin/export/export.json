@@ -141,6 +141,14 @@
 		"crushMode": 0
 	}
 },
+"com.github.br.libgdx.jam36.ui.TypingImageButton$TypingImageTextButtonStyle": {
+	"thought": {
+		"font": "AmaticSC-Bold_65",
+		"up": "thought_btn_10",
+		"down": "thought_btn_2_10",
+		"over": "thought_btn_2_10"
+	}
+},
 "com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle": {
 	"default": {
 		"up": "tablet_button_left_1",
