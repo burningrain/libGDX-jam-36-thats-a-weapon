@@ -6,6 +6,7 @@ import com.github.br.libgdx.jam36.screens.phase.Phase;
 public class GameContext {
 
     private boolean gameOverAndNeedChangePhases;
+    private PhoneContext phoneContext;
     private TabletContext tabletContext;
     private Array<Phase> currentPhases;
 
@@ -16,6 +17,7 @@ public class GameContext {
     private EventsBlock eventsBlock = new EventsBlock();
 
     public GameContext() {
+        phoneContext = new PhoneContext();
         tabletContext = new TabletContext();
     }
 
@@ -51,6 +53,14 @@ public class GameContext {
         this.currentPhase = currentPhase;
     }
 
+    public PhoneContext getPhoneContext() {
+        return phoneContext;
+    }
+
+    public void setPhoneContext(PhoneContext phoneContext) {
+        this.phoneContext = phoneContext;
+    }
+
     public TabletContext getTabletContext() {
         return tabletContext;
     }
@@ -62,6 +72,15 @@ public class GameContext {
     public void setGameOverAndNeedChangePhases(boolean gameOverAndNeedChangePhases) {
         this.gameOverAndNeedChangePhases = gameOverAndNeedChangePhases;
     }
+
+    public EventsBlock getEventsBlock() {
+        return eventsBlock;
+    }
+
+    public void setEventsBlock(EventsBlock eventsBlock) {
+        this.eventsBlock = eventsBlock;
+    }
+
 
     // listener
     public interface Listener {
@@ -88,11 +107,4 @@ public class GameContext {
         }
     }
 
-    public EventsBlock getEventsBlock() {
-        return eventsBlock;
-    }
-
-    public void setEventsBlock(EventsBlock eventsBlock) {
-        this.eventsBlock = eventsBlock;
-    }
 }

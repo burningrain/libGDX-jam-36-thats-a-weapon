@@ -2,6 +2,7 @@ package com.github.br.libgdx.jam36.screens;
 
 public interface StageActors {
 
+    String HERO_PHONE_CALLER = "hero_phone_caller";
 
     String TABLET_LEFT_BUTTON = "tablet_left_button";
     String TABLET_RIGHT_BUTTON = "tablet_right_button";

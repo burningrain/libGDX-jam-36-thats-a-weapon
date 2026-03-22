@@ -20,6 +20,7 @@ import com.github.br.libgdx.jam36.screens.phase.*;
 import com.github.br.libgdx.jam36.screens.phase.hell.GoFromTheHellPhase;
 import com.github.br.libgdx.jam36.screens.phase.hell.GoToTheHellPhase;
 import com.github.br.libgdx.jam36.screens.phase.mind.MindChooserPhase;
+import com.github.br.libgdx.jam36.screens.phase.phone.*;
 import com.github.br.libgdx.jam36.screens.phase.predicate.PredicatePhase;
 import structure.screen.AbstractGameScreen;
 
@@ -64,6 +65,14 @@ public class MainScreen extends AbstractGameScreen {
         // первоначальные настройки сцены
 
         // первоначальные настройки сцены
+        phases.add(new DelayPhase(2f));
+        phases.add(new HeroBigPhone1CallPhase("милая моя"));
+        phases.add(new HeroBigPhone2UpPhase());
+        phases.add(new DelayPhase(3f));
+        phases.add(new HeroBigPhone3GetCallPhase());
+        phases.add(new DelayPhase(3f));
+        phases.add(new HeroBigPhone3CancelCallPhase());
+        phases.add(new HeroBigPhone4DownPhase());
 
         phases.add(new HrDialogPhase("Раз уж пересеклись, подпиши уже, пожалуйста, свои документы"));
         phases.add(new ChangeContextPhase(context -> {

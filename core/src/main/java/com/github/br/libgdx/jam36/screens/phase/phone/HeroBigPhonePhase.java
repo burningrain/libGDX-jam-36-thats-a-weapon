@@ -1,18 +1,20 @@
-package com.github.br.libgdx.jam36.screens.phase;
+package com.github.br.libgdx.jam36.screens.phase.phone;
 
 import com.badlogic.gdx.maps.MapGroupLayer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.github.br.libgdx.jam36.CustomOrthogonalTiledMapRenderer;
 import com.github.br.libgdx.jam36.context.GameContext;
-import com.github.br.libgdx.jam36.context.TabletContext;
+import com.github.br.libgdx.jam36.context.PhoneContext;
 import com.github.br.libgdx.jam36.screens.StageActors;
 import com.github.br.libgdx.jam36.screens.TiledLayers;
+import com.github.br.libgdx.jam36.screens.phase.ContextChanger;
+import com.github.br.libgdx.jam36.screens.phase.Phase;
+import com.github.tommyettinger.textra.TypingLabel;
 
-public class TabletPhase implements Phase, TabletContext.Listener {
+@Deprecated
+public class HeroBigPhonePhase implements Phase, PhoneContext.Listener {
 
     //TODO грязь, но времени уже просто нет
     public boolean isMoveToUp;
@@ -25,65 +27,29 @@ public class TabletPhase implements Phase, TabletContext.Listener {
     private CustomOrthogonalTiledMapRenderer renderer;
     private GameContext gameContext;
 
-    private Label tabletText;
-    private ImageButton leftButton;
-    private ImageButton rightButton;
-    private ImageTextButton signButton;
+    private TypingLabel phoneCallerText;
 
     private boolean isFinished;
 
-    private ChangeListener signButtonListener;
-
-    private ChangeListener buttonLeftListener;
-    private ChangeListener buttonRightListener;
-
     private final ContextChanger changerAfterSign;
 
-    public TabletPhase(ContextChanger changerAfterSign) {
+    public HeroBigPhonePhase(ContextChanger changerAfterSign) {
         this.changerAfterSign = changerAfterSign;
     }
 
     @Override
     public void initUI(GameContext gameContext, CustomOrthogonalTiledMapRenderer renderer) {
         this.gameContext = gameContext;
-        this.gameContext.getTabletContext().setListener(this);
+        this.gameContext.getPhoneContext().setListener(this);
 
         this.renderer = renderer;
 
-        tabletText = renderer.getActor(TiledLayers.ACTORS_LAYER_TABLET, StageActors.TABLET_TEXT, Label.class);
-        leftButton = renderer.getActor(TiledLayers.ACTORS_LAYER_TABLET, StageActors.TABLET_LEFT_BUTTON, ImageButton.class);
-        rightButton = renderer.getActor(TiledLayers.ACTORS_LAYER_TABLET, StageActors.TABLET_RIGHT_BUTTON, ImageButton.class);
-        signButton = renderer.getActor(TiledLayers.ACTORS_LAYER_TABLET, StageActors.SIGN_BUTTON, ImageTextButton.class);
+        phoneCallerText = renderer.getActor(TiledLayers.ACTORS_LAYER_HERO_BIG_PHONE, StageActors.HERO_PHONE_CALLER, TypingLabel.class);
 
-        tabletText.setText(gameContext.getTabletContext().getCurrentPage());
-        tabletText.setWrap(true);
-        signButtonListener = new ChangeListener() {
-            @Override
-            public void changed(ChangeEvent changeEvent, Actor actor) {
-                isNeedToMove = true;
-                changerAfterSign.change(gameContext);
-            }
-        };
-        signButton.setText(this.gameContext.getTabletContext().getSignButtonText());
-        signButton.addListener(signButtonListener);
+        phoneCallerText.setText(gameContext.getTabletContext().getCurrentPage());
+        phoneCallerText.setWrap(true);
 
-        buttonLeftListener = new ChangeListener() {
-            @Override
-            public void changed(ChangeEvent changeEvent, Actor actor) {
-                gameContext.getTabletContext().goToPrevPage();
-            }
-        };
-        leftButton.addListener(buttonLeftListener);
-
-        buttonRightListener = new ChangeListener() {
-            @Override
-            public void changed(ChangeEvent changeEvent, Actor actor) {
-                gameContext.getTabletContext().goToNextPage();
-            }
-        };
-        rightButton.addListener(buttonRightListener);
-
-        MapGroupLayer layer = (MapGroupLayer) renderer.getLayer(TiledLayers.TABLET);
+        MapGroupLayer layer = (MapGroupLayer) renderer.getLayer(TiledLayers.HERO_BIG_PHONE);
         layer.setVisible(true);
 
         // установить позицию вне экрана
@@ -95,14 +61,15 @@ public class TabletPhase implements Phase, TabletContext.Listener {
 
     private void resetUI() {
         // скрываем и возвращаем планшет назад на экран
-        MapGroupLayer layer = (MapGroupLayer) renderer.getLayer(TiledLayers.TABLET);
+        MapGroupLayer layer = (MapGroupLayer) renderer.getLayer(TiledLayers.HERO_BIG_PHONE);
         layer.setVisible(false);
-        renderer.updateOffsetsForGroupLayer(TiledLayers.TABLET, 0, -currentY);
+        renderer.updateOffsetsForGroupLayer(TiledLayers.HERO_BIG_PHONE, 0, -currentY);
     }
 
     @Override
-    public void update(TabletContext context) {
-        tabletText.setText(context.getCurrentPage());
+    public void update(PhoneContext context) {
+        //TODO ???
+        //tabletText.setText(context.getCurrentPage());
     }
 
     @Override
@@ -136,9 +103,7 @@ public class TabletPhase implements Phase, TabletContext.Listener {
     }
 
     private void cleanListeners() {
-        leftButton.removeListener(buttonLeftListener);
-        rightButton.removeListener(buttonRightListener);
-        signButton.removeListener(signButtonListener);
+
     }
 
     private void moveTabletUp(float deltaY, float deltaTime) {

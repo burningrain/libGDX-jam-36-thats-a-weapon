@@ -13,7 +13,6 @@ import com.badlogic.gdx.utils.Array;
 import com.github.br.libgdx.jam36.Resources;
 import com.github.br.libgdx.jam36.ui.AnimatedImage;
 import com.github.br.libgdx.jam36.ui.FloatingButton;
-import com.github.tommyettinger.textra.TextraLabel;
 import com.github.tommyettinger.textra.TypingLabel;
 
 public class ActorFactory {
@@ -32,6 +31,9 @@ public class ActorFactory {
 
         switch (name) {
             // daily
+            case StageActors.HERO_PHONE_CALLER:
+                return createHeroCallerText(object);
+
             case StageActors.TABLET_LEFT_BUTTON:
             case StageActors.TABLET_RIGHT_BUTTON:
                 return createTabletButton(object);
@@ -75,6 +77,22 @@ public class ActorFactory {
             default:
                 throw new IllegalArgumentException("unknown stage2d actor: " + name);
         }
+    }
+
+    private Actor createHeroCallerText(MapObject object) {
+        TypingLabel label = new TypingLabel("Вставь сюда текст", skin, "talking");
+        label.setAlignment(Align.center);
+
+        MapProperties properties = object.getProperties();
+        Float width = properties.get("width", float.class);
+        Float height = properties.get("height", float.class);
+
+        label.setWidth(width);
+        label.setHeight(height);
+
+        label.setWrap(true);
+
+        return label;
     }
 
     public AnimatedImage createAnimationThought() {

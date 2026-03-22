@@ -7,6 +7,21 @@ public interface TiledLayers {
     String THOUGHTS = "thoughts";
     String ACTORS_LAYER_THOUGHTS = "thoughts_object_layer";
 
+    // phone
+    String HERO_BIG_PHONE = "hero_big_phone";
+    String ACTORS_LAYER_HERO_BIG_PHONE = "hero_big_phone_actors";
+
+    String HERO_BIG_PHONE_GET_CALL = "get_call";
+    String HERO_BIG_PHONE_CANCEL_CALL = "cancel_call";
+
+    String HERO_BIG_PHONE_DYNAMIC_BUTTON = "dynamic_button";
+    String HERO_BIG_PHONE_CALL_NUMBER_BUTTON = "call_number";
+    String HERO_BIG_PHONE_MUTE_MICROPHONE_BUTTON = "mute_microphone";
+    String HERO_BIG_PHONE_CALL_HUMAN_PIC = "phone_call_human";
+
+    String SMALL_HERO_PHONE_ON_TABLE = "hero_phone";
+    // phone
+
     // tablet
     String TABLET = "tablet";
     String ACTORS_LAYER_TABLET = "object_layer";
