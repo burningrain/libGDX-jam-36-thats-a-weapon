@@ -16,21 +16,21 @@ public class GameOverStatisticsPhase implements Phase {
         TabletContext tabletContext = gameContext.getTabletContext();
         tabletContext.setPages(
             0,
-            "Дата увольнения: " + LocalDate.now() +
-                "\nПричина: " + getFaultCause(gameContext)
+            "Termination Date: " + LocalDate.now() +
+                "\nReason: " + getFaultCause(gameContext)
         );
-        tabletContext.setSignButtonText("Начать заново?");
+        tabletContext.setSignButtonText("Start Over?");
     }
 
     private String getFaultCause(GameContext gameContext) {
         EventsBlock eventsBlock = gameContext.getEventsBlock();
         if (eventsBlock.isDocumentsSign()) {
-            return "по собственному желанию";
+            return "voluntary resignation";
         } else if (eventsBlock.isAlcoholDrinker()) {
-            return "за нетрезвое состояние на рабочем месте";
+            return "intoxication in the workplace";
         }
 
-        return "Неизвестная причина";
+        return "Unknown reason";
     }
 
     @Override
