@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -17,11 +18,16 @@ import com.github.br.libgdx.jam36.context.EventsBlock;
 import com.github.br.libgdx.jam36.context.GameContext;
 import com.github.br.libgdx.jam36.context.TabletContext;
 import com.github.br.libgdx.jam36.screens.phase.*;
+import com.github.br.libgdx.jam36.screens.phase.game.GamePhase;
+import com.github.br.libgdx.jam36.screens.phase.game.Watch;
 import com.github.br.libgdx.jam36.screens.phase.hell.GoFromTheHellPhase;
 import com.github.br.libgdx.jam36.screens.phase.hell.GoToTheHellPhase;
+import com.github.br.libgdx.jam36.screens.phase.hr.HideHrPhase;
+import com.github.br.libgdx.jam36.screens.phase.hr.ShowHrPhase;
 import com.github.br.libgdx.jam36.screens.phase.mind.MindChooserPhase;
 import com.github.br.libgdx.jam36.screens.phase.phone.*;
 import com.github.br.libgdx.jam36.screens.phase.predicate.PredicatePhase;
+import com.github.br.libgdx.jam36.ui.AnimatedImage;
 import structure.screen.AbstractGameScreen;
 
 public class MainScreen extends AbstractGameScreen {
@@ -37,6 +43,8 @@ public class MainScreen extends AbstractGameScreen {
     private PhaseManager phaseManager;
     private GameContext gameContext;
 
+    private Watch watch;
+
     @Override
     public void show() {
         AssetManager assetManager = getGameManager().assetManager;
@@ -50,9 +58,18 @@ public class MainScreen extends AbstractGameScreen {
         actorFactory = new ActorFactory(gameSkin, assetManager);
         renderer = new CustomOrthogonalTiledMapRenderer(actorFactory, viewport, tiledMap, 1f);
 
+        // часы
+        Image arrow = renderer.getActor(TiledLayers.ACTORS_LAYER_WATCH, StageActors.WATCH_ARROW, Image.class);
+        // Устанавливаем точку вращения в нижний центр
+        arrow.setOrigin(arrow.getWidth() / 2f, 0);
+
+        AnimatedImage weekDay = renderer.getActor(TiledLayers.ACTORS_LAYER_WATCH, StageActors.WEEK_DAY, AnimatedImage.class);
+        watch = new Watch(arrow, weekDay);
+        watch.setTime(14.5f); // игра начинается в 14:30 дня
+
+
+        // игровой движок
         gameContext = createGameContext();
-
-
         phaseManager = new PhaseManager(renderer);
         phaseManager.initFirstPhase(gameContext);
 
@@ -62,19 +79,83 @@ public class MainScreen extends AbstractGameScreen {
     private GameContext createGameContext() {
         Array<Phase> phases = new Array<>();
 
-        // первоначальные настройки сцены
-
-        // первоначальные настройки сцены
+        phases.add(new SetStartGamePhase());   // стартовые настройки сцены
+        phases.add(new HideHrPhase());
         phases.add(new DelayPhase(2f));
-        phases.add(new HeroBigPhone1CallPhase("милая моя"));
+        phases.add(new HeroBigPhone1CallPhase("юрист"));
         phases.add(new HeroBigPhone2UpPhase());
-        phases.add(new DelayPhase(3f));
+        phases.add(new DelayPhase(1f));
         phases.add(new HeroBigPhone3GetCallPhase());
-        phases.add(new DelayPhase(3f));
+
+        phases.add(new HrDialogPhase("Пока тебя не начали прессовать, скажи мне, ты знаешь правила?"));
+        phases.add(
+            new MindChooserPhase(
+                actorFactory,
+                (answer, gameContext) -> {
+                    if (answer == 2) {
+                        gameContext.setNeedToShowRules(true);
+                    }
+                },
+                new Choose(1, "Да"),
+                new Choose(2, "Нет")
+            ));
+        // если нужно рассказать правила
+        phases.add(new PredicatePhase(
+            gameContext -> gameContext.isNeedToShowRules(),
+            new HrDialogPhase("Ты там уже пару лет. По закону у них ничего на тебя нет. Они будут давить " +
+                "психологически"))
+        );
+        phases.add(new PredicatePhase(
+            gameContext -> gameContext.isNeedToShowRules(),
+            new HrDialogPhase("Контроль рабочего графика, тесты на профессиональную пригодность и прочая грязь"))
+        );
+        phases.add(new PredicatePhase(
+            gameContext -> gameContext.isNeedToShowRules(),
+            new HrDialogPhase("В этой битве у тебя тоже есть оружие, не забывай об этом!")
+        ));
+        phases.add(new PredicatePhase(
+            gameContext -> gameContext.isNeedToShowRules(),
+            new HrDialogPhase("фиксируй их нарушения на аудиоустройство. Дело будет выиграно, нужно просто собрать базу")
+        ));
+        phases.add(new PredicatePhase(
+            gameContext -> gameContext.isNeedToShowRules(),
+            new MindChooserPhase(
+                actorFactory,
+                (answer, gameContext) -> {
+                },
+                new Choose(1, "И это мое оружие?"),
+                new Choose(2, "Мне нужно\n ТЕРПЕТЬ?!")
+            )
+        ));
+        phases.add(new PredicatePhase(
+            gameContext -> gameContext.isNeedToShowRules(),
+            new HrDialogPhase("Именно так. Запомни главное: ничего не подписывай! Бездействие - это тоже действие!")
+        ));
+
+        // если отказывается от правил
+        phases.add(new PredicatePhase(
+            gameContext -> !gameContext.isNeedToShowRules(),
+            new HrDialogPhase("Значит сэкономим время"))
+        );
+        //
+        phases.add(new HrDialogPhase("Теперь выбери уровень сложности"));
+        phases.add(new MindChooserPhase(
+                actorFactory,
+                (answer, gameContext) -> {
+                    EventsBlock eventsBlock = gameContext.getEventsBlock();
+                    gameContext.setDifficultyLevel(answer);
+                },
+                new Choose(1, "Дружеская беседа"),
+                new Choose(2, "Спортивное состязание"),
+                new Choose(3, "Сдирание кожи\n заживо")
+            )
+        );
+
         phases.add(new HeroBigPhone3CancelCallPhase());
         phases.add(new HeroBigPhone4DownPhase());
 
-        phases.add(new HrDialogPhase("Раз уж пересеклись, подпиши уже, пожалуйста, свои документы"));
+        phases.add(new ShowHrPhase());
+        phases.add(new HrDialogPhase("Привет, заждался? А я к тебе! Обхожу весь отдел с обновлениями документов. Глянь"));
         phases.add(new ChangeContextPhase(context -> {
             TabletContext tabletContext = context.getTabletContext();
             tabletContext.setPages(
@@ -115,12 +196,8 @@ public class MainScreen extends AbstractGameScreen {
         });
         phases.add(new TimerPhase(
             signDocuments,
-            10f,
+            1f,
             gameContext -> {
-                // показать столик с чаем
-                MapLayer layer = renderer.getLayer(TiledLayers.TEA);
-                layer.setVisible(true);
-
                 signDocuments.isNeedToMove = true;
                 signDocuments.isMoveToUp = false;
             }));
@@ -136,7 +213,7 @@ public class MainScreen extends AbstractGameScreen {
         ));
 
         // если не подписал, то говорит, что не будет ничего подписывать
-        phases.add(new HrDialogPhase("Почему ты отложил документы? Тебя что-то смущает?"));
+        phases.add(new HrDialogPhase("Ой, ты отложил документы? Что-то не так?"));
         phases.add(
             new MindChooserPhase(
                 actorFactory,
@@ -146,6 +223,11 @@ public class MainScreen extends AbstractGameScreen {
                 new Choose(2, "Мне нужно\nпосоветоваться\nс юристом"),
                 new Choose(3, "Сперва покажу\nэти бумаги\nсвоему коту!")
             ));
+        phases.add(new HrDialogPhase("Тогда я вынуждена сообщить, что это отказ сотрудничать с твоей стороны!"));
+        phases.add(new HrDialogPhase("Ты сегодня во сколько пришел на работу?"));
+
+        phases.add(new GamePhase(watch));
+
 
         phases.add(new HrDialogPhase("Пойми, я прекрасно понимаю тебя! Это всегда очень тяжело...так тяжело! " +
             "Поэтому я и принесла нам чай. Будешь?"));

@@ -43,7 +43,7 @@ public class ActorFactory {
                 return createSignButton(object);
 
             // watch
-            case StageActors.CALENDAR_DAY:
+            case StageActors.WEEK_DAY:
                 return createCalendarDay(object);
             case StageActors.WATCH_ARROW:
                 return createWatchHourArrow(object);

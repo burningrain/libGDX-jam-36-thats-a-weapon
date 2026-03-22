@@ -15,6 +15,8 @@ public class GameContext {
     private int currentPhase = 0;
 
     private EventsBlock eventsBlock = new EventsBlock();
+    private boolean needToShowRules;
+    private int difficultyLevel;
 
     public GameContext() {
         phoneContext = new PhoneContext();
@@ -79,6 +81,22 @@ public class GameContext {
 
     public void setEventsBlock(EventsBlock eventsBlock) {
         this.eventsBlock = eventsBlock;
+    }
+
+    public void setNeedToShowRules(boolean needToShowRules) {
+        this.needToShowRules = needToShowRules;
+    }
+
+    public boolean isNeedToShowRules() {
+        return needToShowRules;
+    }
+
+    public void setDifficultyLevel(int difficultyLevel) {
+        this.difficultyLevel = difficultyLevel;
+    }
+
+    public int getDifficultyLevel() {
+        return difficultyLevel;
     }
 
 

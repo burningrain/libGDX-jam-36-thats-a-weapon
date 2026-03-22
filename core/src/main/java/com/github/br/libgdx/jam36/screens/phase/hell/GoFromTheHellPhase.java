@@ -52,20 +52,6 @@ public class GoFromTheHellPhase implements Phase {
 
         AnimatedImage fire5 = renderer.getActor(TiledLayers.HELL_TABLE_FIRES_LAYER, StageActors.FIRE_5, AnimatedImage.class);
         fire5.pause();
-        //
-
-        // clean up daily table
-        AnimatedImage hrDictophone = renderer.getActor(TiledLayers.ACTORS_LAYER_DICTOPHONES, StageActors.HR_DICTOPHONE, AnimatedImage.class);
-        hrDictophone.setVisible(true);
-
-        AnimatedImage heroDictophone = renderer.getActor(TiledLayers.ACTORS_LAYER_DICTOPHONES, StageActors.HERO_DICTOPHONE, AnimatedImage.class);
-        heroDictophone.setVisible(true);
-
-        AnimatedImage hrStress = renderer.getActor(TiledLayers.ACTORS_LAYER_STRESS_LEVELS, StageActors.HR_STRESS_LEVEL, AnimatedImage.class);
-        hrStress.setVisible(true);
-
-        AnimatedImage heroStress = renderer.getActor(TiledLayers.ACTORS_LAYER_STRESS_LEVELS, StageActors.HERO_STRESS_LEVEL, AnimatedImage.class);
-        heroStress.setVisible(true);
     }
 
     @Override

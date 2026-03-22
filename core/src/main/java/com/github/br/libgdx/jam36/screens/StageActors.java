@@ -10,7 +10,7 @@ public interface StageActors {
     String SIGN_BUTTON = "sign_button";
 
     // watch
-    String CALENDAR_DAY = "calendar_day";
+    String WEEK_DAY = "calendar_day";
     String WATCH_ARROW = "watch_arrow";
 
     String TEXT_WINDOW = "text_window";

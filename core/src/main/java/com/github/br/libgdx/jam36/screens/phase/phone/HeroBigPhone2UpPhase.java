@@ -5,8 +5,10 @@ import com.badlogic.gdx.maps.MapLayer;
 import com.github.br.libgdx.jam36.CustomOrthogonalTiledMapRenderer;
 import com.github.br.libgdx.jam36.context.GameContext;
 import com.github.br.libgdx.jam36.context.PhoneContext;
+import com.github.br.libgdx.jam36.screens.StageActors;
 import com.github.br.libgdx.jam36.screens.TiledLayers;
 import com.github.br.libgdx.jam36.screens.phase.Phase;
+import com.github.br.libgdx.jam36.ui.AnimatedImage;
 
 public class HeroBigPhone2UpPhase implements Phase, PhoneContext.Listener {
 
@@ -34,6 +36,9 @@ public class HeroBigPhone2UpPhase implements Phase, PhoneContext.Listener {
 
         MapLayer heroTablePhone = renderer.getLayer(TiledLayers.SMALL_HERO_PHONE_ON_TABLE);
         heroTablePhone.setVisible(false);
+
+        AnimatedImage dictophone = renderer.getActor(TiledLayers.ACTORS_LAYER_DICTOPHONES, StageActors.HERO_DICTOPHONE, AnimatedImage.class);
+        dictophone.setVisible(false);
 
         // установить позицию вне экрана
         currentY = INITIAL_OFFSET_Y;

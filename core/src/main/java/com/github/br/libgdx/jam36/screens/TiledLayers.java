@@ -44,4 +44,6 @@ public interface TiledLayers {
 
     String HELL_TABLE_FIRES_LAYER = "fires";
 
+    String ACTORS_LAYER_WATCH = "watch";
+
 }
