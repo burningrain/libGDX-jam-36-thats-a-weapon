@@ -36,19 +36,11 @@ public class CustomOrthogonalTiledMapRenderer extends OrthogonalTiledMapRenderer
 
     @Override
     public void renderObjects(MapLayer layer) {
-        Stage stage = getStageByLayerName(layer.getName());
-
-        // ЗАКРЫВАЕМ батч рендерера
-        getBatch().flush();
-        endRender();
-
         // Рендерим Stage
+        Stage stage = getStageByLayerName(layer.getName());
         stage.getViewport().apply();
         stage.act(Gdx.graphics.getDeltaTime());
-        stage.draw();
-
-        // СНОВА ОТКРЫВАЕМ батч рендерера
-        beginRender();
+        stage.getRoot().draw(batch, 1f);
     }
 
     public void updateOffsetsForGroupLayer(String layerName, float offsetX, float offsetY) {

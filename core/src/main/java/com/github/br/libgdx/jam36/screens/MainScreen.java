@@ -28,7 +28,6 @@ import com.github.br.libgdx.jam36.screens.phase.hr.ShowHrPhase;
 import com.github.br.libgdx.jam36.screens.phase.mind.MindChooserPhase;
 import com.github.br.libgdx.jam36.screens.phase.phone.*;
 import com.github.br.libgdx.jam36.screens.phase.predicate.PredicatePhase;
-import com.github.br.libgdx.jam36.screens.phase.stress.ShowStressLevelsPhase;
 import com.github.br.libgdx.jam36.screens.phase.tea.ShowTeaPhase;
 import com.github.br.libgdx.jam36.ui.AnimatedImage;
 import structure.screen.AbstractGameScreen;
@@ -423,10 +422,10 @@ public class MainScreen extends AbstractGameScreen {
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+        phaseManager.act(gameContext, delta);
+
         camera.update();
         renderer.setView(camera);
-
-        phaseManager.act(gameContext, delta);
         renderer.render();
     }
 
