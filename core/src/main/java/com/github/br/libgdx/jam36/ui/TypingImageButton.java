@@ -94,8 +94,18 @@ public class TypingImageButton extends Button {
         return new Image((Drawable) null, Scaling.fit);
     }
 
-    protected Label newLabel(String text, Label.LabelStyle style) {
-        return new Label(text, style);
+    @Override
+    public void setColor(Color color) {
+        super.setColor(color);
+        image.setColor(color);
+        label.setColor(color);
+    }
+
+    @Override
+    public void setColor(float r, float g, float b, float a) {
+        super.setColor(r, g, b, a);
+        image.setColor(r, g, b, a);
+        label.setColor(r, g, b, a);
     }
 
     public void setStyle(ButtonStyle style) {

@@ -1,6 +1,7 @@
 package com.github.br.libgdx.jam36.screens;
 
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -102,7 +103,10 @@ public class ActorFactory {
             0.033f, regions, Animation.PlayMode.NORMAL
         );
 
-        return new AnimatedImage(animation);
+        AnimatedImage animatedImage = new AnimatedImage(animation);
+        animatedImage.setColor(Color.GRAY);
+
+        return animatedImage;
     }
 
     public FloatingButton createFloatingThought(int id, String text, float floatAmplitude, float speed, float phase) {
@@ -110,12 +114,29 @@ public class ActorFactory {
             skin, "thought", text , floatAmplitude, speed, phase
         );
         floatingButton.setName("" + id);
+        floatingButton.setColor(Color.GRAY);
 
         return floatingButton;
     }
 
     private Actor createThought(MapObject object) {
-        return new ImageTextButton("Впиши текст", skin, "thought");
+        return new ImageTextButton("Впиши текст", skin, "thought") {
+
+            @Override
+            public void setColor(Color color) {
+                super.setColor(color);
+                getImage().setColor(color);
+                getLabel().setColor(color);
+            }
+
+            @Override
+            public void setColor(float r, float g, float b, float a) {
+                super.setColor(r, g, b, a);
+                getImage().setColor(r, g, b, a);
+                getLabel().setColor(r, g, b, a);
+            }
+
+        };
     }
 
     private Actor createWatchHourArrow(MapObject object) {

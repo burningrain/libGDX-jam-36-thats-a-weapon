@@ -1,5 +1,6 @@
 package com.github.br.libgdx.jam36.screens.phase.mind;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;

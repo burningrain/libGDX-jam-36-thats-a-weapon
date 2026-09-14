@@ -3,6 +3,8 @@ package com.github.br.libgdx.jam36;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.*;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -13,6 +15,8 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.github.br.libgdx.jam36.screens.ActorFactory;
+import com.github.tommyettinger.colorful.rgb.Palette;
+import com.github.tommyettinger.colorful.rgb.TextureArrayColorfulBatch;
 
 public class CustomOrthogonalTiledMapRenderer extends OrthogonalTiledMapRenderer {
 
@@ -24,7 +28,7 @@ public class CustomOrthogonalTiledMapRenderer extends OrthogonalTiledMapRenderer
     public CustomOrthogonalTiledMapRenderer(
         ActorFactory actorFactory, Viewport viewport, TiledMap map, float unitScale
     ) {
-        super(map, unitScale);
+        super(map, unitScale, new TextureArrayColorfulBatch());
         this.viewport = viewport;
         this.actorFactory = actorFactory;
 
@@ -35,12 +39,31 @@ public class CustomOrthogonalTiledMapRenderer extends OrthogonalTiledMapRenderer
     }
 
     @Override
+    protected void beginRender () {
+        super.beginRender();
+        Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+
+        TextureArrayColorfulBatch colorfulBatch = (TextureArrayColorfulBatch) batch;
+        colorfulBatch.setPackedColor(Palette.GRAY); // Нейтральный для RGB
+    }
+
+    @Override
+    protected void endRender () {
+        TextureArrayColorfulBatch colorfulBatch = (TextureArrayColorfulBatch) batch;
+        colorfulBatch.setPackedColor(Palette.GRAY);
+        super.endRender();
+    }
+
+    @Override
     public void renderObjects(MapLayer layer) {
         // Рендерим Stage
         Stage stage = getStageByLayerName(layer.getName());
         stage.getViewport().apply();
         stage.act(Gdx.graphics.getDeltaTime());
         stage.getRoot().draw(batch, 1f);
+
+        TextureArrayColorfulBatch colorfulBatch = (TextureArrayColorfulBatch) batch;
+        colorfulBatch.setPackedColor(Palette.GRAY);
     }
 
     public void updateOffsetsForGroupLayer(String layerName, float offsetX, float offsetY) {
@@ -108,6 +131,7 @@ public class CustomOrthogonalTiledMapRenderer extends OrthogonalTiledMapRenderer
             Stage stage = new Stage(viewport, getBatch());
             for (MapObject object : objects) {
                 Actor actor = actorFactory.getActor(object);
+                actor.setColor(Color.GRAY);
                 MapProperties properties = object.getProperties();
                 float x = properties.get("x", float.class);
                 float y = properties.get("y", float.class);
