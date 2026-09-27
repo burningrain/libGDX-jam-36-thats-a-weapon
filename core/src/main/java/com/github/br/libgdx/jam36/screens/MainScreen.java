@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.profiling.GLProfiler;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -47,8 +48,13 @@ public class MainScreen extends AbstractGameScreen {
 
     private Watch watch;
 
+    GLProfiler glProfiler;
+
     @Override
     public void show() {
+        glProfiler = new GLProfiler(Gdx.graphics);
+        glProfiler.enable();
+
         AssetManager assetManager = getGameManager().assetManager;
         tiledMap = assetManager.get(Resources.MENU);
 
@@ -427,6 +433,16 @@ public class MainScreen extends AbstractGameScreen {
         camera.update();
         renderer.setView(camera);
         renderer.render();
+
+        // Вывод информации (например, в консоль или на экран через Label)
+        System.out.println("Draw Calls: " + glProfiler.getDrawCalls());
+        System.out.println("Texture Bindings: " + glProfiler.getTextureBindings());
+        System.out.println("Shader Switches: " + glProfiler.getShaderSwitches());
+        System.out.println("Vertices: " + glProfiler.getVertexCount().total);
+        System.out.println("");
+
+        // Обязательно сбрасываем счетчик в конце кадра!
+        glProfiler.reset();
     }
 
     @Override

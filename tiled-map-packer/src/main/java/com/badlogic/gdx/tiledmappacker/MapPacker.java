@@ -6,6 +6,7 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker;
+import com.badlogic.gdx.tools.texturepacker.TiledLayerPacker;
 
 import java.io.File;
 
@@ -63,9 +64,17 @@ public class MapPacker {
 
                 deleteDirectoryContents(outputDir);
 
-                TiledMapPacker packer = new TiledMapPacker();
-                TiledMapPacker.inputDir = new File(inputDir);
-                TiledMapPacker.outputDir = new File(outputDir);
+                CustomTiledMapPacker packer = new CustomTiledMapPacker() {
+                    @Override
+                    public TexturePacker newTexturePacker(TexturePacker.Settings texturePackerSettings) {
+                        TexturePacker texturePacker = new TexturePacker(texturePackerSettings);
+                        texturePacker.setPacker(new TiledLayerPacker(texturePackerSettings));
+
+                        return texturePacker;
+                    }
+                };
+                CustomTiledMapPacker.inputDir = new File(inputDir);
+                CustomTiledMapPacker.outputDir = new File(outputDir);
 
                 packer.processInputDir(settings);
 

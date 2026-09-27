@@ -4,24 +4,73 @@ size: 2048, 2048
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
-atlas_imagelayer_glass_110814651557300x
+atlas_imagelayer_flowerpot1_1039149409721201x
+  rotate: false
+  xy: 1715, 961
+  size: 161, 182
+  orig: 161, 182
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_flowerpot2_1039149409721203x
+  rotate: false
+  xy: 1715, 777
+  size: 161, 182
+  orig: 161, 182
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_glass_1039149409721200x
   rotate: false
   xy: 1, 1
   size: 1712, 1962
   orig: 1712, 1962
   offset: 0, 0
   index: -1
+atlas_imagelayer_palm_tree_1_1039149409721202x
+  rotate: false
+  xy: 1715, 1527
+  size: 282, 436
+  orig: 282, 436
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_tree_1039149409721204x
+  rotate: false
+  xy: 1715, 1145
+  size: 268, 380
+  orig: 268, 380
+  offset: 0, 0
+  index: -1
 
 menu2.png
-size: 2048, 2048
+size: 512, 1024
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
-atlas_imagelayer_hell_glass_110814651557309x
+atlas_imagelayer_door_1039149409721205x
+  rotate: false
+  xy: 1, 199
+  size: 392, 766
+  orig: 392, 766
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_watch_1039149409721206x
   rotate: false
   xy: 1, 1
-  size: 1712, 2002
-  orig: 1712, 2002
+  size: 196, 196
+  orig: 196, 196
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_watch_arrow_1039149409721208x
+  rotate: false
+  xy: 199, 118
+  size: 9, 79
+  orig: 9, 79
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_watch_work_day_1_1039149409721207x
+  rotate: false
+  xy: 395, 914
+  size: 45, 51
+  orig: 45, 51
   offset: 0, 0
   index: -1
 
@@ -30,18 +79,39 @@ size: 2048, 2048
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
-atlas_imagelayer_hair_110814651557390x
+atlas_imagelayer_hell_flowerpot2_1039149409721212x
   rotate: false
-  xy: 1, 1
-  size: 1087, 1486
-  orig: 1087, 1486
+  xy: 1715, 817
+  size: 161, 182
+  orig: 161, 182
   offset: 0, 0
   index: -1
-atlas_imagelayer_hell_table_legs_110814651557329x
+atlas_imagelayer_hell_flowerpot_1_1039149409721210x
   rotate: false
-  xy: 1, 1489
-  size: 1181, 459
-  orig: 1181, 459
+  xy: 1715, 1001
+  size: 161, 182
+  orig: 161, 182
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hell_glass_1039149409721209x
+  rotate: false
+  xy: 1, 1
+  size: 1712, 2002
+  orig: 1712, 2002
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hell_palm_tree_1039149409721211x
+  rotate: false
+  xy: 1715, 1567
+  size: 282, 436
+  orig: 282, 436
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hell_tree_1039149409721213x
+  rotate: false
+  xy: 1715, 1185
+  size: 268, 380
+  orig: 268, 380
   offset: 0, 0
   index: -1
 
@@ -50,18 +120,109 @@ size: 2048, 2048
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
-atlas_imagelayer_hell_table_110814651557330x
+atlas_imagelayer_hell_chair_1039149409721222x
   rotate: false
-  xy: 1, 1
-  size: 1034, 517
-  orig: 1034, 517
+  xy: 1, 158
+  size: 385, 488
+  orig: 385, 488
   offset: 0, 0
   index: -1
-atlas_imagelayer_table_110814651557351x
+atlas_imagelayer_hell_door_1039149409721214x
   rotate: false
-  xy: 1, 520
-  size: 1062, 794
-  orig: 1062, 794
+  xy: 1, 648
+  size: 1010, 1384
+  orig: 1010, 1384
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hell_door_blue_1039149409721215x
+  rotate: false
+  xy: 1013, 648
+  size: 1010, 1384
+  orig: 1010, 1384
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hell_hr_hair_1039149409721226x
+  rotate: false
+  xy: 388, 358
+  size: 318, 288
+  orig: 318, 288
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hell_hr_head_1039149409721225x
+  rotate: false
+  xy: 991, 308
+  size: 271, 338
+  orig: 271, 338
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hell_hr_horn_left_1039149409721227x
+  rotate: false
+  xy: 1633, 514
+  size: 71, 132
+  orig: 71, 132
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hell_hr_horn_right_1039149409721228x
+  rotate: false
+  xy: 113, 24
+  size: 71, 132
+  orig: 71, 132
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hell_hr_stiletto_left_1039149409721219x
+  rotate: false
+  xy: 1, 1
+  size: 110, 155
+  orig: 110, 155
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hell_hr_tail_1039149409721221x
+  rotate: false
+  xy: 1500, 360
+  size: 131, 286
+  orig: 131, 286
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hr_hell_neck_1039149409721224x
+  rotate: false
+  xy: 1264, 332
+  size: 82, 78
+  orig: 82, 78
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hr_hell_shirt_1039149409721223x
+  rotate: false
+  xy: 708, 295
+  size: 281, 351
+  orig: 281, 351
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hr_stiletto_right_1039149409721220x
+  rotate: false
+  xy: 388, 201
+  size: 108, 155
+  orig: 108, 155
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_left_foot_1039149409721217x
+  rotate: false
+  xy: 1633, 388
+  size: 60, 124
+  orig: 60, 124
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_right_foot_1039149409721218x
+  rotate: false
+  xy: 498, 169
+  size: 63, 187
+  orig: 63, 187
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_watch_1039149409721216x
+  rotate: false
+  xy: 1264, 412
+  size: 234, 234
+  orig: 234, 234
   offset: 0, 0
   index: -1
 
@@ -70,18 +231,312 @@ size: 2048, 2048
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
-atlas_imagelayer_hell_door_110814651557314x
+atlas_imagelayer_HR_phone0001_1039149409721241x
   rotate: false
-  xy: 1013, 1
-  size: 1010, 1384
-  orig: 1010, 1384
+  xy: 866, 122
+  size: 132, 125
+  orig: 132, 125
   offset: 0, 0
   index: -1
-atlas_imagelayer_hell_door_blue_110814651557315x
+atlas_imagelayer_HR_phone0001_1039149409721256x
   rotate: false
-  xy: 1, 1
-  size: 1010, 1384
-  orig: 1010, 1384
+  xy: 866, 122
+  size: 132, 125
+  orig: 132, 125
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_candle_1039149409721232x
+  rotate: false
+  xy: 1385, 946
+  size: 31, 126
+  orig: 31, 126
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_candle_1039149409721233x
+  rotate: false
+  xy: 1385, 946
+  size: 31, 126
+  orig: 31, 126
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_candle_1039149409721234x
+  rotate: false
+  xy: 1385, 946
+  size: 31, 126
+  orig: 31, 126
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_candle_1039149409721235x
+  rotate: false
+  xy: 1385, 946
+  size: 31, 126
+  orig: 31, 126
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_candle_1039149409721236x
+  rotate: false
+  xy: 1385, 946
+  size: 31, 126
+  orig: 31, 126
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_chair_1039149409721246x
+  rotate: false
+  xy: 1065, 1074
+  size: 385, 488
+  orig: 385, 488
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_cup_of_tea_1039149409721267x
+  rotate: false
+  xy: 692, 2
+  size: 110, 81
+  orig: 110, 81
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_cup_of_tea_1039149409721270x
+  rotate: false
+  xy: 692, 2
+  size: 110, 81
+  orig: 110, 81
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_french_press_1039149409721268x
+  rotate: false
+  xy: 481, 1
+  size: 209, 246
+  orig: 209, 246
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hell_hr_arm_left_1039149409721239x
+  rotate: false
+  xy: 1792, 1220
+  size: 130, 320
+  orig: 130, 320
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hell_hr_arm_right_1039149409721243x
+  rotate: false
+  xy: 1792, 888
+  size: 120, 330
+  orig: 120, 330
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hell_hr_hand_left_1039149409721237x
+  rotate: false
+  xy: 1914, 1098
+  size: 103, 120
+  orig: 103, 120
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hell_hr_hand_left_nails_1039149409721238x
+  rotate: false
+  xy: 1825, 513
+  size: 80, 88
+  orig: 80, 88
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hell_hr_hand_right_1039149409721240x
+  rotate: false
+  xy: 1914, 858
+  size: 101, 116
+  orig: 101, 116
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hell_hr_hand_right_nails_1039149409721242x
+  rotate: false
+  xy: 1792, 801
+  size: 101, 85
+  orig: 101, 85
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hell_table_1039149409721230x
+  rotate: false
+  xy: 1, 249
+  size: 1034, 517
+  orig: 1034, 517
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hell_table_legs_1039149409721229x
+  rotate: false
+  xy: 1, 1564
+  size: 1181, 459
+  orig: 1181, 459
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hero_dictophone_1_1039149409721263x
+  rotate: false
+  xy: 1184, 1577
+  size: 74, 52
+  orig: 74, 52
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hr_arm_left_1039149409721254x
+  rotate: false
+  xy: 1924, 1220
+  size: 110, 320
+  orig: 110, 320
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hr_arm_right_1039149409721258x
+  rotate: false
+  xy: 1712, 447
+  size: 111, 330
+  orig: 111, 330
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hr_dictophone_1_1039149409721264x
+  rotate: false
+  xy: 1384, 1707
+  size: 66, 46
+  orig: 66, 46
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hr_hair_1039149409721250x
+  rotate: false
+  xy: 1065, 784
+  size: 318, 288
+  orig: 318, 288
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hr_hand_left_1039149409721252x
+  rotate: false
+  xy: 1914, 976
+  size: 103, 120
+  orig: 103, 120
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hr_hand_left_nails_1039149409721253x
+  rotate: false
+  xy: 1622, 1591
+  size: 76, 82
+  orig: 76, 82
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hr_hand_right_1039149409721255x
+  rotate: false
+  xy: 1825, 683
+  size: 101, 116
+  orig: 101, 116
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hr_hand_right_nails_1039149409721257x
+  rotate: false
+  xy: 1825, 603
+  size: 96, 78
+  orig: 96, 78
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hr_head_1039149409721249x
+  rotate: false
+  xy: 1320, 444
+  size: 271, 338
+  orig: 271, 338
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hr_shirt_1039149409721247x
+  rotate: false
+  xy: 1037, 415
+  size: 281, 351
+  orig: 281, 351
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_hr_stress_1_1039149409721261x
+  rotate: false
+  xy: 1037, 5
+  size: 275, 408
+  orig: 275, 408
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_left_hand_down_1039149409721272x
+  rotate: false
+  xy: 1622, 779
+  size: 168, 761
+  orig: 168, 761
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_left_leg_1039149409721259x
+  rotate: false
+  xy: 243, 8
+  size: 236, 239
+  orig: 236, 239
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_my_ phone0001_1039149409721262x
+  rotate: false
+  xy: 692, 85
+  size: 172, 162
+  orig: 172, 162
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_my_stress_1_1039149409721265x
+  rotate: false
+  xy: 1710, 1542
+  size: 283, 481
+  orig: 283, 481
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_neck_1039149409721248x
+  rotate: false
+  xy: 1622, 1675
+  size: 82, 78
+  orig: 82, 78
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_pentagram_1039149409721231x
+  rotate: false
+  xy: 1184, 1755
+  size: 524, 268
+  orig: 524, 268
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_plate_1039149409721266x
+  rotate: false
+  xy: 1184, 1631
+  size: 198, 122
+  orig: 198, 122
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_plate_1039149409721269x
+  rotate: false
+  xy: 1184, 1631
+  size: 198, 122
+  orig: 198, 122
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_right_hand_down_1039149409721271x
+  rotate: false
+  xy: 1452, 1062
+  size: 168, 691
+  orig: 168, 691
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_right_leg_1039149409721260x
+  rotate: false
+  xy: 1, 15
+  size: 240, 232
+  orig: 240, 232
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_stiletto_left_1039149409721244x
+  rotate: false
+  xy: 1593, 622
+  size: 117, 155
+  orig: 117, 155
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_stiletto_right_1039149409721245x
+  rotate: false
+  xy: 1593, 465
+  size: 117, 155
+  orig: 117, 155
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_table_1039149409721251x
+  rotate: false
+  xy: 1, 768
+  size: 1062, 794
+  orig: 1062, 794
   offset: 0, 0
   index: -1
 
@@ -90,39 +545,53 @@ size: 2048, 2048
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
-atlas_imagelayer_collar_110814651557391x
+atlas_imagelayer_left_hand_up_1039149409721277x
   rotate: false
-  xy: 710, 313
-  size: 684, 231
-  orig: 684, 231
+  xy: 1617, 1067
+  size: 297, 880
+  orig: 297, 880
   offset: 0, 0
   index: -1
-atlas_imagelayer_hero_head_110814651557389x
+atlas_imagelayer_phone_hero_hand_down_1039149409721279x
   rotate: false
-  xy: 1, 1114
-  size: 989, 824
-  orig: 989, 824
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_phone_hero_hand_down_110814651557379x
-  rotate: false
-  xy: 1, 48
+  xy: 908, 883
   size: 707, 1064
   orig: 707, 1064
   offset: 0, 0
   index: -1
-atlas_imagelayer_sign_button_1_110814651557376x
+atlas_imagelayer_right_hand_up_1039149409721278x
   rotate: false
-  xy: 710, 1
+  xy: 908, 1
+  size: 297, 880
+  orig: 297, 880
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_sign_button_1_1039149409721276x
+  rotate: false
+  xy: 1, 243
   size: 609, 310
   orig: 609, 310
   offset: 0, 0
   index: -1
-atlas_imagelayer_tablet_110814651557373x
+atlas_imagelayer_tablet_1039149409721273x
   rotate: false
-  xy: 992, 546
+  xy: 1, 555
   size: 905, 1392
   orig: 905, 1392
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_tablet_button_1_1039149409721274x
+  rotate: false
+  xy: 1916, 1517
+  size: 71, 430
+  orig: 71, 430
+  offset: 0, 0
+  index: -1
+atlas_imagelayer_tablet_button_left_1_1039149409721275x
+  rotate: false
+  xy: 1207, 451
+  size: 71, 430
+  orig: 71, 430
   offset: 0, 0
   index: -1
 
@@ -131,562 +600,93 @@ size: 2048, 2048
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
-atlas_imagelayer_chair_110814651557346x
+atlas_imagelayer_hero_big_ phone_1039149409721280x
   rotate: false
-  xy: 1530, 1463
-  size: 385, 488
-  orig: 385, 488
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_door_110814651557305x
-  rotate: false
-  xy: 1136, 1185
-  size: 392, 766
-  orig: 392, 766
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hell_chair_110814651557322x
-  rotate: false
-  xy: 610, 1193
-  size: 385, 488
-  orig: 385, 488
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hell_hr_hair_110814651557326x
-  rotate: false
-  xy: 930, 895
-  size: 318, 288
-  orig: 318, 288
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hell_hr_head_110814651557325x
-  rotate: false
-  xy: 1764, 8
-  size: 271, 338
-  orig: 271, 338
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hell_palm_tree_110814651557311x
-  rotate: false
-  xy: 285, 411
-  size: 282, 436
-  orig: 282, 436
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hero_big_ phone_110814651557380x
-  rotate: false
-  xy: 1, 849
+  xy: 1, 119
   size: 607, 1102
   orig: 607, 1102
   offset: 0, 0
   index: -1
-atlas_imagelayer_hero_phone_hand_up_110814651557388x
+atlas_imagelayer_hero_head_1039149409721289x
   rotate: false
-  xy: 1530, 348
-  size: 368, 1113
-  orig: 368, 1113
+  xy: 1, 1223
+  size: 989, 824
+  orig: 989, 824
   offset: 0, 0
   index: -1
-atlas_imagelayer_hr_hair_110814651557350x
+atlas_imagelayer_hero_hone_mute_1039149409721285x
   rotate: false
-  xy: 610, 903
-  size: 318, 288
-  orig: 318, 288
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hr_head_110814651557349x
-  rotate: false
-  xy: 1491, 8
-  size: 271, 338
-  orig: 271, 338
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hr_hell_shirt_110814651557323x
-  rotate: false
-  xy: 1, 58
-  size: 281, 351
-  orig: 281, 351
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hr_shirt_110814651557347x
-  rotate: false
-  xy: 1208, 59
-  size: 281, 351
-  orig: 281, 351
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hr_stress_1_110814651557361x
-  rotate: false
-  xy: 284, 1
-  size: 275, 408
-  orig: 275, 408
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_left_hand_up_110814651557377x
-  rotate: false
-  xy: 909, 13
-  size: 297, 880
-  orig: 297, 880
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_my_stress_1_110814651557365x
-  rotate: false
-  xy: 1208, 412
-  size: 283, 481
-  orig: 283, 481
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_palm_tree_1_110814651557302x
-  rotate: false
-  xy: 1, 411
-  size: 282, 436
-  orig: 282, 436
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_pentagram_110814651557331x
-  rotate: false
-  xy: 610, 1683
-  size: 524, 268
-  orig: 524, 268
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_right_hand_up_110814651557378x
-  rotate: false
-  xy: 610, 21
-  size: 297, 880
-  orig: 297, 880
-  offset: 0, 0
-  index: -1
-
-menu8.png
-size: 2048, 1024
-format: RGBA8888
-filter: Linear, Linear
-repeat: none
-atlas_imagelayer_HR_phone0001_110814651557356x
-  rotate: false
-  xy: 1845, 578
-  size: 132, 125
-  orig: 132, 125
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_HR_phone0001_110814651557341x
-  rotate: false
-  xy: 1845, 578
-  size: 132, 125
-  orig: 132, 125
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_candle_110814651557336x
-  rotate: false
-  xy: 449, 145
-  size: 31, 126
-  orig: 31, 126
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_candle_110814651557332x
-  rotate: false
-  xy: 449, 145
-  size: 31, 126
-  orig: 31, 126
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_candle_110814651557333x
-  rotate: false
-  xy: 449, 145
-  size: 31, 126
-  orig: 31, 126
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_candle_110814651557334x
-  rotate: false
-  xy: 449, 145
-  size: 31, 126
-  orig: 31, 126
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_candle_110814651557335x
-  rotate: false
-  xy: 449, 145
-  size: 31, 126
-  orig: 31, 126
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_cup_of_tea_110814651557367x
-  rotate: false
-  xy: 1682, 254
-  size: 110, 81
-  orig: 110, 81
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_cup_of_tea_110814651557370x
-  rotate: false
-  xy: 1682, 254
-  size: 110, 81
-  orig: 110, 81
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_flowerpot1_110814651557301x
-  rotate: false
-  xy: 1682, 473
-  size: 161, 182
-  orig: 161, 182
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_flowerpot2_110814651557303x
-  rotate: false
-  xy: 1682, 657
-  size: 161, 182
-  orig: 161, 182
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_french_press_110814651557368x
-  rotate: false
-  xy: 271, 273
-  size: 209, 246
-  orig: 209, 246
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hell_flowerpot2_110814651557312x
-  rotate: false
-  xy: 1682, 841
-  size: 161, 182
-  orig: 161, 182
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hell_flowerpot_1_110814651557310x
-  rotate: false
-  xy: 1845, 841
-  size: 161, 182
-  orig: 161, 182
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hell_hr_arm_left_110814651557339x
-  rotate: false
-  xy: 770, 579
-  size: 130, 320
-  orig: 130, 320
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hell_hr_arm_right_110814651557343x
-  rotate: false
-  xy: 902, 495
-  size: 120, 330
-  orig: 120, 330
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hell_hr_hand_left_110814651557337x
-  rotate: false
-  xy: 1923, 299
-  size: 103, 120
-  orig: 103, 120
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hell_hr_hand_left_nails_110814651557338x
-  rotate: false
-  xy: 682, 699
-  size: 80, 88
-  orig: 80, 88
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hell_hr_hand_right_110814651557340x
-  rotate: false
-  xy: 346, 155
-  size: 101, 116
-  orig: 101, 116
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hell_hr_hand_right_nails_110814651557342x
-  rotate: false
-  xy: 243, 56
-  size: 101, 85
-  orig: 101, 85
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hell_hr_horn_left_110814651557327x
-  rotate: false
-  xy: 910, 361
-  size: 71, 132
-  orig: 71, 132
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hell_hr_horn_right_110814651557328x
-  rotate: false
-  xy: 1256, 727
-  size: 71, 132
-  orig: 71, 132
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hell_hr_stiletto_left_110814651557319x
-  rotate: false
-  xy: 1845, 421
-  size: 110, 155
-  orig: 110, 155
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hell_hr_tail_110814651557321x
-  rotate: false
-  xy: 482, 233
-  size: 131, 286
-  orig: 131, 286
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hell_tree_110814651557313x
-  rotate: false
-  xy: 1, 643
-  size: 268, 380
-  orig: 268, 380
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hero_dictophone_1_110814651557363x
-  rotate: false
-  xy: 676, 645
-  size: 74, 52
-  orig: 74, 52
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hero_hone_mute_110814651557385x
-  rotate: false
-  xy: 727, 201
+  xy: 992, 1546
   size: 102, 102
   orig: 102, 102
   offset: 0, 0
   index: -1
-atlas_imagelayer_hero_hone_wire_human_110814651557386x
+atlas_imagelayer_hero_hone_wire_human_1039149409721286x
   rotate: false
-  xy: 271, 762
+  xy: 992, 1786
   size: 261, 261
   orig: 261, 261
   offset: 0, 0
   index: -1
-atlas_imagelayer_hero_phone_camera_110814651557387x
+atlas_imagelayer_hero_phone_camera_1039149409721287x
   rotate: false
-  xy: 346, 1
+  xy: 1128, 1712
   size: 72, 72
   orig: 72, 72
   offset: 0, 0
   index: -1
-atlas_imagelayer_hero_phone_cancel_call_110814651557381x
+atlas_imagelayer_hero_phone_cancel_call_1039149409721281x
   rotate: false
-  xy: 1682, 337
+  xy: 992, 1650
   size: 134, 134
   orig: 134, 134
   offset: 0, 0
   index: -1
-atlas_imagelayer_hero_phone_dynamic_110814651557383x
+atlas_imagelayer_hero_phone_dynamic_1039149409721283x
   rotate: false
-  xy: 727, 462
+  xy: 1, 2
   size: 109, 115
   orig: 109, 115
   offset: 0, 0
   index: -1
-atlas_imagelayer_hero_phone_get_call_110814651557382x
+atlas_imagelayer_hero_phone_get_call_1039149409721282x
   rotate: false
-  xy: 1845, 705
+  xy: 1255, 1913
   size: 134, 134
   orig: 134, 134
   offset: 0, 0
   index: -1
-atlas_imagelayer_hr_arm_left_110814651557354x
+atlas_imagelayer_hero_phone_hand_up_1039149409721288x
   rotate: false
-  xy: 615, 257
-  size: 110, 320
-  orig: 110, 320
+  xy: 610, 108
+  size: 368, 1113
+  orig: 368, 1113
   offset: 0, 0
   index: -1
-atlas_imagelayer_hr_arm_right_110814651557358x
+atlas_imagelayer_phone_hero_call_number_1039149409721284x
   rotate: false
-  xy: 1143, 495
-  size: 111, 330
-  orig: 111, 330
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hr_dictophone_1_110814651557364x
-  rotate: false
-  xy: 902, 853
-  size: 66, 46
-  orig: 66, 46
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hr_hand_left_110814651557352x
-  rotate: false
-  xy: 1818, 299
-  size: 103, 120
-  orig: 103, 120
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hr_hand_left_nails_110814651557353x
-  rotate: false
-  xy: 598, 625
-  size: 76, 82
-  orig: 76, 82
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hr_hand_right_110814651557355x
-  rotate: false
-  xy: 243, 143
-  size: 101, 116
-  orig: 101, 116
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hr_hand_right_nails_110814651557357x
-  rotate: false
-  xy: 346, 75
-  size: 96, 78
-  orig: 96, 78
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hr_hell_neck_110814651557324x
-  rotate: false
-  xy: 598, 709
-  size: 82, 78
-  orig: 82, 78
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_hr_stiletto_right_110814651557320x
-  rotate: false
-  xy: 727, 305
-  size: 108, 155
-  orig: 108, 155
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_left_foot_110814651557317x
-  rotate: false
-  xy: 910, 46
-  size: 60, 124
-  orig: 60, 124
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_left_hand_down_110814651557372x
-  rotate: false
-  xy: 1512, 262
-  size: 168, 761
-  orig: 168, 761
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_left_leg_110814651557359x
-  rotate: false
-  xy: 271, 521
-  size: 236, 239
-  orig: 236, 239
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_my_ phone0001_110814651557362x
-  rotate: false
-  xy: 1168, 861
-  size: 172, 162
-  orig: 172, 162
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_neck_110814651557348x
-  rotate: false
-  xy: 509, 564
-  size: 82, 78
-  orig: 82, 78
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_phone_hero_call_number_110814651557384x
-  rotate: false
-  xy: 509, 644
+  xy: 112, 1
   size: 87, 116
   orig: 87, 116
   offset: 0, 0
   index: -1
-atlas_imagelayer_plate_110814651557366x
+
+menu8.png
+size: 2048, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+atlas_imagelayer_collar_1039149409721291x
   rotate: false
-  xy: 770, 901
-  size: 198, 122
-  orig: 198, 122
+  xy: 1, 1
+  size: 684, 231
+  orig: 684, 231
   offset: 0, 0
   index: -1
-atlas_imagelayer_plate_110814651557369x
+atlas_imagelayer_hair_1039149409721290x
   rotate: false
-  xy: 770, 901
-  size: 198, 122
-  orig: 198, 122
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_right_foot_110814651557318x
-  rotate: false
-  xy: 910, 172
-  size: 63, 187
-  orig: 63, 187
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_right_hand_down_110814651557371x
-  rotate: false
-  xy: 1342, 332
-  size: 168, 691
-  orig: 168, 691
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_right_leg_110814651557360x
-  rotate: false
-  xy: 1, 27
-  size: 240, 232
-  orig: 240, 232
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_stiletto_left_110814651557344x
-  rotate: false
-  xy: 1024, 670
-  size: 117, 155
-  orig: 117, 155
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_stiletto_right_110814651557345x
-  rotate: false
-  xy: 1024, 513
-  size: 117, 155
-  orig: 117, 155
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_tablet_button_1_110814651557374x
-  rotate: false
-  xy: 837, 30
-  size: 71, 430
-  orig: 71, 430
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_tablet_button_left_1_110814651557375x
-  rotate: false
-  xy: 1256, 295
-  size: 71, 430
-  orig: 71, 430
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_tree_110814651557304x
-  rotate: false
-  xy: 1, 261
-  size: 268, 380
-  orig: 268, 380
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_watch_110814651557306x
-  rotate: false
-  xy: 970, 827
-  size: 196, 196
-  orig: 196, 196
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_watch_110814651557316x
-  rotate: false
-  xy: 534, 789
-  size: 234, 234
-  orig: 234, 234
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_watch_arrow_110814651557308x
-  rotate: false
-  xy: 1794, 256
-  size: 9, 79
-  orig: 9, 79
-  offset: 0, 0
-  index: -1
-atlas_imagelayer_watch_work_day_1_110814651557307x
-  rotate: false
-  xy: 838, 526
-  size: 45, 51
-  orig: 45, 51
+  xy: 1, 234
+  size: 1087, 1486
+  orig: 1087, 1486
   offset: 0, 0
   index: -1
