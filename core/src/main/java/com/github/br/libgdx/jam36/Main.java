@@ -15,10 +15,12 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.crashinvaders.basisu.gdx.Ktx2TextureLoader;
 import com.github.br.libgdx.jam36.screens.GameScreens;
 import com.github.tommyettinger.textra.FWSkinLoader;
 import structure.AbstractSimpleGame;
 import structure.GameSettings;
+import structure.hack.tiled.Ktx2AtlasTmxMapLoader;
 import structure.screen.statemachine.GameScreenState;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
@@ -43,9 +45,10 @@ public class Main extends AbstractSimpleGame<UserFactoryImpl> {
         assetManager.setLoader(Texture.class, new TextureLoader(fileHandleResolver));
         assetManager.setLoader(TextureAtlas.class, new TextureAtlasLoader(fileHandleResolver));
         //assetManager.setLoader(Skin.class, new FreeTypeSkinLoader(fileHandleResolver));
+        assetManager.setLoader(Texture.class, ".ktx2", new Ktx2TextureLoader(fileHandleResolver)); // сжатые текстуры
 
-        // 1. Регистрируем лоадер для FWSkin
-        assetManager.setLoader(Skin.class, new FWSkinLoader(assetManager.getFileHandleResolver()));
+        // лоадер для FWSkin
+        assetManager.setLoader(Skin.class, new FWSkinLoader(fileHandleResolver));
 
         // эффекты частиц
         assetManager.setLoader(ParticleEffect.class, ".p", new ParticleEffectLoader(fileHandleResolver));
@@ -56,7 +59,7 @@ public class Main extends AbstractSimpleGame<UserFactoryImpl> {
 
         // карты редакторов уровней
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(fileHandleResolver));
-        assetManager.setLoader(TiledMap.class, new AtlasTmxMapLoader(fileHandleResolver));
+        assetManager.setLoader(TiledMap.class, new Ktx2AtlasTmxMapLoader(fileHandleResolver));
 
         // шрифты
         assetManager.setLoader(BitmapFont.class, new FreetypeFontLoader(fileHandleResolver));

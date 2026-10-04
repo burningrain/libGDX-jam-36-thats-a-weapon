@@ -9,6 +9,8 @@ buildscript {
   dependencies {
     classpath "com.android.tools.build:gradle:8.9.3"
 
+    // Подключаем плагин для костылей / трансформации байткода во время сборки
+    classpath "net.bytebuddy:byte-buddy-gradle-plugin:1.15.4"
   }
 }
 

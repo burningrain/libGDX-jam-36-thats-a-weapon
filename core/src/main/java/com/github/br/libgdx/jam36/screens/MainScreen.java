@@ -439,7 +439,15 @@ public class MainScreen extends AbstractGameScreen {
         System.out.println("Texture Bindings: " + glProfiler.getTextureBindings());
         System.out.println("Shader Switches: " + glProfiler.getShaderSwitches());
         System.out.println("Vertices: " + glProfiler.getVertexCount().total);
-        System.out.println("");
+        System.out.println("FPS:" + Gdx.graphics.getFramesPerSecond());
+
+        // Память, выделенная под Java-объекты
+        long javaHeap = Gdx.app.getJavaHeap();
+        // Нативная память (сюда входят сырые данные Pixmap до отправки в GPU,
+        // буферы Box2D, аудиоданные и т.д.)
+        long nativeHeap = Gdx.app.getNativeHeap();
+        System.out.println("Java Heap: " + (javaHeap / 1024 / 1024) + " MB");
+        System.out.println("Native Heap: " + (nativeHeap / 1024 / 1024) + " MB");
 
         // Обязательно сбрасываем счетчик в конце кадра!
         glProfiler.reset();

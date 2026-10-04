@@ -9,6 +9,7 @@ import com.badlogic.gdx.tools.texturepacker.TexturePacker;
 import com.badlogic.gdx.tools.texturepacker.TiledLayerPacker;
 
 import java.io.File;
+import java.io.IOException;
 
 public class MapPacker {
 
@@ -80,6 +81,11 @@ public class MapPacker {
 
                 System.out.println("Упаковка завершена успешно!");
 
+                // 2. ЗАПУСКАЕМ СОЗДАНИЕ KTX ИЗ СОЗДАННЫХ PNG
+                System.out.println("Конвертируем полученные атласы в формат KTX...");
+                convertToKtx(outputDir);
+                System.out.println("Упаковка и конвертация в KTX завершены успешно!");
+
             } catch (Exception e) {
                 System.err.println("Ошибка при упаковке:");
                 e.printStackTrace();
@@ -109,6 +115,68 @@ public class MapPacker {
             }
         }
         file.delete();
+    }
+
+    private static void convertToKtx(String outputDirPath) throws Exception {
+        File outputDir = new File(outputDirPath + File.separator + "tileset");
+        File[] files = outputDir.listFiles();
+        if (files == null) return;
+
+        // Путь к вашей утилите toktx (скачайте KTX-Software от Khronos Group)
+
+        String packerJarPath = "D:/projects/gamedev/gdx-texture-packer-4.13.0-universal/gdx-texture-packer.jar";
+        for (File file : files) {
+            if (file.getName().endsWith(".png")) {
+                String pngPath = file.getAbsolutePath();
+                String ktxPath = pngPath.substring(0, pngPath.lastIndexOf('.')) + ".ktx";
+
+                System.out.println("Сжатие: " + file.getName() + " -> KTX...");
+
+                ProcessBuilder pb = new ProcessBuilder(
+                    "java",
+                    "-jar",
+                    packerJarPath,
+                    "--basis-pack",
+                    "--container", "ktx2",
+                    "--format", "uastc",
+                    pngPath
+                );
+
+                pb.inheritIO(); // Выводим логи компрессора в нашу консоль
+                Process process = pb.start();
+                int exitCode = process.waitFor();
+
+                if (exitCode == 0) {
+                    // Если KTX успешно создан, удаляем исходный тяжелый PNG из папки билда
+                    file.delete();
+                } else {
+                    System.err.println("Не удалось сжать файл: " + file.getName());
+                }
+            }
+        }
+
+        // После того как все PNG превратились в KTX, нужно обновить текстовые файлы .atlas
+        fixAtlasFilesToKtx(outputDir);
+    }
+
+    private static void fixAtlasFilesToKtx(File directory) throws IOException {
+        File[] files = directory.listFiles();
+        if (files == null) return;
+
+        for (File file : files) {
+            if (file.getName().endsWith(".atlas")) {
+                System.out.println("Обновление ссылок в атласе: " + file.getName());
+
+                // Читаем весь текстовый файл атласа
+                String content = new String(java.nio.file.Files.readAllBytes(file.toPath()), java.nio.charset.StandardCharsets.UTF_8);
+
+                // Подменяем упоминания файлов .png на .ktx внутри структуры атласа
+                String updatedContent = content.replaceAll("\\.png", ".ktx2");
+
+                // Перезаписываем файл
+                java.nio.file.Files.write(file.toPath(), updatedContent.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+            }
+        }
     }
 
 
