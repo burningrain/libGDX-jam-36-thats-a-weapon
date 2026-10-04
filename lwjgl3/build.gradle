@@ -32,7 +32,11 @@ dependencies {
   implementation "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
   implementation "com.badlogicgames.gdx:gdx-lwjgl3-angle:$gdxVersion"
   implementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+
+  api "com.crashinvaders.basisu:basisu-wrapper:$gdxBasisuVersion"
+  api "com.crashinvaders.basisu:basisu-gdx:$gdxBasisuVersion"
   runtimeOnly "com.crashinvaders.basisu:basisu-wrapper:$gdxBasisuVersion:natives-desktop"
+
   implementation project(':core')
 
   if(enableGraalNative == 'true') {

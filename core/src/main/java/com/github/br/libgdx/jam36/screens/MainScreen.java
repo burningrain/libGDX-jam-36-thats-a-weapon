@@ -31,7 +31,7 @@ import com.github.br.libgdx.jam36.screens.phase.phone.*;
 import com.github.br.libgdx.jam36.screens.phase.predicate.PredicatePhase;
 import com.github.br.libgdx.jam36.screens.phase.tea.ShowTeaPhase;
 import com.github.br.libgdx.jam36.ui.AnimatedImage;
-import structure.screen.AbstractGameScreen;
+import com.github.br.libgdx.structure.screen.AbstractGameScreen;
 
 public class MainScreen extends AbstractGameScreen {
 
@@ -56,7 +56,7 @@ public class MainScreen extends AbstractGameScreen {
         glProfiler.enable();
 
         AssetManager assetManager = getGameManager().assetManager;
-        tiledMap = assetManager.get(Resources.MENU);
+        tiledMap = assetManager.get(Resources.getTmx(Resources.Tmx.MENU));
 
         camera = new OrthographicCamera();
         viewport = new FitViewport(Constants.WORLD_WIDTH, Constants.WORLD_HEIGHT, camera);

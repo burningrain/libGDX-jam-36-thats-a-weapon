@@ -1,5 +1,5 @@
 
-menu.png
+menu.ktx2
 size: 2048, 2048
 format: RGBA8888
 filter: Linear, Linear
@@ -40,7 +40,7 @@ atlas_imagelayer_tree_191915771925004x
   offset: 0, 0
   index: -1
 
-menu2.png
+menu2.ktx2
 size: 512, 1024
 format: RGBA8888
 filter: Linear, Linear
@@ -74,7 +74,7 @@ atlas_imagelayer_watch_work_day_1_191915771925007x
   offset: 0, 0
   index: -1
 
-menu3.png
+menu3.ktx2
 size: 2048, 2048
 format: RGBA8888
 filter: Linear, Linear
@@ -115,7 +115,7 @@ atlas_imagelayer_hell_tree_191915771925013x
   offset: 0, 0
   index: -1
 
-menu4.png
+menu4.ktx2
 size: 2048, 2048
 format: RGBA8888
 filter: Linear, Linear
@@ -226,7 +226,7 @@ atlas_imagelayer_watch_191915771925016x
   offset: 0, 0
   index: -1
 
-menu5.png
+menu5.ktx2
 size: 2048, 2048
 format: RGBA8888
 filter: Linear, Linear
@@ -540,7 +540,7 @@ atlas_imagelayer_table_191915771925051x
   offset: 0, 0
   index: -1
 
-menu6.png
+menu6.ktx2
 size: 2048, 2048
 format: RGBA8888
 filter: Linear, Linear
@@ -595,7 +595,7 @@ atlas_imagelayer_tablet_button_left_1_191915771925075x
   offset: 0, 0
   index: -1
 
-menu7.png
+menu7.ktx2
 size: 2048, 2048
 format: RGBA8888
 filter: Linear, Linear
@@ -671,7 +671,7 @@ atlas_imagelayer_phone_hero_call_number_191915771925084x
   offset: 0, 0
   index: -1
 
-menu8.png
+menu8.ktx2
 size: 2048, 2048
 format: RGBA8888
 filter: Linear, Linear

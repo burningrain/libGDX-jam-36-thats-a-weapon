@@ -1,8 +1,15 @@
 package com.github.br.libgdx.jam36.lwjgl3;
 
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.assets.loaders.FileHandleResolver;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application;
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.crashinvaders.basisu.gdx.Ktx2TextureLoader;
 import com.github.br.libgdx.jam36.Main;
+import com.github.br.libgdx.jam36.PlatformConfigurator;
+import ktx.tiled.Ktx2AtlasTmxMapLoader;
 
 /** Launches the desktop (LWJGL3) application. */
 public class Lwjgl3Launcher {
@@ -12,7 +19,13 @@ public class Lwjgl3Launcher {
     }
 
     private static Lwjgl3Application createApplication() {
-        return new Lwjgl3Application(new Main(), getDefaultConfiguration());
+        return new Lwjgl3Application(new Main(new PlatformConfigurator() {
+            @Override
+            public void configureLoaders(AssetManager assetManager, FileHandleResolver fileHandleResolver) {
+                assetManager.setLoader(Texture.class, ".ktx2", new Ktx2TextureLoader(fileHandleResolver));
+                assetManager.setLoader(TiledMap.class, new Ktx2AtlasTmxMapLoader(fileHandleResolver));
+            }
+        }), getDefaultConfiguration());
     }
 
     private static Lwjgl3ApplicationConfiguration getDefaultConfiguration() {
@@ -44,4 +57,5 @@ public class Lwjgl3Launcher {
 
         return configuration;
     }
+
 }

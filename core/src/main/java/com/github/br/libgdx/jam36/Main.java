@@ -1,8 +1,9 @@
 package com.github.br.libgdx.jam36;
 
+import com.badlogic.gdx.Application;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.*;
-import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
@@ -14,20 +15,22 @@ import com.badlogic.gdx.maps.tiled.AtlasTmxMapLoader;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.utils.viewport.Viewport;
-import com.crashinvaders.basisu.gdx.Ktx2TextureLoader;
 import com.github.br.libgdx.jam36.screens.GameScreens;
+import com.github.br.libgdx.structure.AbstractSimpleGame;
+import com.github.br.libgdx.structure.GameSettings;
+import com.github.br.libgdx.structure.screen.statemachine.GameScreenState;
 import com.github.tommyettinger.textra.FWSkinLoader;
-import structure.AbstractSimpleGame;
-import structure.GameSettings;
-import structure.hack.tiled.Ktx2AtlasTmxMapLoader;
-import structure.screen.statemachine.GameScreenState;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class Main extends AbstractSimpleGame<UserFactoryImpl> {
 
-    private AssetManager assetManager;
-    private Viewport viewport;
+    public Main() {
+        super(null);
+    }
+
+    public Main(PlatformConfigurator platformConfigurator) {
+        super(platformConfigurator);
+    }
 
     @Override
     protected UserFactoryImpl createUserFactory() {
@@ -40,12 +43,11 @@ public class Main extends AbstractSimpleGame<UserFactoryImpl> {
     }
 
     @Override
-    protected void initLoaders(AssetManager assetManager, InternalFileHandleResolver fileHandleResolver) {
+    protected void initLoaders(AssetManager assetManager, FileHandleResolver fileHandleResolver) {
         // графика
         assetManager.setLoader(Texture.class, new TextureLoader(fileHandleResolver));
         assetManager.setLoader(TextureAtlas.class, new TextureAtlasLoader(fileHandleResolver));
         //assetManager.setLoader(Skin.class, new FreeTypeSkinLoader(fileHandleResolver));
-        assetManager.setLoader(Texture.class, ".ktx2", new Ktx2TextureLoader(fileHandleResolver)); // сжатые текстуры
 
         // лоадер для FWSkin
         assetManager.setLoader(Skin.class, new FWSkinLoader(fileHandleResolver));
@@ -59,7 +61,12 @@ public class Main extends AbstractSimpleGame<UserFactoryImpl> {
 
         // карты редакторов уровней
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(fileHandleResolver));
-        assetManager.setLoader(TiledMap.class, new Ktx2AtlasTmxMapLoader(fileHandleResolver));
+        if (Gdx.app.getType() == Application.ApplicationType.WebGL) {
+            // загрузчик атласов для tmx платформозависим: в html - его нет, иначе - ktx2
+            assetManager.setLoader(TiledMap.class, new AtlasTmxMapLoader(fileHandleResolver));
+        } else {
+            // сжатые текстуры
+        }
 
         // шрифты
         assetManager.setLoader(BitmapFont.class, new FreetypeFontLoader(fileHandleResolver));

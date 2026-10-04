@@ -1,5 +1,10 @@
 package com.github.br.libgdx.jam36.teavm;
 
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.assets.loaders.FileHandleResolver;
+import com.badlogic.gdx.maps.tiled.AtlasTmxMapLoader;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.github.br.libgdx.jam36.PlatformConfigurator;
 import com.github.xpenatan.gdx.backends.teavm.TeaApplicationConfiguration;
 import com.github.xpenatan.gdx.backends.teavm.TeaApplication;
 import com.github.br.libgdx.jam36.Main;

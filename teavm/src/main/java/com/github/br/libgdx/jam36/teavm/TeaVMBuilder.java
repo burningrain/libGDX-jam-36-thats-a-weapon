@@ -106,7 +106,7 @@ public class TeaVMBuilder {
             tool.setSourceMapsFileGenerated(true);
             tool.setWasmDebugInfoLevel(WasmDebugInfoLevel.FULL);
             tool.setSourceFilePolicy(TeaVMSourceFilePolicy.COPY);
-            tool.addSourceFileProvider(new DirectorySourceFileProvider(new File("../core/src/main/java/")));
+            tool.addSourceFileProvider(new DirectorySourceFileProvider(new File("../core/src/main/java/com/")));
         }
 
         TeaBuilder.build(tool);

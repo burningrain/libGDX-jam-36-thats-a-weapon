@@ -10,6 +10,10 @@ import com.badlogic.gdx.tools.texturepacker.TiledLayerPacker;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 public class MapPacker {
 
@@ -61,7 +65,8 @@ public class MapPacker {
                 settings.filterMag = Texture.TextureFilter.Linear;
 
                 String inputDir = "D:/projects/libGDX-jam-36-thats-a-weapon/assets/tiled";
-                String outputDir = "D:/projects/libGDX-jam-36-thats-a-weapon/assets/tiled-packed";
+                String assetsDir = "D:/projects/libGDX-jam-36-thats-a-weapon/assets";
+                String outputDir = assetsDir + "/tiled-packed";
 
                 deleteDirectoryContents(outputDir);
 
@@ -83,7 +88,9 @@ public class MapPacker {
 
                 // 2. ЗАПУСКАЕМ СОЗДАНИЕ KTX ИЗ СОЗДАННЫХ PNG
                 System.out.println("Конвертируем полученные атласы в формат KTX...");
-                convertToKtx(outputDir);
+                Path ktxOutput = Paths.get(assetsDir, "tiled-packed-ktx");
+                copyDirectory(Paths.get(outputDir), ktxOutput);
+                convertToKtx(ktxOutput.resolve("tileset").toFile());
                 System.out.println("Упаковка и конвертация в KTX завершены успешно!");
 
             } catch (Exception e) {
@@ -117,14 +124,12 @@ public class MapPacker {
         file.delete();
     }
 
-    private static void convertToKtx(String outputDirPath) throws Exception {
-        File outputDir = new File(outputDirPath + File.separator + "tileset");
-        File[] files = outputDir.listFiles();
+    private static void convertToKtx(File tilesetKtxPathDir) throws Exception {
+        File[] files = tilesetKtxPathDir.listFiles();
         if (files == null) return;
 
-        // Путь к вашей утилите toktx (скачайте KTX-Software от Khronos Group)
-
-        String packerJarPath = "D:/projects/gamedev/gdx-texture-packer-4.13.0-universal/gdx-texture-packer.jar";
+        // Путь к gdx-texture-packer.jar
+        String packerJarPath = "D:/projects/gamedev/gdx-texture-packer-4.13.0-universal/gdx-texture-packer.jar"; //TODO хардкод
         for (File file : files) {
             if (file.getName().endsWith(".png")) {
                 String pngPath = file.getAbsolutePath();
@@ -156,7 +161,7 @@ public class MapPacker {
         }
 
         // После того как все PNG превратились в KTX, нужно обновить текстовые файлы .atlas
-        fixAtlasFilesToKtx(outputDir);
+        fixAtlasFilesToKtx(tilesetKtxPathDir);
     }
 
     private static void fixAtlasFilesToKtx(File directory) throws IOException {
@@ -168,16 +173,32 @@ public class MapPacker {
                 System.out.println("Обновление ссылок в атласе: " + file.getName());
 
                 // Читаем весь текстовый файл атласа
-                String content = new String(java.nio.file.Files.readAllBytes(file.toPath()), java.nio.charset.StandardCharsets.UTF_8);
+                String content = new String(Files.readAllBytes(file.toPath()), java.nio.charset.StandardCharsets.UTF_8);
 
                 // Подменяем упоминания файлов .png на .ktx внутри структуры атласа
                 String updatedContent = content.replaceAll("\\.png", ".ktx2");
 
                 // Перезаписываем файл
-                java.nio.file.Files.write(file.toPath(), updatedContent.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+                Files.write(file.toPath(), updatedContent.getBytes(java.nio.charset.StandardCharsets.UTF_8));
             }
         }
     }
 
+    public static void copyDirectory(Path source, Path target) throws IOException {
+        Files.walk(source).forEach(sourcePath -> {
+            try {
+                Path targetPath = target.resolve(source.relativize(sourcePath));
+                if (Files.isDirectory(sourcePath)) {
+                    if (!Files.exists(targetPath)) {
+                        Files.createDirectory(targetPath);
+                    }
+                } else {
+                    Files.copy(sourcePath, targetPath, StandardCopyOption.REPLACE_EXISTING);
+                }
+            } catch (IOException e) {
+                throw new RuntimeException("Не удалось скопировать: " + sourcePath, e);
+            }
+        });
+    }
 
 }

@@ -1,7 +1,7 @@
 package com.github.br.libgdx.jam36.screens;
 
 
-import structure.screen.statemachine.GameScreenState;
+import com.github.br.libgdx.structure.screen.statemachine.GameScreenState;
 
 public interface GameScreens {
 
