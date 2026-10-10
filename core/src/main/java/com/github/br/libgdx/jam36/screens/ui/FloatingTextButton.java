@@ -1,9 +1,10 @@
 // FloatingButton.java
-package com.github.br.libgdx.jam36.ui;
+package com.github.br.libgdx.jam36.screens.ui;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.github.br.libgdx.structure.screen.ui.TypingImageTextButton;
 
-public class FloatingButton extends TypingImageButton {
+public class FloatingTextButton extends TypingImageTextButton {
 
     private float originalX;
     private float originalY;
@@ -17,7 +18,7 @@ public class FloatingButton extends TypingImageButton {
     private float radiusX;
     private float radiusY;
 
-    public FloatingButton(Skin skin, String styleName, String text, float amplitude, float speed, float phase) {
+    public FloatingTextButton(Skin skin, String styleName, String text, float amplitude, float speed, float phase) {
         super(text, skin, styleName);
         this.amplitude = amplitude;
         this.speed = speed;

@@ -1,4 +1,4 @@
-package ktx.tiled;
+package workaround.ktx.tiled;
 
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.TextureData;

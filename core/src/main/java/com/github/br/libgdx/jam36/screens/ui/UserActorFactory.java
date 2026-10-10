@@ -1,4 +1,4 @@
-package com.github.br.libgdx.jam36.screens;
+package com.github.br.libgdx.jam36.screens.ui;
 
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -7,28 +7,41 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageTextButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
 import com.github.br.libgdx.jam36.Resources;
-import com.github.br.libgdx.jam36.ui.AnimatedImage;
-import com.github.br.libgdx.jam36.ui.FloatingButton;
+import com.github.br.libgdx.jam36.screens.StageActors;
+import com.github.br.libgdx.structure.screen.ui.ActorFactory;
+import com.github.br.libgdx.structure.screen.ui.AnimatedImage;
+import com.github.br.libgdx.structure.screen.ui.DefaultActorFactory;
 import com.github.tommyettinger.textra.TypingLabel;
 
-public class ActorFactory {
+public class UserActorFactory implements ActorFactory {
+
+
+    private final DefaultActorFactory delegate;
 
     private final Skin skin;
     private final AssetManager assetManager;
 
-    public ActorFactory(Skin skin, AssetManager assetManager) {
+    public UserActorFactory(Skin skin, AssetManager assetManager) {
+        this.delegate = new DefaultActorFactory(skin, assetManager);
         this.skin = skin;
         this.assetManager = assetManager;
     }
 
+
+    @Override
     public Actor getActor(MapObject object) {
         String name = object.getName();
-        object.getProperties();
+        MapProperties properties = object.getProperties();
 
+        String actorType = properties.get(DefaultActorFactory.ACTOR_TYPE, String.class);
         switch (name) {
             // daily
             case StageActors.HERO_PHONE_CALLER:
@@ -73,10 +86,9 @@ public class ActorFactory {
             case StageActors.FIRE_4:
             case StageActors.FIRE_5:
                 return createFire(object);
-
-            default:
-                throw new IllegalArgumentException("unknown stage2d actor: " + name);
         }
+
+        return delegate.getActor(object);
     }
 
     private Actor createHeroCallerText(MapObject object) {
@@ -96,17 +108,16 @@ public class ActorFactory {
     }
 
     public AnimatedImage createAnimationThought() {
-        TextureAtlas textureAtlas = assetManager.get(Resources.ANIMATION_ATLAS, TextureAtlas.class);
-        Array<TextureAtlas.AtlasRegion> regions = textureAtlas.findRegions(Resources.Animation.THOUGHT);
-        Animation<TextureRegion> animation = new Animation<>(
-            0.033f, regions, Animation.PlayMode.NORMAL
+        return delegate.createAnimatedImage(
+            Resources.ANIMATION_ATLAS,
+            Resources.Animation.THOUGHT,
+            Animation.PlayMode.NORMAL,
+            0.033f
         );
-
-        return new AnimatedImage(animation);
     }
 
-    public FloatingButton createFloatingThought(int id, String text, float floatAmplitude, float speed, float phase) {
-        FloatingButton floatingButton = new FloatingButton(
+    public FloatingTextButton createFloatingThought(int id, String text, float floatAmplitude, float speed, float phase) {
+        FloatingTextButton floatingButton = new FloatingTextButton(
             skin, "thought", text , floatAmplitude, speed, phase
         );
         floatingButton.setName("" + id);
@@ -114,18 +125,18 @@ public class ActorFactory {
         return floatingButton;
     }
 
-    private Actor createThought(MapObject object) {
+    public Actor createThought(MapObject object) {
         return new ImageTextButton("Впиши текст", skin, "thought");
     }
 
-    private Actor createWatchHourArrow(MapObject object) {
+    public Actor createWatchHourArrow(MapObject object) {
         TextureAtlas textureAtlas = assetManager.get(Resources.ANIMATION_ATLAS, TextureAtlas.class);
         TextureAtlas.AtlasRegion region = textureAtlas.findRegion(Resources.Animation.WATCH_ARROW);
 
         return new Image(region);
     }
 
-    private Actor createHrStressLevel(MapObject object) {
+    public Actor createHrStressLevel(MapObject object) {
         TextureAtlas textureAtlas = assetManager.get(Resources.ANIMATION_ATLAS, TextureAtlas.class);
         Array<TextureAtlas.AtlasRegion> regions = textureAtlas.findRegions(Resources.Animation.HR_STRESS_LEVEL);
         Animation<TextureRegion> animation = new Animation<>(
@@ -135,7 +146,7 @@ public class ActorFactory {
         return new AnimatedImage(animation);
     }
 
-    private Actor createHeroStressLevel(MapObject object) {
+    public Actor createHeroStressLevel(MapObject object) {
         TextureAtlas textureAtlas = assetManager.get(Resources.ANIMATION_ATLAS, TextureAtlas.class);
         Array<TextureAtlas.AtlasRegion> regions = textureAtlas.findRegions(Resources.Animation.HERO_STRESS_LEVEL);
         Animation<TextureRegion> animation = new Animation<>(
@@ -145,7 +156,7 @@ public class ActorFactory {
         return new AnimatedImage(animation);
     }
 
-    private Actor createHeroDictophone(MapObject object) {
+    public Actor createHeroDictophone(MapObject object) {
         TextureAtlas textureAtlas = assetManager.get(Resources.ANIMATION_ATLAS, TextureAtlas.class);
         Array<TextureAtlas.AtlasRegion> regions = textureAtlas.findRegions(Resources.Animation.HERO_DICTOPHONE);
         Animation<TextureRegion> animation = new Animation<>(
@@ -155,7 +166,7 @@ public class ActorFactory {
         return new AnimatedImage(animation);
     }
 
-    private Actor createHrDictophone(MapObject object) {
+    public Actor createHrDictophone(MapObject object) {
         TextureAtlas textureAtlas = assetManager.get(Resources.ANIMATION_ATLAS, TextureAtlas.class);
         Array<TextureAtlas.AtlasRegion> regions = textureAtlas.findRegions(Resources.Animation.HR_DICTOPHONE);
         Animation<TextureRegion> animation = new Animation<>(
@@ -165,7 +176,7 @@ public class ActorFactory {
         return new AnimatedImage(animation);
     }
 
-    private Actor createFire(MapObject object) {
+    public Actor createFire(MapObject object) {
         TextureAtlas textureAtlas = assetManager.get(Resources.ANIMATION_ATLAS, TextureAtlas.class);
         Array<TextureAtlas.AtlasRegion> regions = textureAtlas.findRegions(Resources.Animation.FIRE);
         Animation<TextureRegion> animation = new Animation<>(
@@ -175,7 +186,7 @@ public class ActorFactory {
         return new AnimatedImage(animation);
     }
 
-    private Actor createTextWindow(MapObject object) {
+    public Actor createTextWindow(MapObject object) {
         TypingLabel label = new TypingLabel("Вставь сюда текст", skin, "talking");
         label.setAlignment(Align.topLeft);
 
@@ -191,7 +202,7 @@ public class ActorFactory {
         return label;
     }
 
-    private Actor createCalendarDay(MapObject object) {
+    public Actor createCalendarDay(MapObject object) {
         TextureAtlas textureAtlas = assetManager.get(Resources.ANIMATION_ATLAS, TextureAtlas.class);
         Array<TextureAtlas.AtlasRegion> regions = textureAtlas.findRegions(Resources.Animation.CALENDAR_DAY);
         Animation<TextureRegion> animation = new Animation<>(
@@ -201,11 +212,11 @@ public class ActorFactory {
         return new AnimatedImage(animation);
     }
 
-    private Actor createSignButton(MapObject object) {
+    public Actor createSignButton(MapObject object) {
         return new ImageTextButton("Ознакомиться\nи подписать", skin);
     }
 
-    private Actor createTabletText(MapObject object) {
+    public Actor createTabletText(MapObject object) {
         MapProperties properties = object.getProperties();
 
         Label label = new Label("текст", skin, "document_text");
@@ -222,7 +233,7 @@ public class ActorFactory {
         return label;
     }
 
-    private Actor createTabletButton(MapObject object) {
+    public Actor createTabletButton(MapObject object) {
         ImageButton button = new ImageButton(skin);
         MapProperties properties = object.getProperties();
         Boolean isFlip = (Boolean) properties.get("flip");

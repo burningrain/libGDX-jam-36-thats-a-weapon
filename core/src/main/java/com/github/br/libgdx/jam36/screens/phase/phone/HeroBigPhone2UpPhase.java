@@ -2,13 +2,13 @@ package com.github.br.libgdx.jam36.screens.phase.phone;
 
 import com.badlogic.gdx.maps.MapGroupLayer;
 import com.badlogic.gdx.maps.MapLayer;
-import com.github.br.libgdx.jam36.CustomOrthogonalTiledMapRenderer;
 import com.github.br.libgdx.jam36.context.GameContext;
 import com.github.br.libgdx.jam36.context.PhoneContext;
 import com.github.br.libgdx.jam36.screens.StageActors;
 import com.github.br.libgdx.jam36.screens.TiledLayers;
 import com.github.br.libgdx.jam36.screens.phase.Phase;
-import com.github.br.libgdx.jam36.ui.AnimatedImage;
+import com.github.br.libgdx.structure.screen.ui.AnimatedImage;
+import com.github.br.libgdx.structure.screen.ui.CustomOrthogonalTiledMapRenderer;
 
 public class HeroBigPhone2UpPhase implements Phase, PhoneContext.Listener {
 

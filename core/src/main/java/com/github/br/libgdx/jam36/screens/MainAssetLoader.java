@@ -8,6 +8,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.github.br.libgdx.jam36.Resources;
+import com.github.br.libgdx.structure.screen.TmxUtils;
 import com.github.br.libgdx.structure.screen.loading.AssetsLoader;
 
 public class MainAssetLoader implements AssetsLoader {
@@ -20,7 +21,7 @@ public class MainAssetLoader implements AssetsLoader {
         params.textureMinFilter = Texture.TextureFilter.Linear;
         params.textureMagFilter = Texture.TextureFilter.Linear;
 
-        assetManager.load(Resources.getTmx(Resources.Tmx.MENU), TiledMap.class, params);
+        assetManager.load(TmxUtils.getTmx(Resources.Tmx.MENU), TiledMap.class, params);
 
         // skin
         assetManager.load(Resources.SKIN_ATLAS, TextureAtlas.class);

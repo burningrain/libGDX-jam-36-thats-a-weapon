@@ -9,14 +9,14 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Array;
 import com.github.br.libgdx.jam36.Constants;
-import com.github.br.libgdx.jam36.CustomOrthogonalTiledMapRenderer;
 import com.github.br.libgdx.jam36.context.GameContext;
-import com.github.br.libgdx.jam36.screens.ActorFactory;
+import com.github.br.libgdx.jam36.screens.ui.UserActorFactory;
 import com.github.br.libgdx.jam36.screens.TiledLayers;
 import com.github.br.libgdx.jam36.screens.phase.Choose;
 import com.github.br.libgdx.jam36.screens.phase.Phase;
-import com.github.br.libgdx.jam36.ui.AnimatedImage;
-import com.github.br.libgdx.jam36.ui.FloatingButton;
+import com.github.br.libgdx.structure.screen.ui.AnimatedImage;
+import com.github.br.libgdx.structure.screen.ui.CustomOrthogonalTiledMapRenderer;
+import com.github.br.libgdx.jam36.screens.ui.FloatingTextButton;
 
 public class MindChooserPhase implements Phase {
 
@@ -28,10 +28,10 @@ public class MindChooserPhase implements Phase {
     private static final float REPULSION_FORCE = 500f;  // Сила отталкивания
     private static final float MIN_DISTANCE = 140f;     // Минимальное расстояние между кнопками
 
-    private final ActorFactory actorFactory;
+    private final UserActorFactory actorFactory;
     private final Choose[] chooses;
 
-    private Array<FloatingButton> floatingButtons = new Array<>();
+    private Array<FloatingTextButton> floatingButtons = new Array<>();
 
     private GameContext gameContext;
     private CustomOrthogonalTiledMapRenderer renderer;
@@ -49,7 +49,7 @@ public class MindChooserPhase implements Phase {
     private MindChooserHandler mindChooserHandler;
 
 
-    public MindChooserPhase(ActorFactory actorFactory, MindChooserHandler mindChooserHandler, Choose... chooses) {
+    public MindChooserPhase(UserActorFactory actorFactory, MindChooserHandler mindChooserHandler, Choose... chooses) {
         this.actorFactory = actorFactory;
         this.mindChooserHandler = mindChooserHandler;
         this.chooses = chooses;
@@ -88,7 +88,7 @@ public class MindChooserPhase implements Phase {
 
         if (isFadeOut) {
             if (!isAnimationInProgress) {
-                for (FloatingButton button : floatingButtons) {
+                for (FloatingTextButton button : floatingButtons) {
                     float x = button.getX();
                     float y = button.getY();
 
@@ -144,7 +144,7 @@ public class MindChooserPhase implements Phase {
             float phase = (float) (i * Math.PI * 2 / chooses.length); // Равномерное распределение фаз
             float speed = FLOAT_SPEED + (float) Math.random() * FLOAT_SPEED_VARIATION;
 
-            FloatingButton thought = actorFactory.createFloatingThought(
+            FloatingTextButton thought = actorFactory.createFloatingThought(
                 choose.getId(),
                 "{WAVE=1.0;1.0;0.4}" + choose.getText() + "{ENDWAVE}",
                 FLOAT_AMPLITUDE,
@@ -179,12 +179,12 @@ public class MindChooserPhase implements Phase {
             boolean moved = false;
 
             for (int i = 0; i < floatingButtons.size; i++) {
-                FloatingButton btn1 = floatingButtons.get(i);
+                FloatingTextButton btn1 = floatingButtons.get(i);
                 Rectangle rect1 = new Rectangle(btn1.getX(), btn1.getY(),
                     btn1.getWidth(), btn1.getHeight());
 
                 for (int j = i + 1; j < floatingButtons.size; j++) {
-                    FloatingButton btn2 = floatingButtons.get(j);
+                    FloatingTextButton btn2 = floatingButtons.get(j);
                     Rectangle rect2 = new Rectangle(btn2.getX(), btn2.getY(),
                         btn2.getWidth(), btn2.getHeight());
 

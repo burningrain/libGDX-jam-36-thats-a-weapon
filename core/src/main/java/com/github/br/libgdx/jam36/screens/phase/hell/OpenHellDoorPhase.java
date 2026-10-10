@@ -2,10 +2,10 @@ package com.github.br.libgdx.jam36.screens.phase.hell;
 
 import com.badlogic.gdx.maps.MapGroupLayer;
 import com.badlogic.gdx.maps.MapLayer;
-import com.github.br.libgdx.jam36.CustomOrthogonalTiledMapRenderer;
 import com.github.br.libgdx.jam36.context.GameContext;
 import com.github.br.libgdx.jam36.screens.TiledLayers;
 import com.github.br.libgdx.jam36.screens.phase.Phase;
+import com.github.br.libgdx.structure.screen.ui.CustomOrthogonalTiledMapRenderer;
 
 public class OpenHellDoorPhase implements Phase {
 

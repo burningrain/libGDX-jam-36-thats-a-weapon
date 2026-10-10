@@ -11,6 +11,8 @@ public class GameSettings {
     private final int virtualScreenWidth;
     private final int virtualScreenHeight;
 
+    private final boolean isCenterCamera;
+
     // box2d
     private final float unitsPerMeter;
     private final float unitWidth;
@@ -30,6 +32,7 @@ public class GameSettings {
 
         this.virtualScreenWidth = builder.virtualScreenWidth;
         this.virtualScreenHeight = builder.virtualScreenHeight;
+        this.isCenterCamera = builder.isCenterCamera;
 
         this.unitsPerMeter = builder.unitsPerMeter;
         this.unitWidth = this.virtualScreenWidth / this.unitsPerMeter;
@@ -90,6 +93,10 @@ public class GameSettings {
         return gamePlaySettings;
     }
 
+    public boolean isCenterCamera() {
+        return isCenterCamera;
+    }
+
     public static class Builder {
 
         private int progressBarWidth = 100;
@@ -103,6 +110,8 @@ public class GameSettings {
         private float timeStep = 1 / 60f;
         private int velocityIterations = 6;
         private int positionIterations = 2;
+
+        private boolean isCenterCamera = false;
 
         private GamePlaySettings gamePlaySettings;
 
@@ -151,6 +160,11 @@ public class GameSettings {
                 throw new GdxRuntimeException("'gamePlaySettings' must not be null");
             }
             this.gamePlaySettings = gamePlaySettings;
+            return this;
+        }
+
+        public Builder setCenterCamera(boolean centerCamera) {
+            this.isCenterCamera = centerCamera;
             return this;
         }
 

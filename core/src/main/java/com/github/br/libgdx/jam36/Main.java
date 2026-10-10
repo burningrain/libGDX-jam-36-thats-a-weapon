@@ -74,6 +74,10 @@ public class Main extends AbstractSimpleGame<UserFactoryImpl> {
 
     @Override
     protected void fillGameSettings(GameSettings.Builder builder) {
+        builder.setCenterCamera(true);
+
+        builder.setVirtualScreenWidth(Constants.WORLD_WIDTH);
+        builder.setVirtualScreenHeight(Constants.WORLD_HEIGHT);
     }
 
 }

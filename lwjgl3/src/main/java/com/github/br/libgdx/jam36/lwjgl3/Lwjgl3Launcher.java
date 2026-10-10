@@ -9,7 +9,7 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.crashinvaders.basisu.gdx.Ktx2TextureLoader;
 import com.github.br.libgdx.jam36.Main;
 import com.github.br.libgdx.jam36.PlatformConfigurator;
-import ktx.tiled.Ktx2AtlasTmxMapLoader;
+import workaround.ktx.tiled.Ktx2AtlasTmxMapLoader;
 
 /** Launches the desktop (LWJGL3) application. */
 public class Lwjgl3Launcher {

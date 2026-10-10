@@ -141,7 +141,7 @@
 		"crushMode": 0
 	}
 },
-"com.github.br.libgdx.jam36.ui.TypingImageButton$TypingImageTextButtonStyle": {
+"com.github.br.libgdx.structure.screen.ui.TypingImageTextButton$TypingImageTextButtonStyle": {
 	"thought": {
 		"font": "AmaticSC-Bold_65",
 		"up": "thought_btn_10",

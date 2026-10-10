@@ -1,31 +1,31 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><map height="192" infinite="0" nextlayerid="122" nextobjectid="35" orientation="orthogonal" renderorder="left-down" tiledversion="1.11.2" tileheight="10" tilewidth="10" version="1.10" width="108"><properties><property name="atlas" value="tileset/menu.atlas"/></properties>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><map height="192" infinite="0" nextlayerid="123" nextobjectid="35" orientation="orthogonal" renderorder="left-down" tiledversion="1.11.2" tileheight="10" tilewidth="10" version="1.10" width="108"><properties><property name="atlas" value="tileset/menu.atlas"/></properties>
  <group id="12" name="environment">
   <imagelayer id="13" locked="1" name="glass" offsetx="-310" offsety="-20">
-   <image height="1962" source="atlas_imagelayer_glass_191915771925000x" width="1712"/>
+   <image height="1962" source="atlas_imagelayer_glass_63924729098800x" width="1712"/>
   </imagelayer>
   <imagelayer id="18" locked="1" name="flowerpot1" offsetx="141.2" offsety="1025.45">
-   <image height="182" source="atlas_imagelayer_flowerpot1_191915771925001x" width="161"/>
+   <image height="182" source="atlas_imagelayer_flowerpot1_63924729098801x" width="161"/>
   </imagelayer>
   <imagelayer id="19" locked="1" name="palm_tree" offsetx="60.75" offsety="615.45">
-   <image height="436" source="atlas_imagelayer_palm_tree_1_191915771925002x" width="282"/>
+   <image height="436" source="atlas_imagelayer_palm_tree_1_63924729098802x" width="282"/>
   </imagelayer>
   <imagelayer id="20" locked="1" name="flowerpot2" offsetx="778.4" offsety="1018.8">
-   <image height="182" source="atlas_imagelayer_flowerpot2_191915771925003x" width="161"/>
+   <image height="182" source="atlas_imagelayer_flowerpot2_63924729098803x" width="161"/>
   </imagelayer>
   <imagelayer id="21" locked="1" name="tree" offsetx="776.4" offsety="668">
-   <image height="380" source="atlas_imagelayer_tree_191915771925004x" width="268"/>
+   <image height="380" source="atlas_imagelayer_tree_63924729098804x" width="268"/>
   </imagelayer>
   <imagelayer id="22" locked="1" name="door" offsetx="350.5" offsety="340">
-   <image height="766" source="atlas_imagelayer_door_191915771925005x" width="392"/>
+   <image height="766" source="atlas_imagelayer_door_63924729098805x" width="392"/>
   </imagelayer>
   <imagelayer id="103" name="watch" offsetx="452.2" offsety="119.65">
-   <image height="196" source="atlas_imagelayer_watch_191915771925006x" width="196"/>
+   <image height="196" source="atlas_imagelayer_watch_63924729098806x" width="196"/>
   </imagelayer>
   <imagelayer id="104" name="current_day" offsetx="526.2" offsety="237.65" visible="0">
-   <image height="51" source="atlas_imagelayer_watch_work_day_1_191915771925007x" width="45"/>
+   <image height="51" source="atlas_imagelayer_watch_work_day_1_63924729098807x" width="45"/>
   </imagelayer>
   <imagelayer id="105" name="watch_hour_arrow" offsetx="546" offsety="142" visible="0">
-   <image height="79" source="atlas_imagelayer_watch_arrow_191915771925008x" width="9"/>
+   <image height="79" source="atlas_imagelayer_watch_arrow_63924729098808x" width="9"/>
   </imagelayer>
   <objectgroup id="24" locked="1" name="watch">
    <object height="41.95" id="17" name="calendar_day" width="45.95" x="525.7" y="245.65"/>
@@ -34,93 +34,93 @@
  </group>
  <group id="58" locked="1" name="hell_environment" visible="0">
   <imagelayer id="59" locked="1" name="hell_glass" offsetx="-310" offsety="-60">
-   <image height="2002" source="atlas_imagelayer_hell_glass_191915771925009x" width="1712"/>
+   <image height="2002" source="atlas_imagelayer_hell_glass_63924729098809x" width="1712"/>
   </imagelayer>
   <imagelayer id="61" locked="1" name="hell_flowerpot1" offsetx="141.2" offsety="1025.45">
-   <image height="182" source="atlas_imagelayer_hell_flowerpot_1_191915771925010x" width="161"/>
+   <image height="182" source="atlas_imagelayer_hell_flowerpot_1_63924729098810x" width="161"/>
   </imagelayer>
   <imagelayer id="62" locked="1" name="hell_palm_tree" offsetx="60.75" offsety="615.45">
-   <image height="436" source="atlas_imagelayer_hell_palm_tree_191915771925011x" width="282"/>
+   <image height="436" source="atlas_imagelayer_hell_palm_tree_63924729098811x" width="282"/>
   </imagelayer>
   <imagelayer id="63" locked="1" name="hell_flowerpot2" offsetx="778.4" offsety="1018.8">
-   <image height="182" source="atlas_imagelayer_hell_flowerpot2_191915771925012x" width="161"/>
+   <image height="182" source="atlas_imagelayer_hell_flowerpot2_63924729098812x" width="161"/>
   </imagelayer>
   <imagelayer id="64" locked="1" name="hell_tree" offsetx="776.4" offsety="668">
-   <image height="380" source="atlas_imagelayer_hell_tree_191915771925013x" width="268"/>
+   <image height="380" source="atlas_imagelayer_hell_tree_63924729098813x" width="268"/>
   </imagelayer>
   <imagelayer id="66" locked="1" name="hell_door_red" offsetx="45" offsety="34">
-   <image height="1384" source="atlas_imagelayer_hell_door_191915771925014x" width="1010"/>
+   <image height="1384" source="atlas_imagelayer_hell_door_63924729098814x" width="1010"/>
   </imagelayer>
   <imagelayer id="70" name="hell_door_blue" offsetx="45" offsety="34">
-   <image height="1384" source="atlas_imagelayer_hell_door_blue_191915771925015x" width="1010"/>
+   <image height="1384" source="atlas_imagelayer_hell_door_blue_63924729098815x" width="1010"/>
   </imagelayer>
   <imagelayer id="67" name="hell_clock" offsetx="435" offsety="102">
-   <image height="234" source="atlas_imagelayer_watch_191915771925016x" width="234"/>
+   <image height="234" source="atlas_imagelayer_watch_63924729098816x" width="234"/>
   </imagelayer>
  </group>
  <imagelayer id="25" locked="1" name="hero_left_foot" offsetx="442.55" offsety="1724.25">
-  <image height="124" source="atlas_imagelayer_left_foot_191915771925017x" width="60"/>
+  <image height="124" source="atlas_imagelayer_left_foot_63924729098817x" width="60"/>
  </imagelayer>
  <imagelayer id="26" locked="1" name="hero_right_foot" offsetx="589.3" offsety="1727.15">
-  <image height="187" source="atlas_imagelayer_right_foot_191915771925018x" width="63"/>
+  <image height="187" source="atlas_imagelayer_right_foot_63924729098818x" width="63"/>
  </imagelayer>
  <group id="68" locked="1" name="hell_version" visible="0">
   <imagelayer id="69" locked="1" name="hell_hr_foot_left" offsetx="428" offsety="1644.95">
-   <image height="155" source="atlas_imagelayer_hell_hr_stiletto_left_191915771925019x" width="110"/>
+   <image height="155" source="atlas_imagelayer_hell_hr_stiletto_left_63924729098819x" width="110"/>
   </imagelayer>
   <imagelayer id="71" locked="1" name="helll_hr_foot_right" offsetx="554" offsety="1645">
-   <image height="155" source="atlas_imagelayer_hr_stiletto_right_191915771925020x" width="108"/>
+   <image height="155" source="atlas_imagelayer_hr_stiletto_right_63924729098820x" width="108"/>
   </imagelayer>
   <imagelayer id="72" locked="1" name="hrll_hr_tail" offsetx="634.9" offsety="868">
-   <image height="286" source="atlas_imagelayer_hell_hr_tail_191915771925021x" width="131"/>
+   <image height="286" source="atlas_imagelayer_hell_hr_tail_63924729098821x" width="131"/>
   </imagelayer>
   <imagelayer id="73" locked="1" name="hell_chair" offsetx="350.5" offsety="740">
-   <image height="488" source="atlas_imagelayer_hell_chair_191915771925022x" width="385"/>
+   <image height="488" source="atlas_imagelayer_hell_chair_63924729098822x" width="385"/>
   </imagelayer>
   <group id="74" locked="1" name="hell_hr">
    <imagelayer id="75" name="hell_hr_shirt" offsetx="394" offsety="870">
-    <image height="351" source="atlas_imagelayer_hr_hell_shirt_191915771925023x" width="281"/>
+    <image height="351" source="atlas_imagelayer_hr_hell_shirt_63924729098823x" width="281"/>
    </imagelayer>
    <imagelayer id="76" name="hell_hr_neck" offsetx="497.95" offsety="800">
-    <image height="78" source="atlas_imagelayer_hr_hell_neck_191915771925024x" width="82"/>
+    <image height="78" source="atlas_imagelayer_hr_hell_neck_63924729098824x" width="82"/>
    </imagelayer>
    <imagelayer id="77" name="hell_hr_head" offsetx="418.4" offsety="514.3">
-    <image height="338" source="atlas_imagelayer_hell_hr_head_191915771925025x" width="271"/>
+    <image height="338" source="atlas_imagelayer_hell_hr_head_63924729098825x" width="271"/>
    </imagelayer>
    <imagelayer id="78" name="hell_hr_hair" offsetx="391" offsety="469.95">
-    <image height="288" source="atlas_imagelayer_hell_hr_hair_191915771925026x" width="318"/>
+    <image height="288" source="atlas_imagelayer_hell_hr_hair_63924729098826x" width="318"/>
    </imagelayer>
    <imagelayer id="79" name="hell_hr_left_horn" offsetx="346.45" offsety="450">
-    <image height="132" source="atlas_imagelayer_hell_hr_horn_left_191915771925027x" width="71"/>
+    <image height="132" source="atlas_imagelayer_hell_hr_horn_left_63924729098827x" width="71"/>
    </imagelayer>
    <imagelayer id="80" name="hell_hr_right_horn" offsetx="677.65" offsety="450">
-    <image height="132" source="atlas_imagelayer_hell_hr_horn_right_191915771925028x" width="71"/>
+    <image height="132" source="atlas_imagelayer_hell_hr_horn_right_63924729098828x" width="71"/>
    </imagelayer>
   </group>
   <group id="81" name="hell_table">
    <imagelayer id="82" locked="1" name="hell_table_legs" offsetx="-65.9" offsety="1396.15">
-    <image height="459" source="atlas_imagelayer_hell_table_legs_191915771925029x" width="1181"/>
+    <image height="459" source="atlas_imagelayer_hell_table_legs_63924729098829x" width="1181"/>
    </imagelayer>
    <imagelayer id="83" locked="1" name="hell_table" offsetx="12.8" offsety="1146">
-    <image height="517" source="atlas_imagelayer_hell_table_191915771925030x" width="1034"/>
+    <image height="517" source="atlas_imagelayer_hell_table_63924729098830x" width="1034"/>
    </imagelayer>
    <imagelayer id="84" locked="1" name="hell_pentagrem" offsetx="268.1" offsety="1231.15">
-    <image height="268" source="atlas_imagelayer_pentagram_191915771925031x" width="524"/>
+    <image height="268" source="atlas_imagelayer_pentagram_63924729098831x" width="524"/>
    </imagelayer>
    <imagelayer id="85" locked="1" name="hell_candle9" offsetx="259.45" offsety="1211.2">
-    <image height="126" source="atlas_imagelayer_candle_191915771925032x" width="31"/>
+    <image height="126" source="atlas_imagelayer_candle_63924729098832x" width="31"/>
    </imagelayer>
    <imagelayer id="86" locked="1" name="hell_candle12" offsetx="521.9" offsety="1112.75">
-    <image height="126" source="atlas_imagelayer_candle_191915771925033x" width="31"/>
+    <image height="126" source="atlas_imagelayer_candle_63924729098833x" width="31"/>
    </imagelayer>
    <imagelayer id="87" locked="1" name="hell_candle3" offsetx="770.25" offsety="1208">
-    <image height="126" source="atlas_imagelayer_candle_191915771925034x" width="31"/>
+    <image height="126" source="atlas_imagelayer_candle_63924729098834x" width="31"/>
    </imagelayer>
    <imagelayer id="88" locked="1" name="hell_candle5" offsetx="672.9" offsety="1368.95">
-    <image height="126" source="atlas_imagelayer_candle_191915771925035x" width="31"/>
+    <image height="126" source="atlas_imagelayer_candle_63924729098835x" width="31"/>
    </imagelayer>
    <imagelayer id="89" locked="1" name="hell_candle7" offsetx="353.7" offsety="1370.9">
-    <image height="126" source="atlas_imagelayer_candle_191915771925036x" width="31"/>
+    <image height="126" source="atlas_imagelayer_candle_63924729098836x" width="31"/>
    </imagelayer>
    <objectgroup id="90" name="fires">
     <object height="42" id="19" name="fire5" width="15.65" x="266.667" y="1175.33"/>
@@ -132,99 +132,99 @@
   </group>
   <group id="91" locked="1" name="hell_hr_body">
    <imagelayer id="92" locked="1" name="hell_hr_hand_left" offsetx="319.1" offsety="1171.6">
-    <image height="120" source="atlas_imagelayer_hell_hr_hand_left_191915771925037x" width="103"/>
+    <image height="120" source="atlas_imagelayer_hell_hr_hand_left_63924729098837x" width="103"/>
    </imagelayer>
    <imagelayer id="93" locked="1" name="hell_hr_hand_laeft_nails" offsetx="350" offsety="1217">
-    <image height="88" source="atlas_imagelayer_hell_hr_hand_left_nails_191915771925038x" width="80"/>
+    <image height="88" source="atlas_imagelayer_hell_hr_hand_left_nails_63924729098838x" width="80"/>
    </imagelayer>
    <imagelayer id="94" name="hell_hr_arm_left" offsetx="291" offsety="889">
-    <image height="320" source="atlas_imagelayer_hell_hr_arm_left_191915771925039x" width="130"/>
+    <image height="320" source="atlas_imagelayer_hell_hr_arm_left_63924729098839x" width="130"/>
    </imagelayer>
    <imagelayer id="95" locked="1" name="hell_hr_hand_right" offsetx="644.3" offsety="1184.05">
-    <image height="116" source="atlas_imagelayer_hell_hr_hand_right_191915771925040x" width="101"/>
+    <image height="116" source="atlas_imagelayer_hell_hr_hand_right_63924729098840x" width="101"/>
    </imagelayer>
    <imagelayer id="96" locked="1" name="hell_hr_phone" offsetx="824.8" offsety="1232.2">
-    <image height="125" source="atlas_imagelayer_HR_phone0001_191915771925041x" width="132"/>
+    <image height="125" source="atlas_imagelayer_HR_phone0001_63924729098841x" width="132"/>
    </imagelayer>
    <imagelayer id="97" locked="1" name="hell_hr_hand_right_nails" offsetx="637.65" offsety="1226.65">
-    <image height="85" source="atlas_imagelayer_hell_hr_hand_right_nails_191915771925042x" width="101"/>
+    <image height="85" source="atlas_imagelayer_hell_hr_hand_right_nails_63924729098842x" width="101"/>
    </imagelayer>
    <imagelayer id="98" locked="1" name="hell_hr_arm_right" offsetx="650" offsety="890">
-    <image height="330" source="atlas_imagelayer_hell_hr_arm_right_191915771925043x" width="120"/>
+    <image height="330" source="atlas_imagelayer_hell_hr_arm_right_63924729098843x" width="120"/>
    </imagelayer>
   </group>
  </group>
  <group id="60" name="daily">
   <imagelayer id="27" locked="1" name="hr_left_foot" offsetx="428" offsety="1644.95">
-   <image height="155" source="atlas_imagelayer_stiletto_left_191915771925044x" width="117"/>
+   <image height="155" source="atlas_imagelayer_stiletto_left_63924729098844x" width="117"/>
   </imagelayer>
   <imagelayer id="28" locked="1" name="hr_right_foot" offsetx="552.45" offsety="1644.95">
-   <image height="155" source="atlas_imagelayer_stiletto_right_191915771925045x" width="117"/>
+   <image height="155" source="atlas_imagelayer_stiletto_right_63924729098845x" width="117"/>
   </imagelayer>
   <imagelayer id="31" locked="1" name="hr_chair" offsetx="350.5" offsety="740">
-   <image height="488" source="atlas_imagelayer_chair_191915771925046x" width="385"/>
+   <image height="488" source="atlas_imagelayer_chair_63924729098846x" width="385"/>
   </imagelayer>
   <group id="32" locked="1" name="hr">
    <imagelayer id="33" locked="1" name="hr_shirt" offsetx="394" offsety="870">
-    <image height="351" source="atlas_imagelayer_hr_shirt_191915771925047x" width="281"/>
+    <image height="351" source="atlas_imagelayer_hr_shirt_63924729098847x" width="281"/>
    </imagelayer>
    <imagelayer id="34" locked="1" name="hr_neck" offsetx="497.95" offsety="800">
-    <image height="78" source="atlas_imagelayer_neck_191915771925048x" width="82"/>
+    <image height="78" source="atlas_imagelayer_neck_63924729098848x" width="82"/>
    </imagelayer>
    <imagelayer id="35" locked="1" name="hr_head" offsetx="418.4" offsety="514.3">
-    <image height="338" source="atlas_imagelayer_hr_head_191915771925049x" width="271"/>
+    <image height="338" source="atlas_imagelayer_hr_head_63924729098849x" width="271"/>
    </imagelayer>
    <imagelayer id="36" locked="1" name="hr_hear" offsetx="391" offsety="469.95">
-    <image height="288" source="atlas_imagelayer_hr_hair_191915771925050x" width="318"/>
+    <image height="288" source="atlas_imagelayer_hr_hair_63924729098850x" width="318"/>
    </imagelayer>
   </group>
   <imagelayer id="37" locked="1" name="table" offsetx="10" offsety="1145">
-   <image height="794" source="atlas_imagelayer_table_191915771925051x" width="1062"/>
+   <image height="794" source="atlas_imagelayer_table_63924729098851x" width="1062"/>
   </imagelayer>
   <group id="38" locked="1" name="hr_body">
    <imagelayer id="39" locked="1" name="hr_hand_left" offsetx="319.1" offsety="1171.6">
-    <image height="120" source="atlas_imagelayer_hr_hand_left_191915771925052x" width="103"/>
+    <image height="120" source="atlas_imagelayer_hr_hand_left_63924729098852x" width="103"/>
    </imagelayer>
    <imagelayer id="41" locked="1" name="hr_hand_left_nails" offsetx="350" offsety="1217">
-    <image height="82" source="atlas_imagelayer_hr_hand_left_nails_191915771925053x" width="76"/>
+    <image height="82" source="atlas_imagelayer_hr_hand_left_nails_63924729098853x" width="76"/>
    </imagelayer>
    <imagelayer id="42" name="hr_arm_left" offsetx="302" offsety="889">
-    <image height="320" source="atlas_imagelayer_hr_arm_left_191915771925054x" width="110"/>
+    <image height="320" source="atlas_imagelayer_hr_arm_left_63924729098854x" width="110"/>
    </imagelayer>
    <imagelayer id="40" locked="1" name="hr_hand_right" offsetx="644.3" offsety="1184.05">
-    <image height="116" source="atlas_imagelayer_hr_hand_right_191915771925055x" width="101"/>
+    <image height="116" source="atlas_imagelayer_hr_hand_right_63924729098855x" width="101"/>
    </imagelayer>
    <imagelayer id="43" locked="1" name="hr_phone" offsetx="743.65" offsety="1158.75">
-    <image height="125" source="atlas_imagelayer_HR_phone0001_191915771925056x" width="132"/>
+    <image height="125" source="atlas_imagelayer_HR_phone0001_63924729098856x" width="132"/>
    </imagelayer>
    <imagelayer id="44" locked="1" name="hr_hand_right_nails" offsetx="642.55" offsety="1226.65">
-    <image height="78" source="atlas_imagelayer_hr_hand_right_nails_191915771925057x" width="96"/>
+    <image height="78" source="atlas_imagelayer_hr_hand_right_nails_63924729098857x" width="96"/>
    </imagelayer>
    <imagelayer id="45" locked="1" name="hr_arm_right" offsetx="659" offsety="890">
-    <image height="330" source="atlas_imagelayer_hr_arm_right_191915771925058x" width="111"/>
+    <image height="330" source="atlas_imagelayer_hr_arm_right_63924729098858x" width="111"/>
    </imagelayer>
   </group>
  </group>
  <imagelayer id="29" locked="1" name="hero_left_leg" offsetx="220" offsety="1696.05">
-  <image height="239" source="atlas_imagelayer_left_leg_191915771925059x" width="236"/>
+  <image height="239" source="atlas_imagelayer_left_leg_63924729098859x" width="236"/>
  </imagelayer>
  <imagelayer id="30" locked="1" name="hero_right_leg" offsetx="630" offsety="1705.25">
-  <image height="232" source="atlas_imagelayer_right_leg_191915771925060x" width="240"/>
+  <image height="232" source="atlas_imagelayer_right_leg_63924729098860x" width="240"/>
  </imagelayer>
  <imagelayer id="46" locked="1" name="hr_stress_level" offsetx="800.05" offsety="1243.6" visible="0">
-  <image height="408" source="atlas_imagelayer_hr_stress_1_191915771925061x" width="275"/>
+  <image height="408" source="atlas_imagelayer_hr_stress_1_63924729098861x" width="275"/>
  </imagelayer>
  <imagelayer id="47" locked="1" name="hero_phone" offsetx="155.2" offsety="1426">
-  <image height="162" source="atlas_imagelayer_my_ phone0001_191915771925062x" width="172"/>
+  <image height="162" source="atlas_imagelayer_my_ phone0001_63924729098862x" width="172"/>
  </imagelayer>
  <imagelayer id="99" locked="1" name="hero_dictophone" offsetx="205.2" offsety="1476" visible="0">
-  <image height="52" source="atlas_imagelayer_hero_dictophone_1_191915771925063x" width="74"/>
+  <image height="52" source="atlas_imagelayer_hero_dictophone_1_63924729098863x" width="74"/>
  </imagelayer>
  <imagelayer id="101" locked="1" name="hr_dictophone" offsetx="773" offsety="1188.75" visible="0">
-  <image height="46" source="atlas_imagelayer_hr_dictophone_1_191915771925064x" width="66"/>
+  <image height="46" source="atlas_imagelayer_hr_dictophone_1_63924729098864x" width="66"/>
  </imagelayer>
  <imagelayer id="48" locked="1" name="hero_stress" offsetx="40.15" offsety="1138.35" visible="0">
-  <image height="481" source="atlas_imagelayer_my_stress_1_191915771925065x" width="283"/>
+  <image height="481" source="atlas_imagelayer_my_stress_1_63924729098865x" width="283"/>
  </imagelayer>
  <objectgroup id="102" locked="1" name="stress_levels">
   <object height="447" id="26" name="hero_stress_level" width="247" x="53" y="1153"/>
@@ -236,36 +236,36 @@
  </objectgroup>
  <group id="49" locked="1" name="tea" visible="0">
   <imagelayer id="50" locked="1" name="plate" offsetx="451.7" offsety="1432.4">
-   <image height="122" source="atlas_imagelayer_plate_191915771925066x" width="198"/>
+   <image height="122" source="atlas_imagelayer_plate_63924729098866x" width="198"/>
   </imagelayer>
   <imagelayer id="51" locked="1" name="cup_of_tea" offsetx="501.6" offsety="1432.25">
-   <image height="81" source="atlas_imagelayer_cup_of_tea_191915771925067x" width="110"/>
+   <image height="81" source="atlas_imagelayer_cup_of_tea_63924729098867x" width="110"/>
   </imagelayer>
   <imagelayer id="52" name="teapot" offsetx="201.3" offsety="1168.13">
-   <image height="246" source="atlas_imagelayer_french_press_191915771925068x" width="209"/>
+   <image height="246" source="atlas_imagelayer_french_press_63924729098868x" width="209"/>
   </imagelayer>
   <imagelayer id="108" name="hr_plate" offsetx="433.333" offsety="1161.33">
-   <image height="122" source="atlas_imagelayer_plate_191915771925069x" width="198"/>
+   <image height="122" source="atlas_imagelayer_plate_63924729098869x" width="198"/>
   </imagelayer>
   <imagelayer id="109" name="hr_cup_of_tea" offsetx="485.333" offsety="1161.33">
-   <image height="81" source="atlas_imagelayer_cup_of_tea_191915771925070x" width="110"/>
+   <image height="81" source="atlas_imagelayer_cup_of_tea_63924729098870x" width="110"/>
   </imagelayer>
  </group>
  <group id="11" locked="1" name="tablet" visible="0">
   <imagelayer id="9" locked="1" name="right_hand_down" offsetx="992.8" offsety="1282.55">
-   <image height="691" source="atlas_imagelayer_right_hand_down_191915771925071x" width="168"/>
+   <image height="691" source="atlas_imagelayer_right_hand_down_63924729098871x" width="168"/>
   </imagelayer>
   <imagelayer id="7" locked="1" name="left_hand_down" offsetx="-70" offsety="1259.85">
-   <image height="761" source="atlas_imagelayer_left_hand_down_191915771925072x" width="168"/>
+   <image height="761" source="atlas_imagelayer_left_hand_down_63924729098872x" width="168"/>
   </imagelayer>
-  <imagelayer id="2" locked="1" name="tablet" offsetx="91.75" offsety="380.05" parallaxx="0" parallaxy="0">
-   <image height="1392" source="atlas_imagelayer_tablet_191915771925073x" width="905"/>
+  <imagelayer id="122" name="tablet" offsetx="91.75" offsety="380">
+   <image height="1392" source="atlas_imagelayer_tablet_63924729098873x" width="905"/>
   </imagelayer>
   <imagelayer id="15" locked="1" name="right_button" offsetx="916.45" offsety="861.75">
-   <image height="430" source="atlas_imagelayer_tablet_button_1_191915771925074x" width="71"/>
+   <image height="430" source="atlas_imagelayer_tablet_button_1_63924729098874x" width="71"/>
   </imagelayer>
   <imagelayer id="14" locked="1" name="left_button" offsetx="99.6" offsety="861.75">
-   <image height="430" source="atlas_imagelayer_tablet_button_left_1_191915771925075x" width="71"/>
+   <image height="430" source="atlas_imagelayer_tablet_button_left_1_63924729098875x" width="71"/>
   </imagelayer>
   <objectgroup id="17" locked="1" name="object_layer">
    <object height="428" id="11" name="tablet_left_button" width="73.3333" x="99.6" y="861.75"/>
@@ -278,62 +278,64 @@
    <object height="233.333" id="15" name="sign_button" width="593.939" x="238" y="1431.6"/>
   </objectgroup>
   <imagelayer id="4" locked="1" name="sign_button" offsetx="238" offsety="1351.6" parallaxx="0" parallaxy="0" visible="0">
-   <image height="310" source="atlas_imagelayer_sign_button_1_191915771925076x" width="609"/>
+   <image height="310" source="atlas_imagelayer_sign_button_1_63924729098876x" width="609"/>
   </imagelayer>
   <imagelayer id="8" locked="1" name="left_hand_up" offsetx="-10" offsety="1143.6">
-   <image height="880" source="atlas_imagelayer_left_hand_up_191915771925077x" width="297"/>
+   <image height="880" source="atlas_imagelayer_left_hand_up_63924729098877x" width="297"/>
   </imagelayer>
   <imagelayer id="10" name="right_hand_up" offsetx="795.3" offsety="1138.4">
-   <image height="880" source="atlas_imagelayer_right_hand_up_191915771925078x" width="297"/>
+   <image height="880" source="atlas_imagelayer_right_hand_up_63924729098878x" width="297"/>
   </imagelayer>
  </group>
  <group id="110" name="hero_big_phone" visible="0">
   <imagelayer id="111" locked="1" name="hero_phone_hand_down" offsetx="209.7" offsety="950">
-   <image height="1064" source="atlas_imagelayer_phone_hero_hand_down_191915771925079x" width="707"/>
+   <image height="1064" source="atlas_imagelayer_phone_hero_hand_down_63924729098879x" width="707"/>
   </imagelayer>
   <imagelayer id="112" locked="1" name="big_hero_phone" offsetx="240" offsety="648.75">
-   <image height="1102" source="atlas_imagelayer_hero_big_ phone_191915771925080x" width="607"/>
+   <image height="1102" source="atlas_imagelayer_hero_big_ phone_63924729098880x" width="607"/>
   </imagelayer>
   <imagelayer id="113" locked="1" name="cancel_call" offsetx="485.4" offsety="1527.3">
-   <image height="134" source="atlas_imagelayer_hero_phone_cancel_call_191915771925081x" width="134"/>
+   <image height="134" source="atlas_imagelayer_hero_phone_cancel_call_63924729098881x" width="134"/>
   </imagelayer>
   <imagelayer id="121" locked="1" name="get_call" offsetx="485.4" offsety="1527.3">
-   <image height="134" source="atlas_imagelayer_hero_phone_get_call_191915771925082x" width="134"/>
+   <image height="134" source="atlas_imagelayer_hero_phone_get_call_63924729098882x" width="134"/>
   </imagelayer>
   <imagelayer id="114" locked="1" name="dynamic_button" offsetx="652.05" offsety="1291.65">
-   <image height="115" source="atlas_imagelayer_hero_phone_dynamic_191915771925083x" width="109"/>
+   <image height="115" source="atlas_imagelayer_hero_phone_dynamic_63924729098883x" width="109"/>
   </imagelayer>
   <imagelayer id="115" locked="1" name="call_number" offsetx="507.5" offsety="1291.4">
-   <image height="116" source="atlas_imagelayer_phone_hero_call_number_191915771925084x" width="87"/>
+   <image height="116" source="atlas_imagelayer_phone_hero_call_number_63924729098884x" width="87"/>
   </imagelayer>
   <imagelayer id="116" locked="1" name="mute_microphone" offsetx="341.6" offsety="1299.6">
-   <image height="102" source="atlas_imagelayer_hero_hone_mute_191915771925085x" width="102"/>
+   <image height="102" source="atlas_imagelayer_hero_hone_mute_63924729098885x" width="102"/>
   </imagelayer>
   <imagelayer id="117" locked="1" name="phone_call_human" offsetx="416" offsety="846.5">
-   <image height="261" source="atlas_imagelayer_hero_hone_wire_human_191915771925086x" width="261"/>
+   <image height="261" source="atlas_imagelayer_hero_hone_wire_human_63924729098886x" width="261"/>
   </imagelayer>
   <objectgroup id="120" locked="1" name="hero_big_phone_actors">
    <object height="130" id="32" name="hero_phone_caller" width="365.333" x="370" y="1128.33"/>
   </objectgroup>
   <imagelayer id="118" locked="1" name="hero_phone_camera" offsetx="514" offsety="698">
-   <image height="72" source="atlas_imagelayer_hero_phone_camera_191915771925087x" width="72"/>
+   <image height="72" source="atlas_imagelayer_hero_phone_camera_63924729098887x" width="72"/>
   </imagelayer>
   <imagelayer id="119" locked="1" name="hero_phone_hand_up" offsetx="-80" offsety="931.25">
-   <image height="1113" source="atlas_imagelayer_hero_phone_hand_up_191915771925088x" width="368"/>
+   <image height="1113" source="atlas_imagelayer_hero_phone_hand_up_63924729098888x" width="368"/>
   </imagelayer>
  </group>
- <group id="53" locked="1" name="thoughts" visible="0">
+ <group id="53" name="thoughts" visible="0">
   <imagelayer id="54" locked="1" name="hero_head" offsetx="27.85" offsety="1116.8">
-   <image height="824" source="atlas_imagelayer_hero_head_191915771925089x" width="989"/>
+   <image height="824" source="atlas_imagelayer_hero_head_63924729098889x" width="989"/>
   </imagelayer>
   <imagelayer id="55" locked="1" name="hero_hair" offsetx="0" offsety="-34.55">
-   <image height="1486" source="atlas_imagelayer_hair_191915771925090x" width="1087"/>
+   <image height="1486" source="atlas_imagelayer_hair_63924729098890x" width="1087"/>
   </imagelayer>
   <imagelayer id="56" name="collar" offsetx="199.6" offsety="1710">
-   <image height="231" source="atlas_imagelayer_collar_191915771925091x" width="684"/>
+   <image height="231" source="atlas_imagelayer_collar_63924729098891x" width="684"/>
   </imagelayer>
-  <objectgroup id="106" locked="1" name="thoughts_object_layer">
-   <object height="357.394" id="29" name="thought" width="364.182" x="1148.48" y="566.667"/>
+  <objectgroup id="106" name="thoughts_object_layer">
+   <properties>
+    <property name="is_object_layer" type="bool" value="true"/>
+   </properties>
   </objectgroup>
  </group>
  <objectgroup id="57" locked="1" name="text_window" visible="0">

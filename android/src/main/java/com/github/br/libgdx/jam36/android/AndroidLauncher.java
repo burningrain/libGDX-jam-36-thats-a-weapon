@@ -12,7 +12,7 @@ import com.crashinvaders.basisu.gdx.Ktx2TextureLoader;
 import com.github.br.libgdx.jam36.Main;
 import com.github.br.libgdx.jam36.PlatformConfigurator;
 
-import ktx.tiled.Ktx2AtlasTmxMapLoader;
+import workaround.ktx.tiled.Ktx2AtlasTmxMapLoader;
 
 /** Launches the Android application. */
 public class AndroidLauncher extends AndroidApplication {

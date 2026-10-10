@@ -1,10 +1,15 @@
-package com.github.br.libgdx.jam36;
+package com.github.br.libgdx.structure.screen.ui;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.maps.*;
+import com.badlogic.gdx.maps.MapGroupLayer;
+import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.MapLayers;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.MapObjects;
+import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapImageLayer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
@@ -12,10 +17,10 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.github.br.libgdx.jam36.screens.ActorFactory;
 
 public class CustomOrthogonalTiledMapRenderer extends OrthogonalTiledMapRenderer {
 
+    public static final String IS_OBJECT_LAYER = "is_object_layer";
     private final ObjectMap<String, Stage> stages = new ObjectMap<>();
     private final Viewport viewport;
     private final ActorFactory actorFactory;
@@ -101,7 +106,9 @@ public class CustomOrthogonalTiledMapRenderer extends OrthogonalTiledMapRenderer
             }
 
             MapObjects objects = layer.getObjects();
-            if (objects == null || objects.getCount() == 0) {
+            MapProperties layerProperties = layer.getProperties();
+            Boolean isObjectLayer = layerProperties.get(IS_OBJECT_LAYER, Boolean.class);
+            if (Boolean.TRUE != isObjectLayer && (objects == null || objects.getCount() == 0)) {
                 continue;
             }
 

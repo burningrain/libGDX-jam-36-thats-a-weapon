@@ -2,23 +2,27 @@ package com.github.br.libgdx.jam36.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.profiling.GLProfiler;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.github.br.libgdx.jam36.Constants;
-import com.github.br.libgdx.jam36.CustomOrthogonalTiledMapRenderer;
 import com.github.br.libgdx.jam36.Resources;
 import com.github.br.libgdx.jam36.context.EventsBlock;
 import com.github.br.libgdx.jam36.context.GameContext;
 import com.github.br.libgdx.jam36.context.TabletContext;
-import com.github.br.libgdx.jam36.screens.phase.*;
+import com.github.br.libgdx.jam36.screens.phase.ChangeContextPhase;
+import com.github.br.libgdx.jam36.screens.phase.Choose;
+import com.github.br.libgdx.jam36.screens.phase.DelayPhase;
+import com.github.br.libgdx.jam36.screens.phase.GameOverPhase;
+import com.github.br.libgdx.jam36.screens.phase.GameOverStatisticsPhase;
+import com.github.br.libgdx.jam36.screens.phase.HrDialogPhase;
+import com.github.br.libgdx.jam36.screens.phase.Phase;
+import com.github.br.libgdx.jam36.screens.phase.PhaseManager;
+import com.github.br.libgdx.jam36.screens.phase.SetStartGamePhase;
+import com.github.br.libgdx.jam36.screens.phase.TabletPhase;
+import com.github.br.libgdx.jam36.screens.phase.TimerPhase;
 import com.github.br.libgdx.jam36.screens.phase.game.Watch;
 import com.github.br.libgdx.jam36.screens.phase.hell.CloseHellDoorPhase;
 import com.github.br.libgdx.jam36.screens.phase.hell.GoFromTheHellPhase;
@@ -27,45 +31,42 @@ import com.github.br.libgdx.jam36.screens.phase.hell.OpenHellDoorPhase;
 import com.github.br.libgdx.jam36.screens.phase.hr.HideHrPhase;
 import com.github.br.libgdx.jam36.screens.phase.hr.ShowHrPhase;
 import com.github.br.libgdx.jam36.screens.phase.mind.MindChooserPhase;
-import com.github.br.libgdx.jam36.screens.phase.phone.*;
+import com.github.br.libgdx.jam36.screens.phase.phone.HeroBigPhone1CallPhase;
+import com.github.br.libgdx.jam36.screens.phase.phone.HeroBigPhone2UpPhase;
+import com.github.br.libgdx.jam36.screens.phase.phone.HeroBigPhone3CancelCallPhase;
+import com.github.br.libgdx.jam36.screens.phase.phone.HeroBigPhone3GetCallPhase;
+import com.github.br.libgdx.jam36.screens.phase.phone.HeroBigPhone4DownPhase;
 import com.github.br.libgdx.jam36.screens.phase.predicate.PredicatePhase;
 import com.github.br.libgdx.jam36.screens.phase.tea.ShowTeaPhase;
-import com.github.br.libgdx.jam36.ui.AnimatedImage;
-import com.github.br.libgdx.structure.screen.AbstractGameScreen;
+import com.github.br.libgdx.jam36.screens.ui.UserActorFactory;
+import com.github.br.libgdx.structure.screen.AbstractTiledMapUiScreen;
+import com.github.br.libgdx.structure.screen.ui.ActorFactory;
+import com.github.br.libgdx.structure.screen.ui.AnimatedImage;
+import com.github.br.libgdx.structure.screen.ui.CustomOrthogonalTiledMapRenderer;
 
-public class MainScreen extends AbstractGameScreen {
-
-    private TiledMap tiledMap;
-    private CustomOrthogonalTiledMapRenderer renderer;
-
-    private OrthographicCamera camera;
-    private Viewport viewport;
-
-    private ActorFactory actorFactory;
+public class MainScreen extends AbstractTiledMapUiScreen<UserActorFactory> {
 
     private PhaseManager phaseManager;
     private GameContext gameContext;
 
     private Watch watch;
 
-    GLProfiler glProfiler;
+    public MainScreen(String pathToSkin, boolean isGlProfileActive) {
+        super(Resources.Tmx.MENU, pathToSkin, isGlProfileActive);
+    }
 
     @Override
-    public void show() {
-        glProfiler = new GLProfiler(Gdx.graphics);
-        glProfiler.enable();
+    protected UserActorFactory createActionFactory(Skin gameSkin, AssetManager assetManager) {
+        return new UserActorFactory(gameSkin, assetManager);
+    }
 
-        AssetManager assetManager = getGameManager().assetManager;
-        tiledMap = assetManager.get(Resources.getTmx(Resources.Tmx.MENU));
-
-        camera = new OrthographicCamera();
-        viewport = new FitViewport(Constants.WORLD_WIDTH, Constants.WORLD_HEIGHT, camera);
-        centerCamera();
-
-        Skin gameSkin = assetManager.get(Resources.SKIN);
-        actorFactory = new ActorFactory(gameSkin, assetManager);
-        renderer = new CustomOrthogonalTiledMapRenderer(actorFactory, viewport, tiledMap, 1f);
-
+    @Override
+    protected void afterShow(
+        TiledMap tiledMap,
+        CustomOrthogonalTiledMapRenderer renderer,
+        Viewport viewport,
+        ActorFactory actorFactory
+    ) {
         // часы
         Image arrow = renderer.getActor(TiledLayers.ACTORS_LAYER_WATCH, StageActors.WATCH_ARROW, Image.class);
         // Устанавливаем точку вращения в нижний центр
@@ -419,65 +420,11 @@ public class MainScreen extends AbstractGameScreen {
         return gameContext;
     }
 
-    private void centerCamera() {
-        camera.position.set(Constants.WORLD_WIDTH / 2f, Constants.WORLD_HEIGHT / 2f, 0);
-    }
-
     @Override
-    public void render(float delta) {
-        Gdx.gl.glClearColor(1, 1, 1, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
+    protected void update(float delta, Viewport viewport) {
         phaseManager.act(gameContext, delta);
 
-        camera.update();
-        renderer.setView(camera);
-        renderer.render();
-
-        // Вывод информации (например, в консоль или на экран через Label)
-        System.out.println("Draw Calls: " + glProfiler.getDrawCalls());
-        System.out.println("Texture Bindings: " + glProfiler.getTextureBindings());
-        System.out.println("Shader Switches: " + glProfiler.getShaderSwitches());
-        System.out.println("Vertices: " + glProfiler.getVertexCount().total);
-        System.out.println("FPS:" + Gdx.graphics.getFramesPerSecond());
-
-        // Память, выделенная под Java-объекты
-        long javaHeap = Gdx.app.getJavaHeap();
-        // Нативная память (сюда входят сырые данные Pixmap до отправки в GPU,
-        // буферы Box2D, аудиоданные и т.д.)
-        long nativeHeap = Gdx.app.getNativeHeap();
-        System.out.println("Java Heap: " + (javaHeap / 1024 / 1024) + " MB");
-        System.out.println("Native Heap: " + (nativeHeap / 1024 / 1024) + " MB");
-
-        // Обязательно сбрасываем счетчик в конце кадра!
-        glProfiler.reset();
-    }
-
-    @Override
-    public void resize(int width, int height) {
-        viewport.update(width, height);
-        renderer.resize(width, height);
-        centerCamera();
-    }
-
-    @Override
-    public void pause() {
-
-    }
-
-    @Override
-    public void resume() {
-
-    }
-
-    @Override
-    public void hide() {
-
-    }
-
-    @Override
-    public void dispose() {
-
+        viewport.apply(true);
     }
 
 }

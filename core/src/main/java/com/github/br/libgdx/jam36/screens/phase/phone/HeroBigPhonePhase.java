@@ -1,16 +1,13 @@
 package com.github.br.libgdx.jam36.screens.phase.phone;
 
 import com.badlogic.gdx.maps.MapGroupLayer;
-import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
-import com.github.br.libgdx.jam36.CustomOrthogonalTiledMapRenderer;
 import com.github.br.libgdx.jam36.context.GameContext;
 import com.github.br.libgdx.jam36.context.PhoneContext;
 import com.github.br.libgdx.jam36.screens.StageActors;
 import com.github.br.libgdx.jam36.screens.TiledLayers;
 import com.github.br.libgdx.jam36.screens.phase.ContextChanger;
 import com.github.br.libgdx.jam36.screens.phase.Phase;
+import com.github.br.libgdx.structure.screen.ui.CustomOrthogonalTiledMapRenderer;
 import com.github.tommyettinger.textra.TypingLabel;
 
 @Deprecated

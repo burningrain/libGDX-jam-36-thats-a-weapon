@@ -2,13 +2,13 @@ package com.github.br.libgdx.jam36.screens.phase.phone;
 
 import com.badlogic.gdx.maps.MapGroupLayer;
 import com.badlogic.gdx.maps.MapLayer;
-import com.github.br.libgdx.jam36.CustomOrthogonalTiledMapRenderer;
 import com.github.br.libgdx.jam36.context.GameContext;
 import com.github.br.libgdx.jam36.context.PhoneContext;
 import com.github.br.libgdx.jam36.screens.StageActors;
 import com.github.br.libgdx.jam36.screens.TiledLayers;
 import com.github.br.libgdx.jam36.screens.phase.Phase;
-import com.github.br.libgdx.jam36.ui.AnimatedImage;
+import com.github.br.libgdx.structure.screen.ui.AnimatedImage;
+import com.github.br.libgdx.structure.screen.ui.CustomOrthogonalTiledMapRenderer;
 
 public class HeroBigPhone4DownPhase implements Phase, PhoneContext.Listener {
 
@@ -70,7 +70,11 @@ public class HeroBigPhone4DownPhase implements Phase, PhoneContext.Listener {
         MapLayer heroTablePhone = renderer.getLayer(TiledLayers.SMALL_HERO_PHONE_ON_TABLE);
         heroTablePhone.setVisible(true);
 
-        AnimatedImage dictophone = renderer.getActor(TiledLayers.ACTORS_LAYER_DICTOPHONES, StageActors.HERO_DICTOPHONE, AnimatedImage.class);
+        AnimatedImage dictophone = renderer.getActor(
+            TiledLayers.ACTORS_LAYER_DICTOPHONES,
+            StageActors.HERO_DICTOPHONE,
+            AnimatedImage.class
+        );
         dictophone.setVisible(false);
     }
 

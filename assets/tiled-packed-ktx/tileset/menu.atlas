@@ -4,35 +4,35 @@ size: 2048, 2048
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
-atlas_imagelayer_flowerpot1_191915771925001x
+atlas_imagelayer_flowerpot1_63924729098801x
   rotate: false
   xy: 1715, 961
   size: 161, 182
   orig: 161, 182
   offset: 0, 0
   index: -1
-atlas_imagelayer_flowerpot2_191915771925003x
+atlas_imagelayer_flowerpot2_63924729098803x
   rotate: false
   xy: 1715, 777
   size: 161, 182
   orig: 161, 182
   offset: 0, 0
   index: -1
-atlas_imagelayer_glass_191915771925000x
+atlas_imagelayer_glass_63924729098800x
   rotate: false
   xy: 1, 1
   size: 1712, 1962
   orig: 1712, 1962
   offset: 0, 0
   index: -1
-atlas_imagelayer_palm_tree_1_191915771925002x
+atlas_imagelayer_palm_tree_1_63924729098802x
   rotate: false
   xy: 1715, 1527
   size: 282, 436
   orig: 282, 436
   offset: 0, 0
   index: -1
-atlas_imagelayer_tree_191915771925004x
+atlas_imagelayer_tree_63924729098804x
   rotate: false
   xy: 1715, 1145
   size: 268, 380
@@ -45,28 +45,28 @@ size: 512, 1024
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
-atlas_imagelayer_door_191915771925005x
+atlas_imagelayer_door_63924729098805x
   rotate: false
   xy: 1, 199
   size: 392, 766
   orig: 392, 766
   offset: 0, 0
   index: -1
-atlas_imagelayer_watch_191915771925006x
+atlas_imagelayer_watch_63924729098806x
   rotate: false
   xy: 1, 1
   size: 196, 196
   orig: 196, 196
   offset: 0, 0
   index: -1
-atlas_imagelayer_watch_arrow_191915771925008x
+atlas_imagelayer_watch_arrow_63924729098808x
   rotate: false
   xy: 199, 118
   size: 9, 79
   orig: 9, 79
   offset: 0, 0
   index: -1
-atlas_imagelayer_watch_work_day_1_191915771925007x
+atlas_imagelayer_watch_work_day_1_63924729098807x
   rotate: false
   xy: 395, 914
   size: 45, 51
@@ -79,35 +79,35 @@ size: 2048, 2048
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
-atlas_imagelayer_hell_flowerpot2_191915771925012x
+atlas_imagelayer_hell_flowerpot2_63924729098812x
   rotate: false
   xy: 1715, 817
   size: 161, 182
   orig: 161, 182
   offset: 0, 0
   index: -1
-atlas_imagelayer_hell_flowerpot_1_191915771925010x
+atlas_imagelayer_hell_flowerpot_1_63924729098810x
   rotate: false
   xy: 1715, 1001
   size: 161, 182
   orig: 161, 182
   offset: 0, 0
   index: -1
-atlas_imagelayer_hell_glass_191915771925009x
+atlas_imagelayer_hell_glass_63924729098809x
   rotate: false
   xy: 1, 1
   size: 1712, 2002
   orig: 1712, 2002
   offset: 0, 0
   index: -1
-atlas_imagelayer_hell_palm_tree_191915771925011x
+atlas_imagelayer_hell_palm_tree_63924729098811x
   rotate: false
   xy: 1715, 1567
   size: 282, 436
   orig: 282, 436
   offset: 0, 0
   index: -1
-atlas_imagelayer_hell_tree_191915771925013x
+atlas_imagelayer_hell_tree_63924729098813x
   rotate: false
   xy: 1715, 1185
   size: 268, 380
@@ -120,105 +120,105 @@ size: 2048, 2048
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
-atlas_imagelayer_hell_chair_191915771925022x
+atlas_imagelayer_hell_chair_63924729098822x
   rotate: false
   xy: 1, 158
   size: 385, 488
   orig: 385, 488
   offset: 0, 0
   index: -1
-atlas_imagelayer_hell_door_191915771925014x
+atlas_imagelayer_hell_door_63924729098814x
   rotate: false
   xy: 1, 648
   size: 1010, 1384
   orig: 1010, 1384
   offset: 0, 0
   index: -1
-atlas_imagelayer_hell_door_blue_191915771925015x
+atlas_imagelayer_hell_door_blue_63924729098815x
   rotate: false
   xy: 1013, 648
   size: 1010, 1384
   orig: 1010, 1384
   offset: 0, 0
   index: -1
-atlas_imagelayer_hell_hr_hair_191915771925026x
+atlas_imagelayer_hell_hr_hair_63924729098826x
   rotate: false
   xy: 388, 358
   size: 318, 288
   orig: 318, 288
   offset: 0, 0
   index: -1
-atlas_imagelayer_hell_hr_head_191915771925025x
+atlas_imagelayer_hell_hr_head_63924729098825x
   rotate: false
   xy: 991, 308
   size: 271, 338
   orig: 271, 338
   offset: 0, 0
   index: -1
-atlas_imagelayer_hell_hr_horn_left_191915771925027x
+atlas_imagelayer_hell_hr_horn_left_63924729098827x
   rotate: false
   xy: 1633, 514
   size: 71, 132
   orig: 71, 132
   offset: 0, 0
   index: -1
-atlas_imagelayer_hell_hr_horn_right_191915771925028x
+atlas_imagelayer_hell_hr_horn_right_63924729098828x
   rotate: false
   xy: 113, 24
   size: 71, 132
   orig: 71, 132
   offset: 0, 0
   index: -1
-atlas_imagelayer_hell_hr_stiletto_left_191915771925019x
+atlas_imagelayer_hell_hr_stiletto_left_63924729098819x
   rotate: false
   xy: 1, 1
   size: 110, 155
   orig: 110, 155
   offset: 0, 0
   index: -1
-atlas_imagelayer_hell_hr_tail_191915771925021x
+atlas_imagelayer_hell_hr_tail_63924729098821x
   rotate: false
   xy: 1500, 360
   size: 131, 286
   orig: 131, 286
   offset: 0, 0
   index: -1
-atlas_imagelayer_hr_hell_neck_191915771925024x
+atlas_imagelayer_hr_hell_neck_63924729098824x
   rotate: false
   xy: 1264, 332
   size: 82, 78
   orig: 82, 78
   offset: 0, 0
   index: -1
-atlas_imagelayer_hr_hell_shirt_191915771925023x
+atlas_imagelayer_hr_hell_shirt_63924729098823x
   rotate: false
   xy: 708, 295
   size: 281, 351
   orig: 281, 351
   offset: 0, 0
   index: -1
-atlas_imagelayer_hr_stiletto_right_191915771925020x
+atlas_imagelayer_hr_stiletto_right_63924729098820x
   rotate: false
   xy: 388, 201
   size: 108, 155
   orig: 108, 155
   offset: 0, 0
   index: -1
-atlas_imagelayer_left_foot_191915771925017x
+atlas_imagelayer_left_foot_63924729098817x
   rotate: false
   xy: 1633, 388
   size: 60, 124
   orig: 60, 124
   offset: 0, 0
   index: -1
-atlas_imagelayer_right_foot_191915771925018x
+atlas_imagelayer_right_foot_63924729098818x
   rotate: false
   xy: 498, 169
   size: 63, 187
   orig: 63, 187
   offset: 0, 0
   index: -1
-atlas_imagelayer_watch_191915771925016x
+atlas_imagelayer_watch_63924729098816x
   rotate: false
   xy: 1264, 412
   size: 234, 234
@@ -231,308 +231,308 @@ size: 2048, 2048
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
-atlas_imagelayer_HR_phone0001_191915771925041x
+atlas_imagelayer_HR_phone0001_63924729098841x
   rotate: false
   xy: 866, 122
   size: 132, 125
   orig: 132, 125
   offset: 0, 0
   index: -1
-atlas_imagelayer_HR_phone0001_191915771925056x
+atlas_imagelayer_HR_phone0001_63924729098856x
   rotate: false
   xy: 866, 122
   size: 132, 125
   orig: 132, 125
   offset: 0, 0
   index: -1
-atlas_imagelayer_candle_191915771925032x
+atlas_imagelayer_candle_63924729098832x
   rotate: false
   xy: 1385, 946
   size: 31, 126
   orig: 31, 126
   offset: 0, 0
   index: -1
-atlas_imagelayer_candle_191915771925033x
+atlas_imagelayer_candle_63924729098833x
   rotate: false
   xy: 1385, 946
   size: 31, 126
   orig: 31, 126
   offset: 0, 0
   index: -1
-atlas_imagelayer_candle_191915771925034x
+atlas_imagelayer_candle_63924729098834x
   rotate: false
   xy: 1385, 946
   size: 31, 126
   orig: 31, 126
   offset: 0, 0
   index: -1
-atlas_imagelayer_candle_191915771925035x
+atlas_imagelayer_candle_63924729098835x
   rotate: false
   xy: 1385, 946
   size: 31, 126
   orig: 31, 126
   offset: 0, 0
   index: -1
-atlas_imagelayer_candle_191915771925036x
+atlas_imagelayer_candle_63924729098836x
   rotate: false
   xy: 1385, 946
   size: 31, 126
   orig: 31, 126
   offset: 0, 0
   index: -1
-atlas_imagelayer_chair_191915771925046x
+atlas_imagelayer_chair_63924729098846x
   rotate: false
   xy: 1065, 1074
   size: 385, 488
   orig: 385, 488
   offset: 0, 0
   index: -1
-atlas_imagelayer_cup_of_tea_191915771925067x
+atlas_imagelayer_cup_of_tea_63924729098867x
   rotate: false
   xy: 692, 2
   size: 110, 81
   orig: 110, 81
   offset: 0, 0
   index: -1
-atlas_imagelayer_cup_of_tea_191915771925070x
+atlas_imagelayer_cup_of_tea_63924729098870x
   rotate: false
   xy: 692, 2
   size: 110, 81
   orig: 110, 81
   offset: 0, 0
   index: -1
-atlas_imagelayer_french_press_191915771925068x
+atlas_imagelayer_french_press_63924729098868x
   rotate: false
   xy: 481, 1
   size: 209, 246
   orig: 209, 246
   offset: 0, 0
   index: -1
-atlas_imagelayer_hell_hr_arm_left_191915771925039x
+atlas_imagelayer_hell_hr_arm_left_63924729098839x
   rotate: false
   xy: 1792, 1220
   size: 130, 320
   orig: 130, 320
   offset: 0, 0
   index: -1
-atlas_imagelayer_hell_hr_arm_right_191915771925043x
+atlas_imagelayer_hell_hr_arm_right_63924729098843x
   rotate: false
   xy: 1792, 888
   size: 120, 330
   orig: 120, 330
   offset: 0, 0
   index: -1
-atlas_imagelayer_hell_hr_hand_left_191915771925037x
+atlas_imagelayer_hell_hr_hand_left_63924729098837x
   rotate: false
   xy: 1914, 1098
   size: 103, 120
   orig: 103, 120
   offset: 0, 0
   index: -1
-atlas_imagelayer_hell_hr_hand_left_nails_191915771925038x
+atlas_imagelayer_hell_hr_hand_left_nails_63924729098838x
   rotate: false
   xy: 1825, 513
   size: 80, 88
   orig: 80, 88
   offset: 0, 0
   index: -1
-atlas_imagelayer_hell_hr_hand_right_191915771925040x
+atlas_imagelayer_hell_hr_hand_right_63924729098840x
   rotate: false
   xy: 1914, 858
   size: 101, 116
   orig: 101, 116
   offset: 0, 0
   index: -1
-atlas_imagelayer_hell_hr_hand_right_nails_191915771925042x
+atlas_imagelayer_hell_hr_hand_right_nails_63924729098842x
   rotate: false
   xy: 1792, 801
   size: 101, 85
   orig: 101, 85
   offset: 0, 0
   index: -1
-atlas_imagelayer_hell_table_191915771925030x
+atlas_imagelayer_hell_table_63924729098830x
   rotate: false
   xy: 1, 249
   size: 1034, 517
   orig: 1034, 517
   offset: 0, 0
   index: -1
-atlas_imagelayer_hell_table_legs_191915771925029x
+atlas_imagelayer_hell_table_legs_63924729098829x
   rotate: false
   xy: 1, 1564
   size: 1181, 459
   orig: 1181, 459
   offset: 0, 0
   index: -1
-atlas_imagelayer_hero_dictophone_1_191915771925063x
+atlas_imagelayer_hero_dictophone_1_63924729098863x
   rotate: false
   xy: 1184, 1577
   size: 74, 52
   orig: 74, 52
   offset: 0, 0
   index: -1
-atlas_imagelayer_hr_arm_left_191915771925054x
+atlas_imagelayer_hr_arm_left_63924729098854x
   rotate: false
   xy: 1924, 1220
   size: 110, 320
   orig: 110, 320
   offset: 0, 0
   index: -1
-atlas_imagelayer_hr_arm_right_191915771925058x
+atlas_imagelayer_hr_arm_right_63924729098858x
   rotate: false
   xy: 1712, 447
   size: 111, 330
   orig: 111, 330
   offset: 0, 0
   index: -1
-atlas_imagelayer_hr_dictophone_1_191915771925064x
+atlas_imagelayer_hr_dictophone_1_63924729098864x
   rotate: false
   xy: 1384, 1707
   size: 66, 46
   orig: 66, 46
   offset: 0, 0
   index: -1
-atlas_imagelayer_hr_hair_191915771925050x
+atlas_imagelayer_hr_hair_63924729098850x
   rotate: false
   xy: 1065, 784
   size: 318, 288
   orig: 318, 288
   offset: 0, 0
   index: -1
-atlas_imagelayer_hr_hand_left_191915771925052x
+atlas_imagelayer_hr_hand_left_63924729098852x
   rotate: false
   xy: 1914, 976
   size: 103, 120
   orig: 103, 120
   offset: 0, 0
   index: -1
-atlas_imagelayer_hr_hand_left_nails_191915771925053x
+atlas_imagelayer_hr_hand_left_nails_63924729098853x
   rotate: false
   xy: 1622, 1591
   size: 76, 82
   orig: 76, 82
   offset: 0, 0
   index: -1
-atlas_imagelayer_hr_hand_right_191915771925055x
+atlas_imagelayer_hr_hand_right_63924729098855x
   rotate: false
   xy: 1825, 683
   size: 101, 116
   orig: 101, 116
   offset: 0, 0
   index: -1
-atlas_imagelayer_hr_hand_right_nails_191915771925057x
+atlas_imagelayer_hr_hand_right_nails_63924729098857x
   rotate: false
   xy: 1825, 603
   size: 96, 78
   orig: 96, 78
   offset: 0, 0
   index: -1
-atlas_imagelayer_hr_head_191915771925049x
+atlas_imagelayer_hr_head_63924729098849x
   rotate: false
   xy: 1320, 444
   size: 271, 338
   orig: 271, 338
   offset: 0, 0
   index: -1
-atlas_imagelayer_hr_shirt_191915771925047x
+atlas_imagelayer_hr_shirt_63924729098847x
   rotate: false
   xy: 1037, 415
   size: 281, 351
   orig: 281, 351
   offset: 0, 0
   index: -1
-atlas_imagelayer_hr_stress_1_191915771925061x
+atlas_imagelayer_hr_stress_1_63924729098861x
   rotate: false
   xy: 1037, 5
   size: 275, 408
   orig: 275, 408
   offset: 0, 0
   index: -1
-atlas_imagelayer_left_hand_down_191915771925072x
+atlas_imagelayer_left_hand_down_63924729098872x
   rotate: false
   xy: 1622, 779
   size: 168, 761
   orig: 168, 761
   offset: 0, 0
   index: -1
-atlas_imagelayer_left_leg_191915771925059x
+atlas_imagelayer_left_leg_63924729098859x
   rotate: false
   xy: 243, 8
   size: 236, 239
   orig: 236, 239
   offset: 0, 0
   index: -1
-atlas_imagelayer_my_ phone0001_191915771925062x
+atlas_imagelayer_my_ phone0001_63924729098862x
   rotate: false
   xy: 692, 85
   size: 172, 162
   orig: 172, 162
   offset: 0, 0
   index: -1
-atlas_imagelayer_my_stress_1_191915771925065x
+atlas_imagelayer_my_stress_1_63924729098865x
   rotate: false
   xy: 1710, 1542
   size: 283, 481
   orig: 283, 481
   offset: 0, 0
   index: -1
-atlas_imagelayer_neck_191915771925048x
+atlas_imagelayer_neck_63924729098848x
   rotate: false
   xy: 1622, 1675
   size: 82, 78
   orig: 82, 78
   offset: 0, 0
   index: -1
-atlas_imagelayer_pentagram_191915771925031x
+atlas_imagelayer_pentagram_63924729098831x
   rotate: false
   xy: 1184, 1755
   size: 524, 268
   orig: 524, 268
   offset: 0, 0
   index: -1
-atlas_imagelayer_plate_191915771925066x
+atlas_imagelayer_plate_63924729098866x
   rotate: false
   xy: 1184, 1631
   size: 198, 122
   orig: 198, 122
   offset: 0, 0
   index: -1
-atlas_imagelayer_plate_191915771925069x
+atlas_imagelayer_plate_63924729098869x
   rotate: false
   xy: 1184, 1631
   size: 198, 122
   orig: 198, 122
   offset: 0, 0
   index: -1
-atlas_imagelayer_right_hand_down_191915771925071x
+atlas_imagelayer_right_hand_down_63924729098871x
   rotate: false
   xy: 1452, 1062
   size: 168, 691
   orig: 168, 691
   offset: 0, 0
   index: -1
-atlas_imagelayer_right_leg_191915771925060x
+atlas_imagelayer_right_leg_63924729098860x
   rotate: false
   xy: 1, 15
   size: 240, 232
   orig: 240, 232
   offset: 0, 0
   index: -1
-atlas_imagelayer_stiletto_left_191915771925044x
+atlas_imagelayer_stiletto_left_63924729098844x
   rotate: false
   xy: 1593, 622
   size: 117, 155
   orig: 117, 155
   offset: 0, 0
   index: -1
-atlas_imagelayer_stiletto_right_191915771925045x
+atlas_imagelayer_stiletto_right_63924729098845x
   rotate: false
   xy: 1593, 465
   size: 117, 155
   orig: 117, 155
   offset: 0, 0
   index: -1
-atlas_imagelayer_table_191915771925051x
+atlas_imagelayer_table_63924729098851x
   rotate: false
   xy: 1, 768
   size: 1062, 794
@@ -545,49 +545,49 @@ size: 2048, 2048
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
-atlas_imagelayer_left_hand_up_191915771925077x
+atlas_imagelayer_left_hand_up_63924729098877x
   rotate: false
   xy: 1617, 1067
   size: 297, 880
   orig: 297, 880
   offset: 0, 0
   index: -1
-atlas_imagelayer_phone_hero_hand_down_191915771925079x
+atlas_imagelayer_phone_hero_hand_down_63924729098879x
   rotate: false
   xy: 908, 883
   size: 707, 1064
   orig: 707, 1064
   offset: 0, 0
   index: -1
-atlas_imagelayer_right_hand_up_191915771925078x
+atlas_imagelayer_right_hand_up_63924729098878x
   rotate: false
   xy: 908, 1
   size: 297, 880
   orig: 297, 880
   offset: 0, 0
   index: -1
-atlas_imagelayer_sign_button_1_191915771925076x
+atlas_imagelayer_sign_button_1_63924729098876x
   rotate: false
   xy: 1, 243
   size: 609, 310
   orig: 609, 310
   offset: 0, 0
   index: -1
-atlas_imagelayer_tablet_191915771925073x
+atlas_imagelayer_tablet_63924729098873x
   rotate: false
   xy: 1, 555
   size: 905, 1392
   orig: 905, 1392
   offset: 0, 0
   index: -1
-atlas_imagelayer_tablet_button_1_191915771925074x
+atlas_imagelayer_tablet_button_1_63924729098874x
   rotate: false
   xy: 1916, 1517
   size: 71, 430
   orig: 71, 430
   offset: 0, 0
   index: -1
-atlas_imagelayer_tablet_button_left_1_191915771925075x
+atlas_imagelayer_tablet_button_left_1_63924729098875x
   rotate: false
   xy: 1207, 451
   size: 71, 430
@@ -600,70 +600,70 @@ size: 2048, 2048
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
-atlas_imagelayer_hero_big_ phone_191915771925080x
+atlas_imagelayer_hero_big_ phone_63924729098880x
   rotate: false
   xy: 1, 119
   size: 607, 1102
   orig: 607, 1102
   offset: 0, 0
   index: -1
-atlas_imagelayer_hero_head_191915771925089x
+atlas_imagelayer_hero_head_63924729098889x
   rotate: false
   xy: 1, 1223
   size: 989, 824
   orig: 989, 824
   offset: 0, 0
   index: -1
-atlas_imagelayer_hero_hone_mute_191915771925085x
+atlas_imagelayer_hero_hone_mute_63924729098885x
   rotate: false
   xy: 992, 1546
   size: 102, 102
   orig: 102, 102
   offset: 0, 0
   index: -1
-atlas_imagelayer_hero_hone_wire_human_191915771925086x
+atlas_imagelayer_hero_hone_wire_human_63924729098886x
   rotate: false
   xy: 992, 1786
   size: 261, 261
   orig: 261, 261
   offset: 0, 0
   index: -1
-atlas_imagelayer_hero_phone_camera_191915771925087x
+atlas_imagelayer_hero_phone_camera_63924729098887x
   rotate: false
   xy: 1128, 1712
   size: 72, 72
   orig: 72, 72
   offset: 0, 0
   index: -1
-atlas_imagelayer_hero_phone_cancel_call_191915771925081x
+atlas_imagelayer_hero_phone_cancel_call_63924729098881x
   rotate: false
   xy: 992, 1650
   size: 134, 134
   orig: 134, 134
   offset: 0, 0
   index: -1
-atlas_imagelayer_hero_phone_dynamic_191915771925083x
+atlas_imagelayer_hero_phone_dynamic_63924729098883x
   rotate: false
   xy: 1, 2
   size: 109, 115
   orig: 109, 115
   offset: 0, 0
   index: -1
-atlas_imagelayer_hero_phone_get_call_191915771925082x
+atlas_imagelayer_hero_phone_get_call_63924729098882x
   rotate: false
   xy: 1255, 1913
   size: 134, 134
   orig: 134, 134
   offset: 0, 0
   index: -1
-atlas_imagelayer_hero_phone_hand_up_191915771925088x
+atlas_imagelayer_hero_phone_hand_up_63924729098888x
   rotate: false
   xy: 610, 108
   size: 368, 1113
   orig: 368, 1113
   offset: 0, 0
   index: -1
-atlas_imagelayer_phone_hero_call_number_191915771925084x
+atlas_imagelayer_phone_hero_call_number_63924729098884x
   rotate: false
   xy: 112, 1
   size: 87, 116
@@ -676,14 +676,14 @@ size: 2048, 2048
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
-atlas_imagelayer_collar_191915771925091x
+atlas_imagelayer_collar_63924729098891x
   rotate: false
   xy: 1, 1
   size: 684, 231
   orig: 684, 231
   offset: 0, 0
   index: -1
-atlas_imagelayer_hair_191915771925090x
+atlas_imagelayer_hair_63924729098890x
   rotate: false
   xy: 1, 234
   size: 1087, 1486

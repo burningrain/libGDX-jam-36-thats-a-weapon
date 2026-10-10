@@ -1,9 +1,14 @@
-package com.github.br.libgdx.jam36.ui;
+package com.github.br.libgdx.structure.screen.ui;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.Cell;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Null;
@@ -13,7 +18,7 @@ import com.github.tommyettinger.textra.Font;
 import com.github.tommyettinger.textra.Styles;
 import com.github.tommyettinger.textra.TypingLabel;
 
-public class TypingImageButton extends Button {
+public class TypingImageTextButton extends Button {
 
     static public class TypingImageTextButtonStyle extends TextButton.TextButtonStyle {
         public @Null Drawable imageUp, imageDown, imageOver, imageDisabled;
@@ -61,17 +66,17 @@ public class TypingImageButton extends Button {
     private TypingLabel label;
     private TypingImageTextButtonStyle style;
 
-    public TypingImageButton(@Null String text, Skin skin) {
+    public TypingImageTextButton(@Null String text, Skin skin) {
         this(text, skin.get(TypingImageTextButtonStyle.class));
         setSkin(skin);
     }
 
-    public TypingImageButton(@Null String text, Skin skin, String styleName) {
+    public TypingImageTextButton(@Null String text, Skin skin, String styleName) {
         this(text, skin.get(styleName, TypingImageTextButtonStyle.class));
         setSkin(skin);
     }
 
-    public TypingImageButton(@Null String text, TypingImageTextButtonStyle style) {
+    public TypingImageTextButton(@Null String text, TypingImageTextButtonStyle style) {
         super(style);
         this.style = style;
 

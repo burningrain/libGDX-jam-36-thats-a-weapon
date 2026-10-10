@@ -1,7 +1,7 @@
 package com.github.br.libgdx.jam36.screens.phase;
 
-import com.github.br.libgdx.jam36.CustomOrthogonalTiledMapRenderer;
 import com.github.br.libgdx.jam36.context.GameContext;
+import com.github.br.libgdx.structure.screen.ui.CustomOrthogonalTiledMapRenderer;
 
 public interface Phase {
 

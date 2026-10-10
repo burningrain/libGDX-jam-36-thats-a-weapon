@@ -12,13 +12,6 @@ public interface Resources {
         String MENU = "menu.tmx";
     }
 
-    static String getTmx(String tmx) {
-        if (Gdx.app.getType() == Application.ApplicationType.WebGL) {
-            return "tiled-packed/" + tmx;
-        }
-        return "tiled-packed-ktx/" + tmx;
-    }
-
     String ANIMATION_ATLAS = "animation/jam36_animation.atlas";
 
     interface Animation {
