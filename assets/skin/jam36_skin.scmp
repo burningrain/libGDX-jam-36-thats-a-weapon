@@ -2497,7 +2497,7 @@ jsonData: {
 	}
 	customClasses: [
 		{
-			fullyQualifiedName: com.github.br.libgdx.structure.screen.ui.TypingImageTextButton$TypingImageTextButtonStyle
+			fullyQualifiedName: com.github.br.libgdx.common.structure.screen.ui.TypingImageTextButton$TypingImageTextButtonStyle
 			displayName: TypingImageTextButton
 			styles: [
 				{

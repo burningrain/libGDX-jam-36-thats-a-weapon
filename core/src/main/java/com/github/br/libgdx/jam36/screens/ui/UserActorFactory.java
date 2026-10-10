@@ -14,11 +14,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.Array;
+import com.github.br.libgdx.common.structure.screen.ui.ActorFactory;
+import com.github.br.libgdx.common.structure.screen.ui.AnimatedImage;
+import com.github.br.libgdx.common.structure.screen.ui.DefaultActorFactory;
 import com.github.br.libgdx.jam36.Resources;
 import com.github.br.libgdx.jam36.screens.StageActors;
-import com.github.br.libgdx.structure.screen.ui.ActorFactory;
-import com.github.br.libgdx.structure.screen.ui.AnimatedImage;
-import com.github.br.libgdx.structure.screen.ui.DefaultActorFactory;
 import com.github.tommyettinger.textra.TypingLabel;
 
 public class UserActorFactory implements ActorFactory {

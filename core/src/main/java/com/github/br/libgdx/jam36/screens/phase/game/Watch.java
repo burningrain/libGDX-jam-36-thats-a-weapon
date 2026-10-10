@@ -1,7 +1,7 @@
 package com.github.br.libgdx.jam36.screens.phase.game;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.github.br.libgdx.structure.screen.ui.AnimatedImage;
+import com.github.br.libgdx.common.structure.screen.ui.AnimatedImage;
 
 public class Watch {
 

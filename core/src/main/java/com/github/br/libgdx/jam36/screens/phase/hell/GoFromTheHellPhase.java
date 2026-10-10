@@ -2,12 +2,12 @@ package com.github.br.libgdx.jam36.screens.phase.hell;
 
 import com.badlogic.gdx.maps.MapGroupLayer;
 import com.badlogic.gdx.maps.MapLayer;
+import com.github.br.libgdx.common.structure.screen.ui.AnimatedImage;
+import com.github.br.libgdx.common.structure.screen.ui.CustomOrthogonalTiledMapRenderer;
 import com.github.br.libgdx.jam36.context.GameContext;
 import com.github.br.libgdx.jam36.screens.StageActors;
 import com.github.br.libgdx.jam36.screens.TiledLayers;
 import com.github.br.libgdx.jam36.screens.phase.Phase;
-import com.github.br.libgdx.structure.screen.ui.AnimatedImage;
-import com.github.br.libgdx.structure.screen.ui.CustomOrthogonalTiledMapRenderer;
 
 public class GoFromTheHellPhase implements Phase {
 

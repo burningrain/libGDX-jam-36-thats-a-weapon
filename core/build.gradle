@@ -3,22 +3,7 @@ eclipse.project.name = appName + '-core'
 
 dependencies {
 
-  api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
-  api "com.badlogicgames.gdx:gdx:$gdxVersion"
-  api "com.bladecoder.ink:blade-ink:$bladeInkVersion"
-  api "com.crashinvaders.vfx:gdx-vfx-core:$gdxVfxCoreVersion"
-  api "com.crashinvaders.vfx:gdx-vfx-effects:$gdxVfxEffectsVersion"
-  api "com.crashinvaders.basisu:basisu-wrapper:$gdxBasisuVersion"
-  api "com.crashinvaders.basisu:basisu-gdx:$gdxBasisuVersion"
-  api "com.github.tommyettinger:regexodus:$regExodusVersion"
-  api "com.github.tommyettinger:textratypist:$textratypistVersion"
-
-  // scene composer
-  implementation 'com.github.raeleus.TenPatch:tenpatch:5.2.3'
-  implementation 'com.github.raeleus.stripe:stripe:2.0.0'
-  implementation 'com.github.raeleus.stripe:colorpicker:2.0.0'
-  implementation 'com.github.raeleus.stripe:freetype:2.0.0'
-  // scene composer
+  implementation project(':libgdx-br-common')
 
   if(enableGraalNative == 'true') {
     implementation "io.github.berstanio:gdx-svmhelper-annotations:$graalHelperVersion"

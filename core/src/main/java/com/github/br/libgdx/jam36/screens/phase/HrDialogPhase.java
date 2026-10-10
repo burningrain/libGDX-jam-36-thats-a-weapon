@@ -2,10 +2,10 @@ package com.github.br.libgdx.jam36.screens.phase;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.MapLayer;
+import com.github.br.libgdx.common.structure.screen.ui.CustomOrthogonalTiledMapRenderer;
 import com.github.br.libgdx.jam36.context.GameContext;
 import com.github.br.libgdx.jam36.screens.StageActors;
 import com.github.br.libgdx.jam36.screens.TiledLayers;
-import com.github.br.libgdx.structure.screen.ui.CustomOrthogonalTiledMapRenderer;
 import com.github.tommyettinger.textra.TypingLabel;
 
 public class HrDialogPhase implements Phase {

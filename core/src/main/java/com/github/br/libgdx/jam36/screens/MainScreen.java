@@ -8,6 +8,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.github.br.libgdx.common.structure.screen.AbstractTiledMapUiScreen;
+import com.github.br.libgdx.common.structure.screen.ui.ActorFactory;
+import com.github.br.libgdx.common.structure.screen.ui.AnimatedImage;
+import com.github.br.libgdx.common.structure.screen.ui.CustomOrthogonalTiledMapRenderer;
 import com.github.br.libgdx.jam36.Resources;
 import com.github.br.libgdx.jam36.context.EventsBlock;
 import com.github.br.libgdx.jam36.context.GameContext;
@@ -39,10 +43,6 @@ import com.github.br.libgdx.jam36.screens.phase.phone.HeroBigPhone4DownPhase;
 import com.github.br.libgdx.jam36.screens.phase.predicate.PredicatePhase;
 import com.github.br.libgdx.jam36.screens.phase.tea.ShowTeaPhase;
 import com.github.br.libgdx.jam36.screens.ui.UserActorFactory;
-import com.github.br.libgdx.structure.screen.AbstractTiledMapUiScreen;
-import com.github.br.libgdx.structure.screen.ui.ActorFactory;
-import com.github.br.libgdx.structure.screen.ui.AnimatedImage;
-import com.github.br.libgdx.structure.screen.ui.CustomOrthogonalTiledMapRenderer;
 
 public class MainScreen extends AbstractTiledMapUiScreen<UserActorFactory> {
 

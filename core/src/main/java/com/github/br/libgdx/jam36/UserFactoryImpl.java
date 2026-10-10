@@ -1,7 +1,8 @@
 package com.github.br.libgdx.jam36;
 
-import com.github.br.libgdx.structure.GameManager;
-import com.github.br.libgdx.structure.UserFactory;
+
+import com.github.br.libgdx.common.structure.GameManager;
+import com.github.br.libgdx.common.structure.UserFactory;
 
 public class UserFactoryImpl implements UserFactory {
 

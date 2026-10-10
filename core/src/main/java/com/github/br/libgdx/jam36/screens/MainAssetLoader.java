@@ -7,9 +7,9 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.github.br.libgdx.common.structure.screen.TmxUtils;
+import com.github.br.libgdx.common.structure.screen.loading.AssetsLoader;
 import com.github.br.libgdx.jam36.Resources;
-import com.github.br.libgdx.structure.screen.TmxUtils;
-import com.github.br.libgdx.structure.screen.loading.AssetsLoader;
 
 public class MainAssetLoader implements AssetsLoader {
 

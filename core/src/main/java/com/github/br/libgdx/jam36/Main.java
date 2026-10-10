@@ -15,10 +15,11 @@ import com.badlogic.gdx.maps.tiled.AtlasTmxMapLoader;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.github.br.libgdx.common.structure.AbstractSimpleGame;
+import com.github.br.libgdx.common.structure.GameSettings;
+import com.github.br.libgdx.common.structure.PlatformConfigurator;
+import com.github.br.libgdx.common.structure.screen.statemachine.GameScreenState;
 import com.github.br.libgdx.jam36.screens.GameScreens;
-import com.github.br.libgdx.structure.AbstractSimpleGame;
-import com.github.br.libgdx.structure.GameSettings;
-import com.github.br.libgdx.structure.screen.statemachine.GameScreenState;
 import com.github.tommyettinger.textra.FWSkinLoader;
 
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */

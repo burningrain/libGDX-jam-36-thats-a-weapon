@@ -8,14 +8,14 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.Array;
+import com.github.br.libgdx.common.structure.screen.ui.AnimatedImage;
+import com.github.br.libgdx.common.structure.screen.ui.CustomOrthogonalTiledMapRenderer;
 import com.github.br.libgdx.jam36.Constants;
 import com.github.br.libgdx.jam36.context.GameContext;
 import com.github.br.libgdx.jam36.screens.ui.UserActorFactory;
 import com.github.br.libgdx.jam36.screens.TiledLayers;
 import com.github.br.libgdx.jam36.screens.phase.Choose;
 import com.github.br.libgdx.jam36.screens.phase.Phase;
-import com.github.br.libgdx.structure.screen.ui.AnimatedImage;
-import com.github.br.libgdx.structure.screen.ui.CustomOrthogonalTiledMapRenderer;
 import com.github.br.libgdx.jam36.screens.ui.FloatingTextButton;
 
 public class MindChooserPhase implements Phase {

@@ -38,6 +38,7 @@ dependencies {
   runtimeOnly "com.crashinvaders.basisu:basisu-wrapper:$gdxBasisuVersion:natives-desktop"
 
   implementation project(':core')
+  implementation project(':libgdx-br-common')
 
   if(enableGraalNative == 'true') {
     implementation "io.github.berstanio:gdx-svmhelper-backend-lwjgl3:$graalHelperVersion"

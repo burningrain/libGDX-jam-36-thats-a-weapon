@@ -7,8 +7,9 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.crashinvaders.basisu.gdx.Ktx2TextureLoader;
+import com.github.br.libgdx.common.structure.PlatformConfigurator;
 import com.github.br.libgdx.jam36.Main;
-import com.github.br.libgdx.jam36.PlatformConfigurator;
+
 import workaround.ktx.tiled.Ktx2AtlasTmxMapLoader;
 
 /** Launches the desktop (LWJGL3) application. */

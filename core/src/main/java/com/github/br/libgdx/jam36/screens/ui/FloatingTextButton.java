@@ -2,7 +2,7 @@
 package com.github.br.libgdx.jam36.screens.ui;
 
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.github.br.libgdx.structure.screen.ui.TypingImageTextButton;
+import com.github.br.libgdx.common.structure.screen.ui.TypingImageTextButton;
 
 public class FloatingTextButton extends TypingImageTextButton {
 
