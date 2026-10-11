@@ -8,8 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.github.br.libgdx.common.structure.GameSettings;
 import com.github.br.libgdx.common.structure.screen.AbstractTiledMapUiScreen;
-import com.github.br.libgdx.common.structure.screen.ui.ActorFactory;
 import com.github.br.libgdx.common.structure.screen.ui.AnimatedImage;
 import com.github.br.libgdx.common.structure.screen.ui.CustomOrthogonalTiledMapRenderer;
 import com.github.br.libgdx.jam36.Resources;
@@ -44,7 +44,7 @@ import com.github.br.libgdx.jam36.screens.phase.predicate.PredicatePhase;
 import com.github.br.libgdx.jam36.screens.phase.tea.ShowTeaPhase;
 import com.github.br.libgdx.jam36.screens.ui.UserActorFactory;
 
-public class MainScreen extends AbstractTiledMapUiScreen<UserActorFactory> {
+public class MainScreen extends AbstractTiledMapUiScreen<UserActorFactory, CustomVfxEffectPooledFactoryImpl> {
 
     private PhaseManager phaseManager;
     private GameContext gameContext;
@@ -52,12 +52,22 @@ public class MainScreen extends AbstractTiledMapUiScreen<UserActorFactory> {
     private Watch watch;
 
     public MainScreen(String pathToSkin, boolean isGlProfileActive) {
-        super(Resources.Tmx.MENU, pathToSkin, isGlProfileActive);
+        super(
+            Resources.Tmx.MENU,
+            pathToSkin,
+            true,
+            isGlProfileActive
+        );
     }
 
     @Override
-    protected UserActorFactory createActionFactory(Skin gameSkin, AssetManager assetManager) {
+    protected UserActorFactory createActionFactory(Skin gameSkin, AssetManager assetManager, GameSettings gameSettings) {
         return new UserActorFactory(gameSkin, assetManager);
+    }
+
+    @Override
+    protected CustomVfxEffectPooledFactoryImpl createVfxEffectPoolFactory(AssetManager assetManager, GameSettings gameSettings) {
+        return new CustomVfxEffectPooledFactoryImpl();
     }
 
     @Override
@@ -65,7 +75,8 @@ public class MainScreen extends AbstractTiledMapUiScreen<UserActorFactory> {
         TiledMap tiledMap,
         CustomOrthogonalTiledMapRenderer renderer,
         Viewport viewport,
-        ActorFactory actorFactory
+        UserActorFactory actorFactory,
+        CustomVfxEffectPooledFactoryImpl vfxEffectPoolFactory
     ) {
         // часы
         Image arrow = renderer.getActor(TiledLayers.ACTORS_LAYER_WATCH, StageActors.WATCH_ARROW, Image.class);
@@ -247,7 +258,8 @@ public class MainScreen extends AbstractTiledMapUiScreen<UserActorFactory> {
             );
             tabletContext.setSignButtonText("Review\nand Sign");
         }));
-        TabletPhase workCalendarTablet = new TabletPhase(gameContext -> {});
+        TabletPhase workCalendarTablet = new TabletPhase(gameContext -> {
+        });
         phases.add(workCalendarTablet);
 
         //phases.add(new GamePhase(watch));
@@ -400,7 +412,7 @@ public class MainScreen extends AbstractTiledMapUiScreen<UserActorFactory> {
         gameOverPhases.add(
             new ChangeContextPhase(gameContext -> {
                 // скрыть столик с чаем
-                MapLayer layer = renderer.getLayer(TiledLayers.TEA);
+                MapLayer layer = renderer.getTiledLayer(TiledLayers.MAIN_VFX, TiledLayers.TEA);
                 layer.setVisible(false);
             })
         );

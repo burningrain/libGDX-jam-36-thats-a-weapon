@@ -11,7 +11,7 @@ public class OpenHellDoorPhase implements Phase {
 
     @Override
     public void initUI(GameContext gameContext, CustomOrthogonalTiledMapRenderer renderer) {
-        MapLayer layer = renderer.getLayer(TiledLayers.HELL_ENVIRONMENT);
+        MapLayer layer = renderer.getTiledLayer(TiledLayers.MAIN_VFX, TiledLayers.HELL_ENVIRONMENT);
         MapGroupLayer environmentHellLayer = (MapGroupLayer) layer;
 
         MapLayer blueDoorLayer = environmentHellLayer.getLayers().get(

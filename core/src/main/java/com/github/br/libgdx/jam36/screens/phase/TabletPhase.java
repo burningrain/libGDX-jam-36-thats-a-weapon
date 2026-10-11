@@ -83,21 +83,21 @@ public class TabletPhase implements Phase, TabletContext.Listener {
         };
         rightButton.addListener(buttonRightListener);
 
-        MapGroupLayer layer = (MapGroupLayer) renderer.getLayer(TiledLayers.TABLET);
+        MapGroupLayer layer = (MapGroupLayer) renderer.getTiledLayer(TiledLayers.MAIN_VFX, TiledLayers.TABLET);
         layer.setVisible(true);
 
         // установить позицию вне экрана
         currentY = INITIAL_OFFSET_Y;
-        renderer.updateOffsetsForGroupLayer(TiledLayers.TABLET, 0, currentY);
+        renderer.updateOffsetsForGroupLayer(new String[]{TiledLayers.MAIN_VFX, TiledLayers.TABLET}, 0, currentY);
         isMoveToUp = true;
         isNeedToMove = true;
     }
 
     private void resetUI() {
         // скрываем и возвращаем планшет назад на экран
-        MapGroupLayer layer = (MapGroupLayer) renderer.getLayer(TiledLayers.TABLET);
+        MapGroupLayer layer = (MapGroupLayer) renderer.getTiledLayer(TiledLayers.MAIN_VFX, TiledLayers.TABLET);
         layer.setVisible(false);
-        renderer.updateOffsetsForGroupLayer(TiledLayers.TABLET, 0, -currentY);
+        renderer.updateOffsetsForGroupLayer(new String[]{TiledLayers.MAIN_VFX, TiledLayers.TABLET}, 0, -currentY);
     }
 
     @Override
@@ -115,7 +115,7 @@ public class TabletPhase implements Phase, TabletContext.Listener {
                     isNeedToMove = false;
                     if (currentY > 0) {
                         renderer.updateOffsetsForGroupLayer(
-                            TiledLayers.TABLET,
+                            new String[]{TiledLayers.MAIN_VFX, TiledLayers.TABLET},
                             0,
                             -currentY
                         );
@@ -144,7 +144,7 @@ public class TabletPhase implements Phase, TabletContext.Listener {
     private void moveTabletUp(float deltaY, float deltaTime) {
         float dy = deltaY * deltaTime;
         renderer.updateOffsetsForGroupLayer(
-            TiledLayers.TABLET,
+            new String[]{TiledLayers.MAIN_VFX, TiledLayers.TABLET},
             0,
             dy
         );

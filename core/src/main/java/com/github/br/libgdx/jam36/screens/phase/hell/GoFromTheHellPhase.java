@@ -15,16 +15,16 @@ public class GoFromTheHellPhase implements Phase {
     public void initUI(GameContext gameContext, CustomOrthogonalTiledMapRenderer renderer) {
         gameContext.getEventsBlock().setInTheHell(false);
 
-        MapLayer dailyLayer = renderer.getLayer(TiledLayers.DAILY);
+        MapLayer dailyLayer = renderer.getTiledLayer(TiledLayers.MAIN_VFX, TiledLayers.DAILY);
         dailyLayer.setVisible(true);
 
-        MapLayer hellDailyLayer = renderer.getLayer(TiledLayers.DAILY_HELL_VERSION);
+        MapLayer hellDailyLayer = renderer.getTiledLayer(TiledLayers.MAIN_VFX, TiledLayers.DAILY_HELL_VERSION);
         hellDailyLayer.setVisible(false);
 
-        MapLayer environmentLayer = renderer.getLayer(TiledLayers.ENVIRONMENT);
+        MapLayer environmentLayer = renderer.getTiledLayer(TiledLayers.MAIN_VFX, TiledLayers.ENVIRONMENT);
         environmentLayer.setVisible(true);
 
-        MapLayer environmentHellLayer = renderer.getLayer(TiledLayers.HELL_ENVIRONMENT);
+        MapLayer environmentHellLayer = renderer.getTiledLayer(TiledLayers.MAIN_VFX, TiledLayers.HELL_ENVIRONMENT);
         environmentHellLayer.setVisible(false);
 
         MapLayer blueDoorLayer = ((MapGroupLayer) environmentHellLayer).getLayers().get(

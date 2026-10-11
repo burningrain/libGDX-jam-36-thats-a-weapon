@@ -5,6 +5,9 @@ public interface TiledLayers {
     String HR_TEXT_WINDOW = "text_window";
 
     String THOUGHTS = "thoughts";
+
+    String MAIN_VFX = "main_vfx";
+
     String ACTORS_LAYER_THOUGHTS = "thoughts_object_layer";
 
     // phone

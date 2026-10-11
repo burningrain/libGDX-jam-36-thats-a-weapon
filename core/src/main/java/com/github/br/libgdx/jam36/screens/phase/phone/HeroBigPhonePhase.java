@@ -46,21 +46,21 @@ public class HeroBigPhonePhase implements Phase, PhoneContext.Listener {
         phoneCallerText.setText(gameContext.getTabletContext().getCurrentPage());
         phoneCallerText.setWrap(true);
 
-        MapGroupLayer layer = (MapGroupLayer) renderer.getLayer(TiledLayers.HERO_BIG_PHONE);
+        MapGroupLayer layer = (MapGroupLayer) renderer.getTiledLayer(TiledLayers.MAIN_VFX, TiledLayers.HERO_BIG_PHONE);
         layer.setVisible(true);
 
         // установить позицию вне экрана
         currentY = INITIAL_OFFSET_Y;
-        renderer.updateOffsetsForGroupLayer(TiledLayers.TABLET, 0, currentY);
+        renderer.updateOffsetsForGroupLayer(new String[]{TiledLayers.MAIN_VFX, TiledLayers.TABLET}, 0, currentY);
         isMoveToUp = true;
         isNeedToMove = true;
     }
 
     private void resetUI() {
         // скрываем и возвращаем планшет назад на экран
-        MapGroupLayer layer = (MapGroupLayer) renderer.getLayer(TiledLayers.HERO_BIG_PHONE);
+        MapGroupLayer layer = (MapGroupLayer) renderer.getTiledLayer(TiledLayers.MAIN_VFX, TiledLayers.HERO_BIG_PHONE);
         layer.setVisible(false);
-        renderer.updateOffsetsForGroupLayer(TiledLayers.HERO_BIG_PHONE, 0, -currentY);
+        renderer.updateOffsetsForGroupLayer(new String[]{TiledLayers.MAIN_VFX, TiledLayers.HERO_BIG_PHONE}, 0, -currentY);
     }
 
     @Override
@@ -79,7 +79,7 @@ public class HeroBigPhonePhase implements Phase, PhoneContext.Listener {
                     isNeedToMove = false;
                     if (currentY > 0) {
                         renderer.updateOffsetsForGroupLayer(
-                            TiledLayers.TABLET,
+                            new String[]{TiledLayers.MAIN_VFX, TiledLayers.TABLET},
                             0,
                             -currentY
                         );
@@ -106,7 +106,7 @@ public class HeroBigPhonePhase implements Phase, PhoneContext.Listener {
     private void moveTabletUp(float deltaY, float deltaTime) {
         float dy = deltaY * deltaTime;
         renderer.updateOffsetsForGroupLayer(
-            TiledLayers.TABLET,
+            new String[]{TiledLayers.MAIN_VFX, TiledLayers.TABLET},
             0,
             dy
         );

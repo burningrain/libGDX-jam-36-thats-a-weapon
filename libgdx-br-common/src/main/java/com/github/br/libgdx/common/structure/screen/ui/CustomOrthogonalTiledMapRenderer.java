@@ -3,7 +3,9 @@ package com.github.br.libgdx.common.structure.screen.ui;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.maps.MapGroupLayer;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapLayers;
@@ -15,28 +17,90 @@ import com.badlogic.gdx.maps.tiled.TiledMapImageLayer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.crashinvaders.vfx.VfxManager;
+import com.crashinvaders.vfx.effects.ChainVfxEffect;
+import com.github.br.libgdx.common.structure.screen.ui.vfx.VfxEffectPooledFactory;
 
 public class CustomOrthogonalTiledMapRenderer extends OrthogonalTiledMapRenderer {
 
     public static final String IS_OBJECT_LAYER = "is_object_layer";
+    public static final String IS_VFX_EFFECT_ENABLED = "is_vfx_effect_enabled";
+    public static final String VFX_LAYER_EFFECT = "vfx_layer_effect";
+
     private final ObjectMap<String, Stage> stages = new ObjectMap<>();
     private final Viewport viewport;
     private final ActorFactory actorFactory;
     private final InputMultiplexer inputMultiplexer;
 
+    private final VfxEffectPooledFactory vfxEffectPooledFactory;
+    private VfxManager vfxManager;
+    private boolean isVfxEnabled;
+
     public CustomOrthogonalTiledMapRenderer(
-        ActorFactory actorFactory, Viewport viewport, TiledMap map, float unitScale
+        ActorFactory actorFactory,
+        Viewport viewport,
+        TiledMap map,
+        float unitScale,
+        VfxEffectPooledFactory vfxEffectPooledFactory,
+        boolean isVfxEnabled
     ) {
         super(map, unitScale);
+        this.isVfxEnabled = isVfxEnabled;
+        this.vfxEffectPooledFactory = vfxEffectPooledFactory;
         this.viewport = viewport;
         this.actorFactory = actorFactory;
 
-        clampToEdgeTextures(map);
+        // vfx
+        if (isVfxEnabled) {
+            vfxManager = new VfxManager(Pixmap.Format.RGBA8888);
+            vfxManager.setBlendingEnabled(true);
+        }
 
+        clampToEdgeTextures(map);
         inputMultiplexer = new InputMultiplexer();
         createStageActors(inputMultiplexer, map.getLayers());
+    }
+
+    @Override
+    public void renderMapLayer(MapLayer layer) {
+        MapProperties properties = layer.getProperties();
+        Boolean isVfxLayerEnabled = properties.get(IS_VFX_EFFECT_ENABLED, Boolean.class);
+        String vfxEffect = properties.get(VFX_LAYER_EFFECT, String.class);
+        if (isVfxEnabled && isVfxLayerEnabled != null && isVfxLayerEnabled) {
+            Batch batch = getBatch();
+            if (batch.isDrawing()) {
+                batch.end();
+            }
+
+            vfxManager.removeAllEffects();
+            Array<ChainVfxEffect> effects = vfxEffectPooledFactory.getEffects(vfxEffect);
+            for (ChainVfxEffect effect : effects) {
+                vfxManager.addEffect(effect);
+            }
+            vfxEffectPooledFactory.update(Gdx.graphics.getDeltaTime(), vfxEffect);
+
+            vfxManager.beginInputCapture();
+            batch.begin();
+        }
+
+        super.renderMapLayer(layer);
+
+        if (isVfxEnabled && isVfxLayerEnabled != null && isVfxLayerEnabled) {
+            batch.end();
+
+            vfxManager.endInputCapture();
+            vfxManager.applyEffects();
+
+            Texture fboTexture = vfxManager.getResultBuffer().getTexture();
+            fboTexture.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+
+            vfxManager.renderToScreen();
+
+            batch.begin();
+        }
     }
 
     @Override
@@ -48,8 +112,8 @@ public class CustomOrthogonalTiledMapRenderer extends OrthogonalTiledMapRenderer
         stage.getRoot().draw(batch, 1f);
     }
 
-    public void updateOffsetsForGroupLayer(String layerName, float offsetX, float offsetY) {
-        MapLayer mapLayer = getMap().getLayers().get(layerName);
+    public void updateOffsetsForGroupLayer(String[] layerName, float offsetX, float offsetY) {
+        MapLayer mapLayer = getTiledLayer(layerName);
         mapLayer.setOffsetX(offsetX);
         mapLayer.setOffsetY(offsetY);
 
@@ -83,6 +147,10 @@ public class CustomOrthogonalTiledMapRenderer extends OrthogonalTiledMapRenderer
 
     public void resize(int width, int height) {
         viewport.update(width, height);
+        if (vfxManager != null) {
+            vfxManager.resize(width, height);
+        }
+
         for (Stage stage : stages.values()) {
             stage.getViewport().update(width, height, true);
         }
@@ -135,8 +203,25 @@ public class CustomOrthogonalTiledMapRenderer extends OrthogonalTiledMapRenderer
         return inputMultiplexer;
     }
 
-    public MapLayer getLayer(String layerName) {
-        return getMap().getLayers().get(layerName);
+    public MapLayer getTiledLayer(String... layerName) {
+        if (layerName.length == 1) {
+            return getMap().getLayers().get(layerName[0]);
+        } else if (layerName.length > 1) {
+            MapLayers layers = getMap().getLayers();
+            for (int i = 0; i < layerName.length; i++) {
+                MapLayer mapLayer = layers.get(layerName[i]);
+                if (i == layerName.length - 1) {
+                    // если последний элемент, возвращаем слой
+                    return mapLayer;
+                }
+                // иначе идем по группе слоев
+                if (!(mapLayer instanceof MapGroupLayer)) {
+                    throw new IllegalArgumentException("layer [" + layerName[i] + "] must be MapGroupLayer");
+                }
+                layers = ((MapGroupLayer)mapLayer).getLayers();
+            }
+        }
+        throw new IllegalArgumentException("parameter 'layerName' must be >= 1");
     }
 
     public <T extends Actor> T getActor(String layerName, String actorName, Class<T> clazz) {
@@ -154,6 +239,10 @@ public class CustomOrthogonalTiledMapRenderer extends OrthogonalTiledMapRenderer
             throw new IllegalArgumentException("stage [" + layerName + "] is not found");
         }
         return stage;
+    }
+
+    public boolean isVfxEnabled() {
+        return isVfxEnabled;
     }
 
 }

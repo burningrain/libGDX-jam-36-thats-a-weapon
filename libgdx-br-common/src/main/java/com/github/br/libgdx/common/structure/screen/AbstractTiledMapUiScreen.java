@@ -12,8 +12,9 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.github.br.libgdx.common.structure.GameSettings;
 import com.github.br.libgdx.common.structure.screen.ui.ActorFactory;
 import com.github.br.libgdx.common.structure.screen.ui.CustomOrthogonalTiledMapRenderer;
+import com.github.br.libgdx.common.structure.screen.ui.vfx.VfxEffectPooledFactory;
 
-public abstract class AbstractTiledMapUiScreen<A extends ActorFactory> extends AbstractGameScreen {
+public abstract class AbstractTiledMapUiScreen<A extends ActorFactory, V extends VfxEffectPooledFactory> extends AbstractGameScreen {
 
     private final String tiledMapPath;
     private final String pathToSkin;
@@ -26,16 +27,22 @@ public abstract class AbstractTiledMapUiScreen<A extends ActorFactory> extends A
 
     protected A actorFactory;
 
+    protected V vfxEffectPoolFactory;
+    protected boolean isVfxEnabled;
+
     private boolean isGlProfileActive;
     private GLProfiler profiler;
 
     public AbstractTiledMapUiScreen(
         String tiledMapPath,
         String pathToSkin,
+        boolean isVfxEnabled,
         boolean isGlProfileActive
     ) {
         this.tiledMapPath = TmxUtils.getTmx(tiledMapPath);
         this.pathToSkin = pathToSkin;
+        this.isVfxEnabled = isVfxEnabled;
+
         this.isGlProfileActive = isGlProfileActive;
     }
 
@@ -57,19 +64,30 @@ public abstract class AbstractTiledMapUiScreen<A extends ActorFactory> extends A
         );
 
         Skin gameSkin = assetManager.get(pathToSkin);
-        actorFactory = createActionFactory(gameSkin, assetManager);
-        renderer = new CustomOrthogonalTiledMapRenderer(actorFactory, viewport, tiledMap, 1f);
+        actorFactory = createActionFactory(gameSkin, assetManager, gameSettings);
+        vfxEffectPoolFactory = createVfxEffectPoolFactory(assetManager, gameSettings);
+        renderer = new CustomOrthogonalTiledMapRenderer(
+            actorFactory,
+            viewport,
+            tiledMap,
+            1f,
+            vfxEffectPoolFactory,
+            isVfxEnabled
+        );
 
-        afterShow(tiledMap, renderer, viewport, actorFactory);
+        afterShow(tiledMap, renderer, viewport, actorFactory, vfxEffectPoolFactory);
     }
 
-    protected abstract A createActionFactory(Skin gameSkin, AssetManager assetManager);
+    protected abstract A createActionFactory(Skin gameSkin, AssetManager assetManager, GameSettings gameSettings);
+
+    protected abstract V createVfxEffectPoolFactory(AssetManager assetManager, GameSettings gameSettings);
 
     protected abstract void afterShow(
         TiledMap tiledMap,
         CustomOrthogonalTiledMapRenderer renderer,
         Viewport viewport,
-        ActorFactory actorFactory
+        A actorFactory,
+        V vfxEffectPoolFactory
     );
 
     @Override

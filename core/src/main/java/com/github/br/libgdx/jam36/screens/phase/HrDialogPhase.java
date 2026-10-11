@@ -31,14 +31,14 @@ public class HrDialogPhase implements Phase {
         hrTextWindow.restart(); // Сбрасываем анимацию печати в начало
         hrTextWindow.setWrap(true);
 
-        MapLayer layer = renderer.getLayer(TiledLayers.HR_TEXT_WINDOW);
+        MapLayer layer = renderer.getTiledLayer(TiledLayers.HR_TEXT_WINDOW);
         layer.setVisible(true);
     }
 
     @Override
     public void draw(float deltaTime) {
         if (Gdx.input.justTouched()) {
-            MapLayer layer = renderer.getLayer(TiledLayers.HR_TEXT_WINDOW);
+            MapLayer layer = renderer.getTiledLayer(TiledLayers.HR_TEXT_WINDOW);
             layer.setVisible(false);
             isFinished = true;
         }

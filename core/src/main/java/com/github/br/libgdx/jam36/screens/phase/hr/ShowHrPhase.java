@@ -11,7 +11,7 @@ public class ShowHrPhase implements Phase {
 
     @Override
     public void initUI(GameContext gameContext, CustomOrthogonalTiledMapRenderer renderer) {
-        MapLayer layer = renderer.getLayer(TiledLayers.DAILY);
+        MapLayer layer = renderer.getTiledLayer(TiledLayers.MAIN_VFX, TiledLayers.DAILY);
         MapGroupLayer mapGroupLayer = (MapGroupLayer) layer;
 
         MapLayer hr_body = mapGroupLayer.getLayers().get("hr_body");

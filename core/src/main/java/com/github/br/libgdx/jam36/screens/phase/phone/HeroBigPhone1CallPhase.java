@@ -24,7 +24,7 @@ public class HeroBigPhone1CallPhase implements Phase {
         caller.setVisible(true);
         gameContext.getPhoneContext().setCallerName(callerName);
 
-        MapLayer layer = renderer.getLayer(TiledLayers.HERO_BIG_PHONE);
+        MapLayer layer = renderer.getTiledLayer(TiledLayers.MAIN_VFX, TiledLayers.HERO_BIG_PHONE);
         MapGroupLayer heroBigPhoneLayer = (MapGroupLayer) layer;
 
         MapLayer callHumanPic = heroBigPhoneLayer.getLayers().get(TiledLayers.HERO_BIG_PHONE_CALL_HUMAN_PIC);

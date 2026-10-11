@@ -31,10 +31,10 @@ public class HeroBigPhone2UpPhase implements Phase, PhoneContext.Listener {
 
         this.renderer = renderer;
 
-        MapGroupLayer layer = (MapGroupLayer) renderer.getLayer(TiledLayers.HERO_BIG_PHONE);
+        MapGroupLayer layer = (MapGroupLayer) renderer.getTiledLayer(TiledLayers.MAIN_VFX, TiledLayers.HERO_BIG_PHONE);
         layer.setVisible(true);
 
-        MapLayer heroTablePhone = renderer.getLayer(TiledLayers.SMALL_HERO_PHONE_ON_TABLE);
+        MapLayer heroTablePhone = renderer.getTiledLayer(TiledLayers.MAIN_VFX, TiledLayers.SMALL_HERO_PHONE_ON_TABLE);
         heroTablePhone.setVisible(false);
 
         AnimatedImage dictophone = renderer.getActor(TiledLayers.ACTORS_LAYER_DICTOPHONES, StageActors.HERO_DICTOPHONE, AnimatedImage.class);
@@ -42,15 +42,15 @@ public class HeroBigPhone2UpPhase implements Phase, PhoneContext.Listener {
 
         // установить позицию вне экрана
         currentY = INITIAL_OFFSET_Y;
-        renderer.updateOffsetsForGroupLayer(TiledLayers.HERO_BIG_PHONE, 0, currentY);
+        renderer.updateOffsetsForGroupLayer(new String[]{TiledLayers.MAIN_VFX, TiledLayers.HERO_BIG_PHONE}, 0, currentY);
         isMoveToUp = true;
     }
 
     private void resetUI() {
         // скрываем и возвращаем планшет назад на экран
-        MapGroupLayer layer = (MapGroupLayer) renderer.getLayer(TiledLayers.HERO_BIG_PHONE);
+        MapGroupLayer layer = (MapGroupLayer) renderer.getTiledLayer(TiledLayers.HERO_BIG_PHONE);
         layer.setVisible(false);
-        renderer.updateOffsetsForGroupLayer(TiledLayers.HERO_BIG_PHONE, 0, -currentY);
+        renderer.updateOffsetsForGroupLayer(new String[]{TiledLayers.MAIN_VFX, TiledLayers.HERO_BIG_PHONE}, 0, -currentY);
     }
 
     @Override
@@ -67,7 +67,7 @@ public class HeroBigPhone2UpPhase implements Phase, PhoneContext.Listener {
                 isMoveToUp = false;
                 if (currentY > 0) {
                     renderer.updateOffsetsForGroupLayer(
-                        TiledLayers.HERO_BIG_PHONE,
+                        new String[]{TiledLayers.MAIN_VFX, TiledLayers.HERO_BIG_PHONE},
                         0,
                         -currentY
                     );
@@ -85,7 +85,7 @@ public class HeroBigPhone2UpPhase implements Phase, PhoneContext.Listener {
     private void moveTabletUp(float deltaY, float deltaTime) {
         float dy = deltaY * deltaTime;
         renderer.updateOffsetsForGroupLayer(
-            TiledLayers.HERO_BIG_PHONE,
+            new String[]{TiledLayers.MAIN_VFX, TiledLayers.HERO_BIG_PHONE},
             0,
             dy
         );

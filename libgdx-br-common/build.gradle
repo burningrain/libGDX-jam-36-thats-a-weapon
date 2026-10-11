@@ -31,7 +31,6 @@ dependencies {
   api "com.badlogicgames.gdx:gdx:$gdxVersion"
   api "com.bladecoder.ink:blade-ink:$bladeInkVersion"
   api "com.crashinvaders.vfx:gdx-vfx-core:$gdxVfxCoreVersion"
-  api "com.crashinvaders.vfx:gdx-vfx-effects:$gdxVfxEffectsVersion"
   api "com.crashinvaders.basisu:basisu-wrapper:$gdxBasisuVersion"
   api "com.crashinvaders.basisu:basisu-gdx:$gdxBasisuVersion"
   api "com.github.tommyettinger:regexodus:$regExodusVersion"

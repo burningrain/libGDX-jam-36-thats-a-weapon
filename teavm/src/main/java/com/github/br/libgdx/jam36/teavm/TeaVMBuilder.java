@@ -75,6 +75,8 @@ public class TeaVMBuilder {
         TeaReflectionSupplier.addReflectionClass("com.github.tommyettinger.textra.Styles$LabelStyle");
         TeaReflectionSupplier.addReflectionClass("com.github.br.libgdx.jam36.ui.TypingImageButton$TypingImageTextButtonStyle");
 
+        TeaReflectionSupplier.addReflectionClass("com.crashinvaders.vfx.gwt.GwtVfxGlExtension");
+
         // JavaScript is the default target type for TeaVM, and it works better during debugging.
         teaBuildConfiguration.targetType = TeaVMTargetType.JAVASCRIPT;
         // You can choose to use the WebAssembly (WASM) GC target instead, which tends to perform better, but isn't

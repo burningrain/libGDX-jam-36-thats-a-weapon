@@ -11,7 +11,7 @@ public class ShowTeaPhase implements Phase {
     @Override
     public void initUI(GameContext gameContext, CustomOrthogonalTiledMapRenderer renderer) {
         // показать столик с чаем
-        MapLayer layer = renderer.getLayer(TiledLayers.TEA);
+        MapLayer layer = renderer.getTiledLayer(TiledLayers.MAIN_VFX, TiledLayers.TEA);
         layer.setVisible(true);
     }
 

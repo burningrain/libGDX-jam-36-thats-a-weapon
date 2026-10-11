@@ -10,7 +10,7 @@ public class CleanTeaPhase implements Phase {
 
     @Override
     public void initUI(GameContext gameContext, CustomOrthogonalTiledMapRenderer renderer) {
-        MapLayer layer = renderer.getLayer(TiledLayers.TEA);
+        MapLayer layer = renderer.getTiledLayer(TiledLayers.MAIN_VFX, TiledLayers.TEA);
         layer.setVisible(false);
     }
 

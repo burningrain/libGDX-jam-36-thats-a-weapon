@@ -31,20 +31,20 @@ public class HeroBigPhone4DownPhase implements Phase, PhoneContext.Listener {
 
         this.renderer = renderer;
 
-        MapGroupLayer layer = (MapGroupLayer) renderer.getLayer(TiledLayers.HERO_BIG_PHONE);
+        MapGroupLayer layer = (MapGroupLayer) renderer.getTiledLayer(TiledLayers.MAIN_VFX, TiledLayers.HERO_BIG_PHONE);
         layer.setVisible(true);
 
         // установить позицию вне экрана
         currentY = 0;
-        renderer.updateOffsetsForGroupLayer(TiledLayers.TABLET, 0, currentY);
+        renderer.updateOffsetsForGroupLayer(new String[]{TiledLayers.MAIN_VFX, TiledLayers.TABLET}, 0, currentY);
         isMoveToDown = true;
     }
 
     private void resetUI() {
         // скрываем и возвращаем планшет назад на экран
-        MapGroupLayer layer = (MapGroupLayer) renderer.getLayer(TiledLayers.HERO_BIG_PHONE);
+        MapGroupLayer layer = (MapGroupLayer) renderer.getTiledLayer(TiledLayers.MAIN_VFX, TiledLayers.HERO_BIG_PHONE);
         layer.setVisible(false);
-        renderer.updateOffsetsForGroupLayer(TiledLayers.HERO_BIG_PHONE, 0, -currentY);
+        renderer.updateOffsetsForGroupLayer(new String[]{TiledLayers.MAIN_VFX, TiledLayers.HERO_BIG_PHONE}, 0, -currentY);
     }
 
     @Override
@@ -67,7 +67,7 @@ public class HeroBigPhone4DownPhase implements Phase, PhoneContext.Listener {
     }
 
     private void preFinish() {
-        MapLayer heroTablePhone = renderer.getLayer(TiledLayers.SMALL_HERO_PHONE_ON_TABLE);
+        MapLayer heroTablePhone = renderer.getTiledLayer(TiledLayers.MAIN_VFX, TiledLayers.SMALL_HERO_PHONE_ON_TABLE);
         heroTablePhone.setVisible(true);
 
         AnimatedImage dictophone = renderer.getActor(
@@ -81,7 +81,7 @@ public class HeroBigPhone4DownPhase implements Phase, PhoneContext.Listener {
     private void movePhoneDown(float deltaY, float deltaTime) {
         float dy = deltaY * deltaTime;
         renderer.updateOffsetsForGroupLayer(
-            TiledLayers.HERO_BIG_PHONE,
+            new String[]{TiledLayers.MAIN_VFX, TiledLayers.HERO_BIG_PHONE},
             0,
             dy
         );

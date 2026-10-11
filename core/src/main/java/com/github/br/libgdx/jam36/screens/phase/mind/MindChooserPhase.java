@@ -1,6 +1,7 @@
 package com.github.br.libgdx.jam36.screens.phase.mind;
 
 import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
@@ -12,6 +13,7 @@ import com.github.br.libgdx.common.structure.screen.ui.AnimatedImage;
 import com.github.br.libgdx.common.structure.screen.ui.CustomOrthogonalTiledMapRenderer;
 import com.github.br.libgdx.jam36.Constants;
 import com.github.br.libgdx.jam36.context.GameContext;
+import com.github.br.libgdx.jam36.screens.CustomVfxEffectPooledFactoryImpl;
 import com.github.br.libgdx.jam36.screens.ui.UserActorFactory;
 import com.github.br.libgdx.jam36.screens.TiledLayers;
 import com.github.br.libgdx.jam36.screens.phase.Choose;
@@ -48,6 +50,9 @@ public class MindChooserPhase implements Phase {
 
     private MindChooserHandler mindChooserHandler;
 
+    private Boolean isCurrentEffectEnabled;
+    private String currentEffect;
+
 
     public MindChooserPhase(UserActorFactory actorFactory, MindChooserHandler mindChooserHandler, Choose... chooses) {
         this.actorFactory = actorFactory;
@@ -60,7 +65,16 @@ public class MindChooserPhase implements Phase {
         this.gameContext = gameContext;
         this.renderer = renderer;
 
-        MapLayer layer = renderer.getLayer(TiledLayers.THOUGHTS);
+        MapLayer tiledLayer = renderer.getTiledLayer(TiledLayers.MAIN_VFX);
+        MapProperties properties = tiledLayer.getProperties();
+
+        isCurrentEffectEnabled = properties.get(CustomOrthogonalTiledMapRenderer.IS_VFX_EFFECT_ENABLED, Boolean.class);
+        currentEffect = properties.get(CustomOrthogonalTiledMapRenderer.VFX_LAYER_EFFECT, String.class);
+
+        properties.put(CustomOrthogonalTiledMapRenderer.IS_VFX_EFFECT_ENABLED, Boolean.TRUE);
+        properties.put(CustomOrthogonalTiledMapRenderer.VFX_LAYER_EFFECT, CustomVfxEffectPooledFactoryImpl.Title.THINKING_VFX);
+
+        MapLayer layer = renderer.getTiledLayer(TiledLayers.THOUGHTS);
         layer.setOpacity(0);
         layer.setVisible(true);
 
@@ -70,7 +84,7 @@ public class MindChooserPhase implements Phase {
 
     @Override
     public void draw(float deltaTime) {
-        MapLayer layer = renderer.getLayer(TiledLayers.THOUGHTS);
+        MapLayer layer = renderer.getTiledLayer(TiledLayers.THOUGHTS);
         float opacity = layer.getOpacity();
 
         if (isFadeIn) {
@@ -125,7 +139,12 @@ public class MindChooserPhase implements Phase {
     }
 
     private void finishPhase() {
-        MapLayer layer = renderer.getLayer(TiledLayers.THOUGHTS);
+        MapLayer tiledLayer = renderer.getTiledLayer(TiledLayers.MAIN_VFX);
+        MapProperties properties = tiledLayer.getProperties();
+        properties.put(CustomOrthogonalTiledMapRenderer.IS_VFX_EFFECT_ENABLED, isCurrentEffectEnabled);
+        properties.put(CustomOrthogonalTiledMapRenderer.VFX_LAYER_EFFECT, currentEffect);
+
+        MapLayer layer = renderer.getTiledLayer(TiledLayers.THOUGHTS);
         layer.setVisible(false);
         isFinished = true;
     }
