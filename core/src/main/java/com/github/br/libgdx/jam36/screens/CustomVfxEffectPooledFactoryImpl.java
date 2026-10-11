@@ -31,11 +31,38 @@ public class CustomVfxEffectPooledFactoryImpl extends VfxEffectPooledFactoryImpl
     public interface Title {
 
         String MAIN_VFX = "MAIN_VFX";
+        String HELL_VFX = "HELL_VFX";
         String THINKING_VFX = "THINKING_VFX";
+
 
     }
 
     private float timeAccumulator = 0f;
+
+    private void updateHell(float deltaTime) {
+        // Настройки вибрации:
+        float baseShift = 1.0f;      // Минимальный/базовый сдвиг в пикселях
+        float amplitude = 0.2f;      // Насколько сильно отклоняется (в пикселях)
+        float speed = 8.5f;         // Скорость вибрации (частота)
+
+        // 1. Вариант: Плавная пульсация (синусоида)
+        // Математика выдаст значение от (baseShift) до (baseShift + amplitude)
+        timeAccumulator += deltaTime;
+        float currentShift = baseShift + MathUtils.sin(timeAccumulator * speed) * amplitude;
+        hellChromaticAberrationEffect.setMaxDistortion(MathUtils.clamp(currentShift, 0.1f, 1.2f));
+
+        float light = MathUtils.clamp(currentShift, 0.15f, 0.3f);
+        lensFlareEffect.setLightPosition(light * MathUtils.cos(timeAccumulator), light * MathUtils.sin(timeAccumulator));
+        lensFlareEffect.setIntensity(MathUtils.clamp(currentShift * 2, 0.1f, 5.0f));
+
+        vignettingEffect.setIntensity(0.9f);
+
+        waterDistortionEffect.setSpeed(0.8f);
+        waterDistortionEffect.setTime(timeAccumulator);
+        waterDistortionEffect.setAmount(4);
+
+        radialBlurEffect.setStrength(MathUtils.clamp(MathUtils.cos(timeAccumulator), -0.5f, 0));
+    }
 
     private void updateMainVfx(float deltaTime) {
         chromaticAberrationEffect.setMaxDistortion(0.1f);
@@ -55,6 +82,14 @@ public class CustomVfxEffectPooledFactoryImpl extends VfxEffectPooledFactoryImpl
     }
 
     public CustomVfxEffectPooledFactoryImpl() {
+        this.putEffects(Title.HELL_VFX, new Array<ChainVfxEffect>() {{
+            this.add(lensFlareEffect);
+            this.add(hellChromaticAberrationEffect);
+            this.add(vignettingEffect);
+            this.add(waterDistortionEffect);
+            this.add(radialBlurEffect);
+            this.add(bloomEffect);
+        }});
         this.putEffects(Title.MAIN_VFX, new Array<ChainVfxEffect>() {{
             this.add(chromaticAberrationEffect);
             this.add(vignettingEffect);
@@ -76,6 +111,9 @@ public class CustomVfxEffectPooledFactoryImpl extends VfxEffectPooledFactoryImpl
             case Title.THINKING_VFX:
                 updateThinking(deltaTime);
                 break;
+            case Title.HELL_VFX:
+                updateHell(deltaTime);
+                break;
         }
     }
 
@@ -88,6 +126,7 @@ public class CustomVfxEffectPooledFactoryImpl extends VfxEffectPooledFactoryImpl
     public FisheyeEffect fisheyeEffect = new FisheyeEffect();
     public OldTvEffect oldTvEffect = new OldTvEffect();
     public ChromaticAberrationEffect chromaticAberrationEffect = new ChromaticAberrationEffect(10);
+    public ChromaticAberrationEffect hellChromaticAberrationEffect = new ChromaticAberrationEffect(2);
     public BloomEffect bloomEffect = new BloomEffect();
     public NfaaEffect nfaaEffect = new NfaaEffect(true);
     public CrtEffect crtEffect = new CrtEffect();
