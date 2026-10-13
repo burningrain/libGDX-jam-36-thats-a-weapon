@@ -73,7 +73,7 @@ public class TeaVMBuilder {
         TeaReflectionSupplier.addReflectionClass("com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle");
 
         TeaReflectionSupplier.addReflectionClass("com.github.tommyettinger.textra.Styles$LabelStyle");
-        TeaReflectionSupplier.addReflectionClass("com.github.br.libgdx.jam36.ui.TypingImageButton$TypingImageTextButtonStyle");
+        TeaReflectionSupplier.addReflectionClass("com.github.br.libgdx.common.structure.screen.ui.TypingImageTextButton$TypingImageTextButtonStyle");
 
         TeaReflectionSupplier.addReflectionClass("com.crashinvaders.vfx.gwt.GwtVfxGlExtension");
 

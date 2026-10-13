@@ -3,6 +3,7 @@ package com.github.br.libgdx.common.structure.screen.ui;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -56,7 +57,6 @@ public class CustomOrthogonalTiledMapRenderer extends OrthogonalTiledMapRenderer
         // vfx
         if (isVfxEnabled) {
             vfxManager = new VfxManager(Pixmap.Format.RGBA8888);
-            vfxManager.setBlendingEnabled(true);
         }
 
         clampToEdgeTextures(map);
@@ -82,6 +82,7 @@ public class CustomOrthogonalTiledMapRenderer extends OrthogonalTiledMapRenderer
             }
             vfxEffectPooledFactory.update(Gdx.graphics.getDeltaTime(), vfxEffect);
 
+            vfxManager.cleanUpBuffers(Color.CLEAR_WHITE);
             vfxManager.beginInputCapture();
             batch.begin();
         }

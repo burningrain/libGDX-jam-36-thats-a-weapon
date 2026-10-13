@@ -65,7 +65,7 @@ public class CustomVfxEffectPooledFactoryImpl extends VfxEffectPooledFactoryImpl
     }
 
     private void updateMainVfx(float deltaTime) {
-        chromaticAberrationEffect.setMaxDistortion(0.1f);
+        vignettingEffect.setTime(timeAccumulator);
     }
 
     private void updateThinking(float deltaTime) {
@@ -78,7 +78,7 @@ public class CustomVfxEffectPooledFactoryImpl extends VfxEffectPooledFactoryImpl
         // Математика выдаст значение от (baseShift) до (baseShift + amplitude)
         timeAccumulator += deltaTime;
         float currentShift = baseShift + MathUtils.sin(timeAccumulator * speed) * amplitude;
-        chromaticAberrationEffect.setMaxDistortion(MathUtils.clamp(currentShift, 0.1f, 1.2f));
+        chromaticAberrationEffect.setMaxDistortion(MathUtils.clamp(currentShift, 0.4f, 1.2f));
     }
 
     public CustomVfxEffectPooledFactoryImpl() {
@@ -91,8 +91,8 @@ public class CustomVfxEffectPooledFactoryImpl extends VfxEffectPooledFactoryImpl
             this.add(bloomEffect);
         }});
         this.putEffects(Title.MAIN_VFX, new Array<ChainVfxEffect>() {{
-            this.add(chromaticAberrationEffect);
-            this.add(vignettingEffect);
+            //this.add(chromaticAberrationEffect);
+            //this.add(vignettingEffect);
         }});
         this.putEffects(Title.THINKING_VFX, new Array<ChainVfxEffect>() {{
             //this.add(radialBlurEffect);
@@ -127,7 +127,16 @@ public class CustomVfxEffectPooledFactoryImpl extends VfxEffectPooledFactoryImpl
     public OldTvEffect oldTvEffect = new OldTvEffect();
     public ChromaticAberrationEffect chromaticAberrationEffect = new ChromaticAberrationEffect(10);
     public ChromaticAberrationEffect hellChromaticAberrationEffect = new ChromaticAberrationEffect(2);
-    public BloomEffect bloomEffect = new BloomEffect();
+    public BloomEffect bloomEffect = new BloomEffect(new BloomEffect.Settings(
+        GaussianBlurEffect.BlurType.Gaussian5x5b,
+        4,       // blurPasses: Снижаем с 10 до 2. Для разрешения 540p этого более чем достаточно.
+        0f,      // blurAmount
+        0.85f,   // bloomThreshold
+        1f,      // baseIntensity
+        0.85f,   // baseSaturation
+        1.1f,    // bloomIntensity
+        0.85f    // bloomSaturation
+    ));
     public NfaaEffect nfaaEffect = new NfaaEffect(true);
     public CrtEffect crtEffect = new CrtEffect();
     public LensFlareEffect lensFlareEffect = new LensFlareEffect();

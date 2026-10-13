@@ -17,6 +17,7 @@
 package com.crashinvaders.vfx.effects;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.math.Vector2;
 import com.crashinvaders.vfx.VfxRenderContext;
 import com.crashinvaders.vfx.framebuffer.VfxPingPongWrapper;
 import com.crashinvaders.vfx.framebuffer.VfxFrameBuffer;
@@ -32,7 +33,8 @@ public class VignettingEffect extends ShaderVfxEffect implements ChainVfxEffect 
     private static final String CENTER_Y = "u_centerY";
     private static final String SATURATION = "u_saturation";
     private static final String SATURATION_MUL = "u_saturationMul";
-
+    public static final String U_TIME = "u_time";
+    private static final String U_RESOLUTION = "u_resolution";
 
     private float vignetteX = 0.8f;
     private float vignetteY = 0.25f;
@@ -43,6 +45,12 @@ public class VignettingEffect extends ShaderVfxEffect implements ChainVfxEffect 
     private final boolean saturationEnabled;
     private float saturation = 0f;
     private float saturationMul = 0f;
+
+    private float time = 0f;
+
+    private final Vector2 viewportSize = new Vector2();
+    private SizeSource sizeSource = SizeSource.SCREEN;
+    private static final Vector2 tmpVec = new Vector2();
 
     public VignettingEffect(boolean controlSaturation) {
         super(VfxGLUtils.compileShader(
@@ -63,6 +71,16 @@ public class VignettingEffect extends ShaderVfxEffect implements ChainVfxEffect 
             program.setUniformf(SATURATION_MUL, saturationMul);
         }
 
+        program.setUniformf(U_TIME, time);
+        switch (sizeSource) {
+            case VIEWPORT:
+                program.setUniformf(U_RESOLUTION, viewportSize);
+                break;
+            case SCREEN:
+                program.setUniformf(U_RESOLUTION, tmpVec.set(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
+                break;
+        }
+
         program.setUniformf(VIGNETTE_INTENSITY, intensity);
         program.setUniformf(VIGNETTE_X, vignetteX);
         program.setUniformf(VIGNETTE_Y, vignetteY);
@@ -72,11 +90,20 @@ public class VignettingEffect extends ShaderVfxEffect implements ChainVfxEffect 
     }
 
     @Override
+    public void resize(int width, int height) {
+        super.resize(width, height);
+        this.viewportSize.set(width, height);
+        rebind();
+    }
+
+    @Override
     public void render(VfxRenderContext context, VfxPingPongWrapper buffers) {
         render(context, buffers.getSrcBuffer(), buffers.getDstBuffer());
     }
 
     public void render(VfxRenderContext context, VfxFrameBuffer src, VfxFrameBuffer dst) {
+        setUniform("u_time", time);
+
         // Bind src buffer's texture as a primary one.
         src.getTexture().bind(TEXTURE_HANDLE0);
         // Apply shader effect and render result to dst buffer.
@@ -132,6 +159,10 @@ public class VignettingEffect extends ShaderVfxEffect implements ChainVfxEffect 
         program.end();
     }
 
+    public void setTime(float time) {
+        this.time = time;
+    }
+
     public float getCenterX() {
         return centerX;
     }
@@ -163,4 +194,30 @@ public class VignettingEffect extends ShaderVfxEffect implements ChainVfxEffect 
     public boolean isSaturationControlEnabled() {
         return saturationEnabled;
     }
+
+    public SizeSource getSizeSource() {
+        return sizeSource;
+    }
+
+    /** Set shader resolution parameter source.
+     * @see SizeSource */
+    public void setSizeSource(SizeSource sizeSource) {
+        if (sizeSource == null) {
+            throw new IllegalArgumentException("Size source cannot be null.");
+        }
+        if (this.sizeSource == sizeSource) {
+            return;
+        }
+        this.sizeSource = sizeSource;
+        rebind();
+    }
+
+    /** Shader resolution parameter source. */
+    public enum SizeSource {
+        /** Resolution will be resolved from the application internal viewport. */
+        VIEWPORT,
+        /** Resolution will be resolved from the application window size. */
+        SCREEN,
+    }
+
 }
