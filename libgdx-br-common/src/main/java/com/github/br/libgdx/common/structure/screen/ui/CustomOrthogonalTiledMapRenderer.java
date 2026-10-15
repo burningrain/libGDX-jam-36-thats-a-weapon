@@ -44,9 +44,20 @@ public class CustomOrthogonalTiledMapRenderer extends OrthogonalTiledMapRenderer
         ActorFactory actorFactory,
         Viewport viewport,
         TiledMap map,
+        float unitScale
+    ) {
+        this(actorFactory, viewport, map, unitScale, false, null, 0, 0);
+    }
+
+    public CustomOrthogonalTiledMapRenderer(
+        ActorFactory actorFactory,
+        Viewport viewport,
+        TiledMap map,
         float unitScale,
+        boolean isVfxEnabled,
         VfxEffectPooledFactory vfxEffectPooledFactory,
-        boolean isVfxEnabled
+        int bufferWidth,
+        int bufferHeight
     ) {
         super(map, unitScale);
         this.isVfxEnabled = isVfxEnabled;
@@ -56,7 +67,7 @@ public class CustomOrthogonalTiledMapRenderer extends OrthogonalTiledMapRenderer
 
         // vfx
         if (isVfxEnabled) {
-            vfxManager = new VfxManager(Pixmap.Format.RGBA8888);
+            vfxManager = new VfxManager(Pixmap.Format.RGBA8888, bufferWidth, bufferHeight);
         }
 
         clampToEdgeTextures(map);
@@ -69,27 +80,31 @@ public class CustomOrthogonalTiledMapRenderer extends OrthogonalTiledMapRenderer
         MapProperties properties = layer.getProperties();
         Boolean isVfxLayerEnabled = properties.get(IS_VFX_EFFECT_ENABLED, Boolean.class);
         String vfxEffect = properties.get(VFX_LAYER_EFFECT, String.class);
+        boolean isHasEffects = false;
         if (isVfxEnabled && isVfxLayerEnabled != null && isVfxLayerEnabled) {
-            Batch batch = getBatch();
-            if (batch.isDrawing()) {
-                batch.end();
-            }
-
-            vfxManager.removeAllEffects();
             Array<ChainVfxEffect> effects = vfxEffectPooledFactory.getEffects(vfxEffect);
-            for (ChainVfxEffect effect : effects) {
-                vfxManager.addEffect(effect);
-            }
-            vfxEffectPooledFactory.update(Gdx.graphics.getDeltaTime(), vfxEffect);
+            isHasEffects = effects != null && effects.size > 0;
+            if (isHasEffects) {
+                Batch batch = getBatch();
+                if (batch.isDrawing()) {
+                    batch.end();
+                }
 
-            vfxManager.cleanUpBuffers(Color.CLEAR_WHITE);
-            vfxManager.beginInputCapture();
-            batch.begin();
+                vfxManager.removeAllEffects();
+                for (ChainVfxEffect effect : effects) {
+                    vfxManager.addEffect(effect);
+                }
+                vfxEffectPooledFactory.update(Gdx.graphics.getDeltaTime(), vfxEffect);
+
+                vfxManager.cleanUpBuffers(Color.CLEAR_WHITE);
+                vfxManager.beginInputCapture();
+                batch.begin();
+            }
         }
 
         super.renderMapLayer(layer);
 
-        if (isVfxEnabled && isVfxLayerEnabled != null && isVfxLayerEnabled) {
+        if (isVfxEnabled && isVfxLayerEnabled != null && isVfxLayerEnabled && isHasEffects) {
             batch.end();
 
             vfxManager.endInputCapture();
@@ -219,7 +234,7 @@ public class CustomOrthogonalTiledMapRenderer extends OrthogonalTiledMapRenderer
                 if (!(mapLayer instanceof MapGroupLayer)) {
                     throw new IllegalArgumentException("layer [" + layerName[i] + "] must be MapGroupLayer");
                 }
-                layers = ((MapGroupLayer)mapLayer).getLayers();
+                layers = ((MapGroupLayer) mapLayer).getLayers();
             }
         }
         throw new IllegalArgumentException("parameter 'layerName' must be >= 1");

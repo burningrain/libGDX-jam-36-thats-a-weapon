@@ -1,5 +1,6 @@
 package com.github.br.libgdx.jam36.screens;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.maps.MapLayer;
@@ -68,6 +69,22 @@ public class MainScreen extends AbstractTiledMapUiScreen<UserActorFactory, Custo
     @Override
     protected CustomVfxEffectPooledFactoryImpl createVfxEffectPoolFactory(AssetManager assetManager, GameSettings gameSettings) {
         return new CustomVfxEffectPooledFactoryImpl();
+    }
+    @Override
+    protected int getBackBufferHeight() {
+        int backBufferHeight = Gdx.graphics.getBackBufferHeight();
+        if (Application.ApplicationType.WebGL == Gdx.app.getType()) {
+            backBufferHeight = backBufferHeight / 2;
+        }
+        return backBufferHeight;
+    }
+    @Override
+    protected int getBackBufferWidth() {
+        int backBufferWidth = Gdx.graphics.getBackBufferWidth();
+        if (Application.ApplicationType.WebGL == Gdx.app.getType()) {
+            backBufferWidth = backBufferWidth / 2;
+        }
+        return backBufferWidth;
     }
 
     @Override

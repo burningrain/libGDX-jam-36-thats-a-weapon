@@ -55,8 +55,8 @@ public class MapPacker {
                 settings.combineSubdirectories = true;
                 settings.fast = true;
 
-                settings.maxWidth = 2048;
-                settings.maxHeight = 2048;
+                settings.maxWidth = 4096;
+                settings.maxHeight = 4096;
                 settings.paddingX = 2;
                 settings.paddingY = 2;
                 settings.duplicatePadding = true;

@@ -71,11 +71,21 @@ public abstract class AbstractTiledMapUiScreen<A extends ActorFactory, V extends
             viewport,
             tiledMap,
             1f,
+            isVfxEnabled,
             vfxEffectPoolFactory,
-            isVfxEnabled
+            getBackBufferWidth(),
+            getBackBufferHeight()
         );
 
         afterShow(tiledMap, renderer, viewport, actorFactory, vfxEffectPoolFactory);
+    }
+
+    protected int getBackBufferHeight() {
+        return Gdx.graphics.getBackBufferHeight();
+    }
+
+    protected int getBackBufferWidth() {
+        return Gdx.graphics.getBackBufferWidth();
     }
 
     protected abstract A createActionFactory(Skin gameSkin, AssetManager assetManager, GameSettings gameSettings);

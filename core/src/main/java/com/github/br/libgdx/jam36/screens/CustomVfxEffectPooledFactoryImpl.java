@@ -1,6 +1,7 @@
 package com.github.br.libgdx.jam36.screens;
 
-import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.Application;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import com.crashinvaders.vfx.effects.BloomEffect;
@@ -22,7 +23,6 @@ import com.crashinvaders.vfx.effects.VignettingEffect;
 import com.crashinvaders.vfx.effects.WaterDistortionEffect;
 import com.crashinvaders.vfx.effects.ZoomEffect;
 import com.crashinvaders.vfx.effects.util.GammaThresholdEffect;
-import com.crashinvaders.vfx.effects.util.MixEffect;
 import com.github.br.libgdx.common.structure.screen.ui.vfx.VfxEffectPooledFactoryImpl;
 import com.github.br.libgdx.common.structure.screen.ui.vfx.effect.SmoothVignetteEffect;
 
@@ -47,7 +47,6 @@ public class CustomVfxEffectPooledFactoryImpl extends VfxEffectPooledFactoryImpl
 
         // 1. Вариант: Плавная пульсация (синусоида)
         // Математика выдаст значение от (baseShift) до (baseShift + amplitude)
-        timeAccumulator += deltaTime;
         float currentShift = baseShift + MathUtils.sin(timeAccumulator * speed) * amplitude;
         hellChromaticAberrationEffect.setMaxDistortion(MathUtils.clamp(currentShift, 0.1f, 1.2f));
 
@@ -76,20 +75,83 @@ public class CustomVfxEffectPooledFactoryImpl extends VfxEffectPooledFactoryImpl
 
         // 1. Вариант: Плавная пульсация (синусоида)
         // Математика выдаст значение от (baseShift) до (baseShift + amplitude)
-        timeAccumulator += deltaTime;
         float currentShift = baseShift + MathUtils.sin(timeAccumulator * speed) * amplitude;
         chromaticAberrationEffect.setMaxDistortion(MathUtils.clamp(currentShift, 0.4f, 1.2f));
     }
 
     public CustomVfxEffectPooledFactoryImpl() {
+        if (Application.ApplicationType.WebGL == Gdx.app.getType()) {
+            gaussianBlurEffect = new GaussianBlurEffect(GaussianBlurEffect.BlurType.Gaussian3x3b);
+            fisheyeEffect = new FisheyeEffect();
+            oldTvEffect = new OldTvEffect();
+            chromaticAberrationEffect = new ChromaticAberrationEffect(5);
+            hellChromaticAberrationEffect = new ChromaticAberrationEffect(2);
+            bloomEffect = new BloomEffect(new BloomEffect.Settings(
+                GaussianBlurEffect.BlurType.Gaussian3x3b, // Переключаем с тяжелого 5x5 на легкий 3x3
+                1,       // Снижаем blurPasses с 4 до 1! В WebGL один проход сэкономит вам сразу 6-8 переключений шейдеров
+                0f,
+                0.85f,
+                1f,
+                0.85f,
+                1.1f,
+                0.85f
+            ));
+            nfaaEffect = new NfaaEffect(true);
+            crtEffect = new CrtEffect();
+            lensFlareEffect = new LensFlareEffect();
+            fxaaEffect = new FxaaEffect();
+            waterDistortionEffect = new WaterDistortionEffect(4f, 12f);
+            vignettingEffect = new VignettingEffect(false);
+            smoothVignetteEffect = new SmoothVignetteEffect();
+            gammaThresholdEffect = new GammaThresholdEffect(GammaThresholdEffect.Type.RGBA);
+            levelsEffect = new LevelsEffect();
+            radialBlurEffect = new RadialBlurEffect(2);
+            filmGrainEffect = new FilmGrainEffect();
+            radialDistortionEffect = new RadialDistortionEffect();
+        } else {
+            gaussianBlurEffect = new GaussianBlurEffect();
+            fisheyeEffect = new FisheyeEffect();
+            oldTvEffect = new OldTvEffect();
+            chromaticAberrationEffect = new ChromaticAberrationEffect(10);
+            hellChromaticAberrationEffect = new ChromaticAberrationEffect(2);
+            bloomEffect = new BloomEffect(new BloomEffect.Settings(
+                GaussianBlurEffect.BlurType.Gaussian5x5b,
+                4,  // blurPasses: Снижаем с 10 до 2. Для разрешения 540p этого более чем достаточно.
+                0f,      // blurAmount
+                0.85f,   // bloomThreshold
+                1f,      // baseIntensity
+                0.85f,   // baseSaturation
+                1.1f,    // bloomIntensity
+                0.85f    // bloomSaturation
+            ));
+            nfaaEffect = new NfaaEffect(true);
+            crtEffect = new CrtEffect();
+            lensFlareEffect = new LensFlareEffect();
+            fxaaEffect = new FxaaEffect();
+            waterDistortionEffect = new WaterDistortionEffect(12f, 12f);
+            vignettingEffect = new VignettingEffect(false);
+            smoothVignetteEffect = new SmoothVignetteEffect();
+            gammaThresholdEffect = new GammaThresholdEffect(GammaThresholdEffect.Type.RGBA);
+            levelsEffect = new LevelsEffect();
+            radialBlurEffect = new RadialBlurEffect(2);
+            filmGrainEffect = new FilmGrainEffect();
+            radialDistortionEffect = new RadialDistortionEffect();
+        }
+
         this.putEffects(Title.HELL_VFX, new Array<ChainVfxEffect>() {{
-            this.add(lensFlareEffect);
+            if (Application.ApplicationType.WebGL != Gdx.app.getType()) {
+                this.add(lensFlareEffect);
+            }
             this.add(hellChromaticAberrationEffect);
             this.add(vignettingEffect);
             this.add(waterDistortionEffect);
             this.add(radialBlurEffect);
-            this.add(bloomEffect);
+            if (Application.ApplicationType.WebGL != Gdx.app.getType()) {
+                this.add(bloomEffect);
+            }
         }});
+        zoomEffect = new ZoomEffect();
+
         this.putEffects(Title.MAIN_VFX, new Array<ChainVfxEffect>() {{
             //this.add(chromaticAberrationEffect);
             //this.add(vignettingEffect);
@@ -104,6 +166,7 @@ public class CustomVfxEffectPooledFactoryImpl extends VfxEffectPooledFactoryImpl
 
     @Override
     public void update(float deltaTime, String effectTitle) {
+        timeAccumulator += deltaTime;
         switch (effectTitle) {
             case Title.MAIN_VFX:
                 updateMainVfx(deltaTime);
@@ -117,41 +180,26 @@ public class CustomVfxEffectPooledFactoryImpl extends VfxEffectPooledFactoryImpl
         }
     }
 
-    public GaussianBlurEffect gaussianBlurEffect = new GaussianBlurEffect();
-    public MotionBlurEffect motionBlurEffect = new MotionBlurEffect(
-        Pixmap.Format.RGBA8888,
-        MixEffect.Method.MIX,
-        0.5f
-    );
-    public FisheyeEffect fisheyeEffect = new FisheyeEffect();
-    public OldTvEffect oldTvEffect = new OldTvEffect();
-    public ChromaticAberrationEffect chromaticAberrationEffect = new ChromaticAberrationEffect(10);
-    public ChromaticAberrationEffect hellChromaticAberrationEffect = new ChromaticAberrationEffect(2);
-    public BloomEffect bloomEffect = new BloomEffect(new BloomEffect.Settings(
-        GaussianBlurEffect.BlurType.Gaussian5x5b,
-        4,       // blurPasses: Снижаем с 10 до 2. Для разрешения 540p этого более чем достаточно.
-        0f,      // blurAmount
-        0.85f,   // bloomThreshold
-        1f,      // baseIntensity
-        0.85f,   // baseSaturation
-        1.1f,    // bloomIntensity
-        0.85f    // bloomSaturation
-    ));
-    public NfaaEffect nfaaEffect = new NfaaEffect(true);
-    public CrtEffect crtEffect = new CrtEffect();
-    public LensFlareEffect lensFlareEffect = new LensFlareEffect();
-    public FxaaEffect fxaaEffect = new FxaaEffect();
-    public WaterDistortionEffect waterDistortionEffect = new WaterDistortionEffect(12f, 12f);
-    public VignettingEffect vignettingEffect = new VignettingEffect(false);
-    public SmoothVignetteEffect smoothVignetteEffect = new SmoothVignetteEffect();
-    public ZoomEffect zoomEffect = new ZoomEffect();
-    public GammaThresholdEffect gammaThresholdEffect = new GammaThresholdEffect(GammaThresholdEffect.Type.RGBA);
-    public LevelsEffect levelsEffect = new LevelsEffect();
-    public RadialBlurEffect radialBlurEffect = new RadialBlurEffect(2);
-    public FilmGrainEffect filmGrainEffect = new FilmGrainEffect();
-    public RadialDistortionEffect radialDistortionEffect = new RadialDistortionEffect();
-
-
+    public GaussianBlurEffect gaussianBlurEffect;
+    public MotionBlurEffect motionBlurEffect;
+    public FisheyeEffect fisheyeEffect;
+    public OldTvEffect oldTvEffect;
+    public ChromaticAberrationEffect chromaticAberrationEffect;
+    public ChromaticAberrationEffect hellChromaticAberrationEffect;
+    public BloomEffect bloomEffect;
+    public NfaaEffect nfaaEffect;
+    public CrtEffect crtEffect;
+    public LensFlareEffect lensFlareEffect;
+    public FxaaEffect fxaaEffect;
+    public WaterDistortionEffect waterDistortionEffect;
+    public VignettingEffect vignettingEffect;
+    public SmoothVignetteEffect smoothVignetteEffect;
+    public ZoomEffect zoomEffect;
+    public GammaThresholdEffect gammaThresholdEffect;
+    public LevelsEffect levelsEffect;
+    public RadialBlurEffect radialBlurEffect;
+    public FilmGrainEffect filmGrainEffect;
+    public RadialDistortionEffect radialDistortionEffect;
 
 
 }
