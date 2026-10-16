@@ -1,8 +1,8 @@
 package com.github.br.libgdx.jam36.teavm;
 
-import com.github.xpenatan.gdx.backends.teavm.TeaApplicationConfiguration;
-import com.github.xpenatan.gdx.backends.teavm.TeaApplication;
 import com.github.br.libgdx.jam36.Main;
+import com.github.xpenatan.gdx.backends.teavm.TeaApplication;
+import com.github.xpenatan.gdx.backends.teavm.TeaApplicationConfiguration;
 
 /**
  * Launches the TeaVM/HTML application.

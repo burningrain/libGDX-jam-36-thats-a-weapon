@@ -33,6 +33,9 @@ public class TeaVMBuilder {
         teaBuildConfiguration.assetsPath.add(new AssetFileHandle("../assets"));
         teaBuildConfiguration.webappPath = new File("build/dist").getCanonicalPath();
 
+        teaBuildConfiguration.htmlWidth = 540;
+        teaBuildConfiguration.htmlHeight = 960;
+
         // Register any extra classpath assets here:
         // teaBuildConfiguration.additionalAssetsClasspathFiles.add("com/github/br/libgdx/jam36/asset.extension");
 
@@ -78,7 +81,7 @@ public class TeaVMBuilder {
         TeaReflectionSupplier.addReflectionClass("com.crashinvaders.vfx.gwt.GwtVfxGlExtension");
 
         // JavaScript is the default target type for TeaVM, and it works better during debugging.
-        teaBuildConfiguration.targetType = TeaVMTargetType.JAVASCRIPT;
+        teaBuildConfiguration.targetType = TeaVMTargetType.WEBASSEMBLY_GC;
         // You can choose to use the WebAssembly (WASM) GC target instead, which tends to perform better, but isn't
         // as easy to debug. It might be a good idea to alternate target types during development if you plan on using
         // WASM at release time.
@@ -110,6 +113,13 @@ public class TeaVMBuilder {
             tool.setSourceFilePolicy(TeaVMSourceFilePolicy.COPY);
             tool.addSourceFileProvider(new DirectorySourceFileProvider(new File("../core/src/main/java/com/")));
         }
+
+        tool.setMaxDirectBuffersSize(1024 * 1024 * 1024);
+        tool.setMinDirectBuffersSize(512 * 1024 * 1024);
+
+        // 2. На всякий случай увеличиваем кучу самой Java внутри WebAssembly (до 512 МБ)
+        tool.setMaxHeapSize(1024 * 1024 * 1024);
+        tool.setMinHeapSize(512 * 1024 * 1024);
 
         TeaBuilder.build(tool);
     }
