@@ -13,6 +13,8 @@ import org.teavm.vm.TeaVMOptimizationLevel;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 
 /**
  * Builds the TeaVM/HTML application.
@@ -111,7 +113,7 @@ public class TeaVMBuilder {
             tool.setSourceMapsFileGenerated(true);
             tool.setWasmDebugInfoLevel(WasmDebugInfoLevel.FULL);
             tool.setSourceFilePolicy(TeaVMSourceFilePolicy.COPY);
-            tool.addSourceFileProvider(new DirectorySourceFileProvider(new File("../core/src/main/java/com/")));
+            tool.addSourceFileProvider(new DirectorySourceFileProvider(new File("../core/src/main/java/")));
         }
 
         tool.setMaxDirectBuffersSize(1024 * 1024 * 1024);
@@ -121,6 +123,34 @@ public class TeaVMBuilder {
         tool.setMaxHeapSize(1024 * 1024 * 1024);
         tool.setMinHeapSize(512 * 1024 * 1024);
 
+        // 1. ЗАПУСКАЕМ СБОРКУ ИГРЫ (генерацию app.wasm, скриптов и дефолтного index.html)
         TeaBuilder.build(tool);
+
+        // 2. АВТОМАТИЗАЦИЯ ПОДКЛЮЧЕНИЯ НАТИВОВ BASIS UNIVERSAL И ШАБЛОНА HTML
+        System.out.println("TeaVMBuilder: Запуск процесса подмены шаблона и копирования ресурсов...");
+        File distDir = new File("build/dist/webapp");
+
+        // Описываем пути к исходным файлам библиотеки и нашему шаблону
+        File sourceJs = new File("libs/web/gdx-basis-universal.js");
+        File sourceWasm = new File("libs/web/gdx-basis-universal.wasm");
+        File sourceTemplateHtml = new File("libs/web/index.html"); // Путь к вашему созданному шаблону из Шага 1
+
+        // Проверяем физическое наличие всех файлов
+        if (!sourceJs.exists() || !sourceWasm.exists() || !sourceTemplateHtml.exists()) {
+            System.err.println("TeaVMBuilder ERROR: Не найдены необходимые файлы в папке libs/web/!" + sourceJs.getCanonicalPath());
+            System.err.println("Убедитесь, что gdx-basis-universal.js, gdx-basis-universal.wasm и index.html лежат там." + sourceTemplateHtml.getCanonicalPath());
+            return;
+        }
+
+        // Копируем нативные файлы транскодера в директорию сборки
+        Files.copy(sourceJs.toPath(), new File(distDir, "gdx-basis-universal.js").toPath(), StandardCopyOption.REPLACE_EXISTING);
+        Files.copy(sourceWasm.toPath(), new File(distDir, "gdx-basis-universal.wasm").toPath(), StandardCopyOption.REPLACE_EXISTING);
+        System.out.println("TeaVMBuilder: Нативные файлы Basis (.js / .wasm) успешно скопированы.");
+
+        // Полностью перезаписываем сгенерированный index.html нашим кастомным шаблоном
+        File targetIndexHtml = new File(distDir, "index.html");
+        Files.copy(sourceTemplateHtml.toPath(), targetIndexHtml.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        System.out.println("TeaVMBuilder: Дефолтный index.html успешно заменен на ваш кастомный шаблон!");
     }
+
 }

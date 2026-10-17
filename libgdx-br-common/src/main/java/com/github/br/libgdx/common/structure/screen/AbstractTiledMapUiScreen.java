@@ -14,6 +14,8 @@ import com.github.br.libgdx.common.structure.screen.ui.ActorFactory;
 import com.github.br.libgdx.common.structure.screen.ui.CustomOrthogonalTiledMapRenderer;
 import com.github.br.libgdx.common.structure.screen.ui.vfx.VfxEffectPooledFactory;
 
+import workaround.ktx.tiled.TmxUtils;
+
 public abstract class AbstractTiledMapUiScreen<A extends ActorFactory, V extends VfxEffectPooledFactory> extends AbstractGameScreen {
 
     private final String tiledMapPath;

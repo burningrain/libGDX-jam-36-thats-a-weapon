@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.github.br.libgdx.common.structure.screen.TmxUtils;
+import workaround.ktx.tiled.TmxUtils;
 import com.github.br.libgdx.common.structure.screen.loading.AssetsLoader;
 import com.github.br.libgdx.jam36.Resources;
 

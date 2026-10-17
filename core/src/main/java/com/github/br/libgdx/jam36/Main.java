@@ -64,7 +64,7 @@ public class Main extends AbstractSimpleGame<UserFactoryImpl> {
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(fileHandleResolver));
         if (Gdx.app.getType() == Application.ApplicationType.WebGL) {
             // загрузчик атласов для tmx платформозависим: в html - его нет, иначе - ktx2
-            assetManager.setLoader(TiledMap.class, new AtlasTmxMapLoader(fileHandleResolver));
+            //assetManager.setLoader(TiledMap.class, new AtlasTmxMapLoader(fileHandleResolver));
         } else {
             // сжатые текстуры
         }

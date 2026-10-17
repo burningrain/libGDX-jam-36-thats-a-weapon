@@ -2,6 +2,8 @@ package com.github.br.libgdx.common.structure;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetDescriptor;
+import com.badlogic.gdx.assets.AssetErrorListener;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.FileHandleResolver;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
@@ -9,6 +11,9 @@ import com.github.br.libgdx.common.structure.audio.AudioAssetManager;
 import com.github.br.libgdx.common.structure.screen.loading.LoadingScreen;
 import com.github.br.libgdx.common.structure.screen.loading.SimpleProgressBarImpl;
 import com.github.br.libgdx.common.structure.screen.statemachine.GameScreenState;
+
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 
 public abstract class AbstractSimpleGame<U extends UserFactory> extends ApplicationAdapter {
@@ -36,6 +41,21 @@ public abstract class AbstractSimpleGame<U extends UserFactory> extends Applicat
 
         InternalFileHandleResolver fileHandleResolver = new InternalFileHandleResolver();
         assetManager = new AssetManager();
+        assetManager.setErrorListener(new AssetErrorListener() {
+            @Override
+            public void error(AssetDescriptor asset, Throwable throwable) {
+                Gdx.app.log("error", "--- Asset loading is failed ---");
+                Gdx.app.log("error", "File: " + asset.fileName);
+
+                if (throwable != null) {
+                    StringWriter sw = new StringWriter();
+                    PrintWriter pw = new PrintWriter(sw);
+                    throwable.printStackTrace(pw);
+                    Gdx.app.log("exception stacktrace: ", sw.toString());
+                }
+            }
+        });
+
         audioAssetManager = new AudioAssetManager(assetManager, audioSettings);
 
         initLoaders(assetManager, fileHandleResolver);
