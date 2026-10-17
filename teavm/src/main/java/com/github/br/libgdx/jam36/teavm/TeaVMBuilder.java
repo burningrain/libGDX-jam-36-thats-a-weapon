@@ -116,8 +116,9 @@ public class TeaVMBuilder {
             tool.addSourceFileProvider(new DirectorySourceFileProvider(new File("../core/src/main/java/")));
         }
 
-        tool.setMaxDirectBuffersSize(1024 * 1024 * 1024);
-        tool.setMinDirectBuffersSize(512 * 1024 * 1024);
+        // Выделяем под Direct-буферы (где лежат наши массивы текстур) фиксированные 256 МБ
+        tool.setMinDirectBuffersSize(64 * 1024 * 1024);   // 64 МБ минимум
+        tool.setMaxDirectBuffersSize(256 * 1024 * 1024); // 256 МБ максимум (ВМЕСТО Integer.MAX_VALUE!)
 
         // 2. На всякий случай увеличиваем кучу самой Java внутри WebAssembly (до 512 МБ)
         tool.setMaxHeapSize(1024 * 1024 * 1024);

@@ -243,7 +243,17 @@ public class CustomOrthogonalTiledMapRenderer extends OrthogonalTiledMapRenderer
     public <T extends Actor> T getActor(String layerName, String actorName, Class<T> clazz) {
         Stage stage = stages.get(layerName);
         if (stage == null) {
-            throw new IllegalArgumentException("unknown layer: " + layerName);
+            StringBuilder builder = new StringBuilder();
+            int i = 0;
+            for (String key : stages.keys()) {
+                if (i > 0) {
+                    builder.append(",");
+                }
+                builder.append(key);
+                i++;
+            }
+
+            throw new IllegalArgumentException("unknown layer [" + layerName + "]. available object layers: " + builder.toString());
         }
 
         return clazz.cast(stage.getRoot().findActor(actorName));

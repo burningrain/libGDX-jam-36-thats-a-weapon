@@ -58,27 +58,25 @@
     }
 
     async function start() {
-                try {
-                    // ШАГ 1: Просто загружаем JS-файл транскодера в DOM. Ничего не инициализируем!
-                    await loadScriptDynamically("gdx-basis-universal.js");
+        try {
+            // ШАГ 1: Загружаем модифицированный gdx-basis-universal.js
+            await loadScriptDynamically("gdx-basis-universal.js");
 
-                    // ШАГ 2: Загружаем рантайм TeaVM
-                    await loadScriptDynamically("wasm-gc-runtime.min.js");
+            // ШАГ 2: Загружаем рантайм TeaVM
+            await loadScriptDynamically("wasm-gc-runtime.min.js");
 
-                    // ШАГ 3: Ожидаем объект TeaVM
-                    console.log("Лоадер: Ожидание создания объекта TeaVM...");
-                    await waitForGlobalObject("TeaVM");
+            // ШАГ 3: Ожидаем TeaVM
+            console.log("Лоадер: Ожидание создания объекта TeaVM...");
+            await waitForGlobalObject("TeaVM");
 
-                    // ШАГ 4: Запускаем LibGDX игру в WasmGC контейнере
-                    console.log("TeaVM WasmGC: Инициализация приложения...");
-                    let teavm = await TeaVM.wasmGC.load("app.wasm");
-                    teavm.exports.main([]);
-                } catch (error) {
-                    console.error("Критическая ошибка при старте игры: ", error);
-                }
-            }
+            // ШАГ 4: Запуск игры
+            console.log("TeaVM WasmGC: Инициализация приложения...");
+            let teavm = await TeaVM.wasmGC.load("app.wasm");
+            teavm.exports.main([]);
+        } catch (error) {
+            console.error("Критическая ошибка при старте игры: ", error);
+        }
+    }
 
     window.addEventListener("load", start);
 </script>
-</body>
-</html>

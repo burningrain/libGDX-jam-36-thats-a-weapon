@@ -45,7 +45,42 @@ a,c,d,e,f)=>{za[b]={name:Q(a),M:U(c,d),C:U(e,f),P:[]}},_embind_register_value_ob
 h;for(h of e){var k=g.exec(h);if(5==k?.length){e=k[1];var n=k[2];var l=k[3];k=k[4]}else if(k=f.exec(h),4<=k?.length)e=k[1],n=k[2],l=k[3],k=k[4]|0;else{d+=h+"\n";continue}"_emscripten_log"==e||"_emscripten_get_callstack"==e?d="":b&24&&(b&64&&(n=n.substring(n.replace(/\\/g,"/").lastIndexOf("/")+1)),d+=`    at ${e} (${n}:${l}:${k})\n`)}d=d.replace(/\s+$/,"");a=c+(a+d)}b&1?b&4?console.error(a):b&2?console.warn(a):b&512?console.info(a):b&256?console.debug(a):console.log(a):b&6?p(a):ea(a)},_emscripten_runtime_keepalive_clear:()=>
 {wa=!1;Cb=0},_emval_create_invoker:(b,a,c)=>{var [d,...e]=Fb(b,a);a=d.m.bind(d);var f=e.map(k=>k.B.bind(k));b--;var g={toValue:Y};b=f.map((k,n)=>{var l=`argFromPtr${n}`;g[l]=k;return`${l}(args${n?"+"+8*n:""})`});switch(c){case 0:var h="toValue(handle)";break;case 2:h="new (toValue(handle))";break;case 3:h="";break;case 1:g.getStringOrSymbol=Ib,h="toValue(handle)[getStringOrSymbol(methodName)]"}h+=`(${b})`;d.S||(g.toReturnWire=a,g.emval_returnValue=Gb,h=`return emval_returnValue(toReturnWire, destructorsRef, ${h})`);
 h=`return function (handle, methodName, destructorsRef, args) {\n  ${h}\n  }`;c=(new Function(Object.keys(g),h))(...Object.values(g));h=`methodCaller<(${e.map(k=>k.name)}) => ${d.name}>`;return Eb(Ma(h,c))},_emval_decref:nb,_emval_get_global:b=>{if(!b)return T(globalThis);b=Ib(b);return T(globalThis[b])},_emval_get_property:(b,a)=>{b=Y(b);a=Y(a);return T(b[a])},_emval_incref:b=>{9<b&&(X[b+1]+=1)},_emval_invoke:(b,a,c,d,e)=>Db[b](a,c,d,e),_emval_new_cstring:b=>T(Ib(b)),_emval_run_destructors:b=>{var a=
-Y(b);Aa(a);nb(b)},_setitimer_js:(b,a)=>{Z[b]&&(clearTimeout(Z[b].id),delete Z[b]);if(!a)return 0;var c=setTimeout(()=>{delete Z[b];Lb(()=>Pb(b,performance.now()))},a);Z[b]={id:c,ja:a};return 0},emscripten_resize_heap:()=>{J("OOM")},fd_close:()=>52,fd_seek:function(){return 70},fd_write:(b,a,c,d)=>{for(var e=0,f=0;f<c;f++){var g=I[a>>2],h=I[a+4>>2];a+=8;for(var k=0;k<h;k++){var n=b,l=B[g+k],q=Mb[n];0===l||10===l?((1===n?ea:p)(K(q)),q.length=0):q.push(l)}e+=h}I[d>>2]=e;return 0},proc_exit:Kb};
+Y(b);Aa(a);nb(b)},_setitimer_js:(b,a)=>{Z[b]&&(clearTimeout(Z[b].id),delete Z[b]);if(!a)return 0;var c=setTimeout(()=>{delete Z[b];Lb(()=>Pb(b,performance.now()))},a);Z[b]={id:c,ja:a};return 0},emscripten_resize_heap:(requestedSize)=>{
+    console.warn('=== ЖИВОЙ РЕЗАЙС КУЧИ BASIS === Запрошено байт:', requestedSize);
+    try {
+        var wasmMemory = Ub && Ub.memory ? Ub : (typeof Rb !== 'undefined' ? {memory: Rb} : null);
+        if (!wasmMemory && typeof Module !== 'undefined' && Module.asm) wasmMemory = {memory: Module.asm.memory};
+
+        if (wasmMemory && wasmMemory.memory) {
+            var currentBytes = wasmMemory.memory.buffer.byteLength;
+            var neededBytes = Math.max(requestedSize, currentBytes * 2);
+            var pagesToGrow = Math.ceil((neededBytes - currentBytes) / 65536);
+
+            // Расширяем физическую память WebAssembly
+            wasmMemory.memory.grow(pagesToGrow);
+
+            // Пересоздаем внутренние массивы Emscripten на лету, привязывая их к новому расширенному буферу
+            var newBuffer = wasmMemory.memory.buffer;
+            A = new Int8Array(newBuffer);
+            E = new Int16Array(newBuffer);
+            B = new Uint8Array(newBuffer);
+            F = new Uint16Array(newBuffer);
+            H = new Int32Array(newBuffer);
+            I = new Uint32Array(newBuffer);
+            ia = new Float32Array(newBuffer);
+            ja = new Float64Array(newBuffer);
+            ka = new BigInt64Array(newBuffer);
+            la = new BigUint64Array(newBuffer);
+
+            console.log('%c[СИСТЕМА] Память WASM успешно расширена! Текущий размер кучи: ' + (newBuffer.byteLength / (1024*1024)) + ' МБ.', 'color: #00ff00; font-weight: bold;');
+            return true;
+        }
+    } catch(e) {
+        console.error('Ошибка динамического ресайза кучи:', e);
+    }
+    return false;
+}
+,fd_close:()=>52,fd_seek:function(){return 70},fd_write:(b,a,c,d)=>{for(var e=0,f=0;f<c;f++){var g=I[a>>2],h=I[a+4>>2];a+=8;for(var k=0;k<h;k++){var n=b,l=B[g+k],q=Mb[n];0===l||10===l?((1===n?ea:p)(K(q)),q.length=0):q.push(l)}e+=h}I[d>>2]=e;return 0},proc_exit:Kb};
 function Tb(b=[]){var a=Ob;b.unshift(ba);var c=b.length,d=Qb(4*(c+1)),e=d,f;for(f of b){b=I;var g=e>>2,h=f,k=ub(h)+1,n=Qb(k);tb(h,n,k);b[g]=n;e+=4}I[e>>2]=0;try{var l=a(c,d);z=l;Kb(l)}catch(q){Jb(q)}}var Ub;
 Ub=await (async function(){function b(c){c=Ub=c.exports;fb=c.__getTypeName;Nb=c.malloc;V=c.free;Ob=m._main=c.__main_argc_argv;Pb=c._emscripten_timeout;Qb=c._emscripten_stack_alloc;Rb=c.memory;db=c.__indirect_function_table;c=Rb.buffer;A=new Int8Array(c);E=new Int16Array(c);B=new Uint8Array(c);F=new Uint16Array(c);H=new Int32Array(c);I=new Uint32Array(c);ia=new Float32Array(c);ja=new Float64Array(c);ka=new BigInt64Array(c);la=new BigUint64Array(c);return Ub}var a={env:Sb,wasi_snapshot_preview1:Sb};
 if(m.instantiateWasm)return new Promise(c=>{m.instantiateWasm(a,(d,e)=>{c(b(d,e))})});na??=m.locateFile?m.locateFile("gdx-basis-universal.wasm",ca):ca+"gdx-basis-universal.wasm";return b((await qa(a)).instance)}());
